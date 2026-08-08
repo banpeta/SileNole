@@ -89,8 +89,15 @@
 - [x] `base` de Vite derivado del nombre del repo en CI (se autoajusta si el
   repo se renombra).
 - [x] Instrucciones de instalación en el móvil (ver README).
-- [ ] *Acción manual del usuario*: activar Pages en el repo
-  (Settings → Pages → Source: **GitHub Actions**) la primera vez.
+- [x] Pages activado y **desplegado con éxito desde `master`** (el entorno
+  `github-pages` solo permite la rama por defecto). URL:
+  `https://banpeta.github.io/hello-world/`.
+
+> Nota de flujo: el desarrollo sigue en la rama
+> `claude/football-stickers-tracker-app-y9g81g`; para desplegar se fusiona en
+> `master`, que es la rama que publica Pages. Al renombrar el repo a
+> "SileNole", la URL pasará a `https://banpeta.github.io/SileNole/`
+> automáticamente (el `base` se deriva del nombre del repo).
 
 ## Estructura de carpetas prevista
 
