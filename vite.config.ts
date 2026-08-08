@@ -6,7 +6,14 @@ import { VitePWA } from 'vite-plugin-pwa';
 // El plugin PWA solo se activa en dev/build, no durante los tests (Vitest).
 const enTest = !!process.env.VITEST;
 
+// En GitHub Pages la app se sirve bajo /<nombre-repo>/. Derivamos el base
+// automáticamente del repositorio en CI, de modo que si el repo se renombra
+// (p. ej. a "SileNole"), el despliegue se ajusta solo. En local/dev es "/".
+const repo = process.env.GITHUB_REPOSITORY?.split('/')[1];
+const base = process.env.GITHUB_ACTIONS && repo ? `/${repo}/` : '/';
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     ...(enTest

@@ -23,8 +23,21 @@ comportamiento que no esté especificado allí.
   completar, "te faltan N" y carga de la colección real 2026/27 (provisional).
 - ✅ **Fase 6** — Repes: registrar repetidos por cromo y pantalla "Para
   cambiar", pensadas para intercambios.
-- ⏳ **Fases 7-8** — Multi-dispositivo y despliegue. Ver
+- ✅ **Fase 8** — Despliegue en GitHub Pages mediante GitHub Actions.
+- ⏳ **Fase 7** — Multi-dispositivo (sincronización). Ver
   [`docs/05-plan-y-tdd.md`](docs/05-plan-y-tdd.md).
+
+## Despliegue e instalación en el móvil
+
+El repositorio incluye un workflow (`.github/workflows/deploy.yml`) que ejecuta
+los tests, compila y publica en **GitHub Pages** en cada push.
+
+**Primera vez (acción manual):** en GitHub, ve a **Settings → Pages** y en
+*Source* elige **GitHub Actions**. A partir de ahí, cada push despliega solo.
+
+La app quedará en `https://<usuario>.github.io/<repo>/`. Para instalarla en el
+móvil: ábrela en el navegador y usa **"Añadir a la pantalla de inicio"**
+(Android/Chrome) o **Compartir → Añadir a pantalla de inicio** (iOS/Safari).
 
 ## Requisitos
 

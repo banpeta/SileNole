@@ -83,8 +83,14 @@
 - Segunda implementación de `ColeccionRepository` en la nube (candidato:
   Supabase, ADR-004) y fusión por fecha (HU-09).
 
-### Fase 8 · Despliegue
-- Publicar en GitHub Pages (ADR-007) y documentar cómo instalarla en el móvil.
+### Fase 8 · Despliegue (entregada) ✅
+- [x] Workflow de GitHub Actions (`.github/workflows/deploy.yml`) que ejecuta
+  tests, compila y publica en GitHub Pages (ADR-007).
+- [x] `base` de Vite derivado del nombre del repo en CI (se autoajusta si el
+  repo se renombra).
+- [x] Instrucciones de instalación en el móvil (ver README).
+- [ ] *Acción manual del usuario*: activar Pages en el repo
+  (Settings → Pages → Source: **GitHub Actions**) la primera vez.
 
 ## Estructura de carpetas prevista
 
