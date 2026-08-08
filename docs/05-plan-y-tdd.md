@@ -48,8 +48,19 @@
 - [x] Carga del catálogo desde la semilla en el primer arranque
   (`src/app/servicio.ts`).
 - [x] **Tests primero** con Testing Library + test de integración de la app.
-- [ ] *Pendiente para más adelante*: pantalla de importar/editar el catálogo
-  desde la app (HU-07).
+- [x] Pantalla de importar/editar el catálogo desde la app (HU-07): ver más
+  abajo (Fase 3.5).
+
+### Fase 3.5 · Importar/editar catálogo (HU-07) (entregada) ✅
+- [x] Pantalla `PantallaEditarCatalogo`: editor del JSON del catálogo, con
+  cargar archivo, descargar copia y "Validar y guardar".
+- [x] Al guardar se valida (unicidad, tipos…) y se muestran los errores con su
+  ubicación; si es válido, se guarda **conservando el progreso** de los números
+  que siguen existiendo y podando los huérfanos (`importarColeccion` +
+  `reemplazarEstados`).
+- [x] Acceso discreto desde el inicio ("⚙️ Editar catálogo").
+- [x] **Tests primero**: servicio, componente, repositorio e integración
+  (editar → guardar → se refleja y se conserva el progreso).
 
 ### Fase 4 · PWA y offline (entregada) ✅
 - [x] `vite-plugin-pwa`: manifest, service worker (autoUpdate) e iconos.

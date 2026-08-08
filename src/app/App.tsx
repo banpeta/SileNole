@@ -8,13 +8,15 @@ import { ListaCategorias } from '../ui/ListaCategorias';
 import { DetalleCategoria } from '../ui/DetalleCategoria';
 import { PantallaFaltan } from '../ui/PantallaFaltan';
 import { PantallaParaCambiar } from '../ui/PantallaParaCambiar';
+import { PantallaEditarCatalogo } from '../ui/PantallaEditarCatalogo';
 
 type Vista =
   | { nombre: 'inicio' }
   | { nombre: 'categorias' }
   | { nombre: 'detalle'; categoriaId: string }
   | { nombre: 'faltan' }
-  | { nombre: 'cambiar' };
+  | { nombre: 'cambiar' }
+  | { nombre: 'editar' };
 
 interface Props {
   /** Repositorio de datos. Por defecto IndexedDB (inyectable para tests). */
@@ -25,10 +27,8 @@ interface Props {
 
 export function App({ repo, cargarSemilla = cargarSemillaDesdePublic }: Props = {}) {
   const repositorio = useMemo(() => repo ?? new RepositorioIndexedDB(), [repo]);
-  const { cargando, error, coleccion, estados, alternar, ajustarRepes } = useSileNole(
-    repositorio,
-    cargarSemilla,
-  );
+  const { cargando, error, coleccion, estados, alternar, ajustarRepes, importarCatalogo } =
+    useSileNole(repositorio, cargarSemilla);
   const [vista, setVista] = useState<Vista>({ nombre: 'inicio' });
 
   return (
@@ -50,6 +50,7 @@ export function App({ repo, cargarSemilla = cargarSemillaDesdePublic }: Props = 
                 onVerCategorias={() => setVista({ nombre: 'categorias' })}
                 onVerFaltan={() => setVista({ nombre: 'faltan' })}
                 onVerCambiar={() => setVista({ nombre: 'cambiar' })}
+                onVerEditar={() => setVista({ nombre: 'editar' })}
               />
             )}
             {vista.nombre === 'categorias' && (
@@ -85,6 +86,13 @@ export function App({ repo, cargarSemilla = cargarSemillaDesdePublic }: Props = 
               <PantallaParaCambiar
                 coleccion={coleccion}
                 estados={estados}
+                onVolver={() => setVista({ nombre: 'inicio' })}
+              />
+            )}
+            {vista.nombre === 'editar' && (
+              <PantallaEditarCatalogo
+                coleccion={coleccion}
+                onImportar={importarCatalogo}
                 onVolver={() => setVista({ nombre: 'inicio' })}
               />
             )}

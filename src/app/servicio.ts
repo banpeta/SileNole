@@ -6,7 +6,7 @@
  */
 
 import type { Coleccion, EstadoCromo } from '../model/tipos';
-import { validarColeccion } from '../model/validacion';
+import { validarColeccion, type ResultadoValidacion } from '../model/validacion';
 import type { ColeccionRepository } from '../data/repositorio';
 
 /** Función que obtiene los datos de la semilla (inyectable para testear). */
@@ -36,6 +36,32 @@ export async function obtenerColeccion(
 /** Indexa una lista de estados por número de cromo. */
 export function estadosAMapa(estados: EstadoCromo[]): Map<string, EstadoCromo> {
   return new Map(estados.map((e) => [e.numero, e]));
+}
+
+/**
+ * Importa un catálogo nuevo (HU-07). Valida los datos; si son válidos, los
+ * guarda y CONSERVA el estado (tengo/falta/repes) de los números que sigan
+ * existiendo, descartando los huérfanos. Si no son válidos, no cambia nada y
+ * devuelve los errores.
+ */
+export async function importarColeccion(
+  repo: ColeccionRepository,
+  datos: unknown,
+): Promise<ResultadoValidacion> {
+  const resultado = validarColeccion(datos);
+  if (!resultado.ok) return resultado;
+
+  const coleccion = datos as Coleccion;
+  await repo.guardarColeccion(coleccion);
+
+  const numeros = new Set<string>();
+  for (const cat of coleccion.categorias) {
+    for (const cromo of cat.cromos) numeros.add(cromo.numero);
+  }
+  const estados = await repo.cargarEstados();
+  await repo.reemplazarEstados(estados.filter((e) => numeros.has(e.numero)));
+
+  return { ok: true };
 }
 
 /** Carga la semilla desde `public/coleccion.json` (uso real en el navegador). */

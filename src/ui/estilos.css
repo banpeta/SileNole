@@ -370,3 +370,61 @@ main {
   text-align: center;
   margin-top: 1.5rem;
 }
+
+/* --- HU-07: editar catálogo --- */
+
+.enlace-ajustes {
+  display: block;
+  margin: 1.5rem auto 0;
+  background: none;
+  border: none;
+  color: var(--gris-texto);
+  font-size: 0.95rem;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.ayuda {
+  color: var(--gris-texto);
+  font-size: 0.95rem;
+}
+
+.acciones-catalogo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.6rem;
+}
+
+.como-boton {
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.editor-json {
+  width: 100%;
+  min-height: 45vh;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  padding: 0.6rem;
+  border: 2px solid var(--gris);
+  border-radius: 0.5rem;
+  resize: vertical;
+  white-space: pre;
+}
+
+.errores {
+  background: #fde8e8;
+  border: 1px solid #f5b5b5;
+  border-radius: 0.5rem;
+  padding: 0.6rem 0.9rem;
+  margin: 0.8rem 0;
+  color: #8a1f1f;
+}
+
+.errores ul {
+  margin: 0.3rem 0 0;
+  padding-left: 1.2rem;
+}

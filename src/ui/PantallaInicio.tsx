@@ -9,6 +9,7 @@ interface Props {
   onVerCategorias: () => void;
   onVerFaltan: () => void;
   onVerCambiar: () => void;
+  onVerEditar: () => void;
 }
 
 /** Pantalla de inicio: progreso total de la colección (HU-04). */
@@ -18,6 +19,7 @@ export function PantallaInicio({
   onVerCategorias,
   onVerFaltan,
   onVerCambiar,
+  onVerEditar,
 }: Props) {
   const p = progresoTotal(coleccion, estados);
   const faltan = totalFaltan(coleccion, estados);
@@ -45,6 +47,9 @@ export function PantallaInicio({
           🔁 Para cambiar
         </button>
       </nav>
+      <button className="enlace-ajustes" onClick={onVerEditar}>
+        ⚙️ Editar catálogo
+      </button>
     </section>
   );
 }

@@ -60,6 +60,32 @@ describe('App — flujo de consulta y marcado', () => {
     expect(await screen.findByText(/x\s*2/i)).toBeInTheDocument();
   });
 
+  it('importa un catálogo editado y conserva el progreso (HU-07)', async () => {
+    const repo = new RepositorioEnMemoria();
+    render(<App repo={repo} cargarSemilla={semilla} />);
+    await screen.findByRole('progressbar');
+
+    // Marcar el cromo 1 (Equipo A).
+    fireEvent.click(screen.getByRole('button', { name: /equipos/i }));
+    fireEvent.click(await screen.findByRole('button', { name: /Equipo A/ }));
+    fireEvent.click(await screen.findByRole('button', { name: /Cromo 1(,|$)/i }));
+    fireEvent.click(screen.getByRole('button', { name: /SileNole/i }));
+
+    // Ir a editar catálogo y renombrar el Equipo A -> "Equipo Renombrado".
+    fireEvent.click(await screen.findByRole('button', { name: /editar cat/i }));
+    const nuevo = coleccionEjemplo();
+    nuevo.categorias[0].nombre = 'Equipo Renombrado';
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: JSON.stringify(nuevo) } });
+    fireEvent.click(screen.getByRole('button', { name: /validar y guardar/i }));
+    expect(await screen.findByText(/guardado/i)).toBeInTheDocument();
+
+    // El cambio se refleja y el progreso se conserva (1 de 3).
+    fireEvent.click(screen.getByRole('button', { name: /SileNole/i }));
+    await waitFor(() => expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '1'));
+    fireEvent.click(screen.getByRole('button', { name: /equipos/i }));
+    expect(await screen.findByText('Equipo Renombrado')).toBeInTheDocument();
+  });
+
   it('el estado persiste al reabrir la app (guardado automático, HU-06)', async () => {
     const repo = new RepositorioEnMemoria();
 

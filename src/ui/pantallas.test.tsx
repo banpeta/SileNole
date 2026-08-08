@@ -6,6 +6,7 @@ import { ListaCategorias } from './ListaCategorias';
 import { DetalleCategoria } from './DetalleCategoria';
 import { PantallaFaltan } from './PantallaFaltan';
 import { PantallaParaCambiar } from './PantallaParaCambiar';
+import { PantallaEditarCatalogo } from './PantallaEditarCatalogo';
 
 /**
  * Tests de las pantallas de consulta y marcado.
@@ -24,6 +25,7 @@ describe('PantallaInicio — HU-04', () => {
         onVerCategorias={noop}
         onVerFaltan={noop}
         onVerCambiar={noop}
+        onVerEditar={noop}
       />,
     );
     expect(screen.getByText(/1/)).toBeInTheDocument();
@@ -32,10 +34,11 @@ describe('PantallaInicio — HU-04', () => {
     expect(barra).toHaveAttribute('aria-valuemax', '3');
   });
 
-  it('los botones navegan a categorías, faltan y cambios', () => {
+  it('los botones navegan a categorías, faltan, cambios y editar', () => {
     const onVerCategorias = vi.fn();
     const onVerFaltan = vi.fn();
     const onVerCambiar = vi.fn();
+    const onVerEditar = vi.fn();
     render(
       <PantallaInicio
         coleccion={coleccionEjemplo()}
@@ -43,14 +46,17 @@ describe('PantallaInicio — HU-04', () => {
         onVerCategorias={onVerCategorias}
         onVerFaltan={onVerFaltan}
         onVerCambiar={onVerCambiar}
+        onVerEditar={onVerEditar}
       />,
     );
     fireEvent.click(screen.getByRole('button', { name: /equipos/i }));
     fireEvent.click(screen.getByRole('button', { name: /faltan/i }));
     fireEvent.click(screen.getByRole('button', { name: /cambiar/i }));
+    fireEvent.click(screen.getByRole('button', { name: /editar cat/i }));
     expect(onVerCategorias).toHaveBeenCalledOnce();
     expect(onVerFaltan).toHaveBeenCalledOnce();
     expect(onVerCambiar).toHaveBeenCalledOnce();
+    expect(onVerEditar).toHaveBeenCalledOnce();
   });
 });
 
@@ -215,6 +221,68 @@ describe('PantallaParaCambiar — HU-08', () => {
       />,
     );
     expect(screen.getByText(/no tienes repes/i)).toBeInTheDocument();
+  });
+});
+
+describe('PantallaEditarCatalogo — HU-07', () => {
+  it('muestra el JSON del catálogo actual en el área de edición', () => {
+    render(
+      <PantallaEditarCatalogo
+        coleccion={coleccionEjemplo()}
+        onImportar={() => Promise.resolve({ ok: true })}
+        onVolver={noop}
+      />,
+    );
+    const area = screen.getByRole('textbox') as HTMLTextAreaElement;
+    expect(area.value).toContain('"id": "ejemplo"');
+  });
+
+  it('si el texto no es JSON válido, avisa y no llama a onImportar', async () => {
+    const onImportar = vi.fn();
+    render(
+      <PantallaEditarCatalogo
+        coleccion={coleccionEjemplo()}
+        onImportar={onImportar}
+        onVolver={noop}
+      />,
+    );
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'esto no es json' } });
+    fireEvent.click(screen.getByRole('button', { name: /guardar/i }));
+    expect(await screen.findByText(/no es un json válido/i)).toBeInTheDocument();
+    expect(onImportar).not.toHaveBeenCalled();
+  });
+
+  it('con JSON válido llama a onImportar y muestra confirmación', async () => {
+    const onImportar = vi.fn().mockResolvedValue({ ok: true });
+    render(
+      <PantallaEditarCatalogo
+        coleccion={coleccionEjemplo()}
+        onImportar={onImportar}
+        onVolver={noop}
+      />,
+    );
+    fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: JSON.stringify(coleccionEjemplo()) },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /guardar/i }));
+    expect(await screen.findByText(/guardado/i)).toBeInTheDocument();
+    expect(onImportar).toHaveBeenCalledOnce();
+  });
+
+  it('si onImportar devuelve errores, los muestra', async () => {
+    const onImportar = vi.fn().mockResolvedValue({ ok: false, errores: ['Número duplicado: "5".'] });
+    render(
+      <PantallaEditarCatalogo
+        coleccion={coleccionEjemplo()}
+        onImportar={onImportar}
+        onVolver={noop}
+      />,
+    );
+    fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: JSON.stringify(coleccionEjemplo()) },
+    });
+    fireEvent.click(screen.getByRole('button', { name: /guardar/i }));
+    expect(await screen.findByText(/Número duplicado/i)).toBeInTheDocument();
   });
 });
 

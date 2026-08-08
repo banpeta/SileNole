@@ -9,7 +9,13 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Coleccion, EstadoCromo } from '../model/tipos';
 import type { ColeccionRepository } from '../data/repositorio';
 import { alternarTenido, establecerRepes, estadoDe, type MapaEstados } from '../domain/estado';
-import { obtenerColeccion, estadosAMapa, type CargarSemilla } from './servicio';
+import type { ResultadoValidacion } from '../model/validacion';
+import {
+  obtenerColeccion,
+  estadosAMapa,
+  importarColeccion,
+  type CargarSemilla,
+} from './servicio';
 
 export interface EstadoSileNole {
   cargando: boolean;
@@ -20,6 +26,8 @@ export interface EstadoSileNole {
   alternar: (numero: string) => void;
   /** Suma o resta repetidos a un cromo (no baja de 0) y lo guarda. */
   ajustarRepes: (numero: string, delta: number) => void;
+  /** Importa un catálogo nuevo conservando el estado (HU-07). */
+  importarCatalogo: (datos: unknown) => Promise<ResultadoValidacion>;
 }
 
 export function useSileNole(
@@ -84,5 +92,20 @@ export function useSileNole(
     [repo],
   );
 
-  return { cargando, error, coleccion, estados, alternar, ajustarRepes };
+  const importarCatalogo = useCallback(
+    async (datos: unknown): Promise<ResultadoValidacion> => {
+      const resultado = await importarColeccion(repo, datos);
+      if (resultado.ok) {
+        const col = await repo.cargarColeccion();
+        const mapa = estadosAMapa(await repo.cargarEstados());
+        setColeccion(col);
+        estadosRef.current = mapa;
+        setEstados(mapa);
+      }
+      return resultado;
+    },
+    [repo],
+  );
+
+  return { cargando, error, coleccion, estados, alternar, ajustarRepes, importarCatalogo };
 }

@@ -23,6 +23,8 @@ comportamiento que no esté especificado allí.
   completar, "te faltan N" y carga de la colección real 2026/27 (provisional).
 - ✅ **Fase 6** — Repes: registrar repetidos por cromo y pantalla "Para
   cambiar", pensadas para intercambios.
+- ✅ **HU-07** — Pantalla para importar/editar el catálogo (editar JSON, cargar
+  archivo, descargar copia) conservando el progreso.
 - ✅ **Fase 8** — Despliegue en GitHub Pages mediante GitHub Actions.
 - ⏳ **Fase 7** — Multi-dispositivo (sincronización). Ver
   [`docs/05-plan-y-tdd.md`](docs/05-plan-y-tdd.md).

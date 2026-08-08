@@ -19,6 +19,8 @@ export interface ColeccionRepository {
   guardarEstado(estado: EstadoCromo): Promise<void>;
   /** Guarda o actualiza varios estados de una vez. */
   guardarEstados(estados: EstadoCromo[]): Promise<void>;
+  /** Sustituye TODO el conjunto de estados (para podar huérfanos al importar). */
+  reemplazarEstados(estados: EstadoCromo[]): Promise<void>;
 }
 
 /**
@@ -47,5 +49,9 @@ export class RepositorioEnMemoria implements ColeccionRepository {
 
   async guardarEstados(estados: EstadoCromo[]): Promise<void> {
     for (const e of estados) this.estados.set(e.numero, { ...e });
+  }
+
+  async reemplazarEstados(estados: EstadoCromo[]): Promise<void> {
+    this.estados = new Map(estados.map((e) => [e.numero, { ...e }]));
   }
 }

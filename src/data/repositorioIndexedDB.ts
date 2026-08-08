@@ -74,4 +74,10 @@ export class RepositorioIndexedDB implements ColeccionRepository {
     const store = await this.tx(STORE_ESTADOS, 'readwrite');
     await Promise.all(estados.map((e) => comoPromesa(store.put(e))));
   }
+
+  async reemplazarEstados(estados: EstadoCromo[]): Promise<void> {
+    const store = await this.tx(STORE_ESTADOS, 'readwrite');
+    await comoPromesa(store.clear());
+    await Promise.all(estados.map((e) => comoPromesa(store.put(e))));
+  }
 }

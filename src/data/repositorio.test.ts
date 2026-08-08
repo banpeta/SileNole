@@ -73,6 +73,17 @@ function bateriaContrato(nombre: string, crear: () => ColeccionRepository) {
       ]);
       expect((await repo.cargarEstados()).length).toBe(2);
     });
+
+    it('reemplazarEstados sustituye el conjunto completo (para podar huérfanos)', async () => {
+      await repo.guardarEstados([
+        { numero: '1', tenido: true, repes: 0, actualizado: T },
+        { numero: '2', tenido: true, repes: 0, actualizado: T },
+      ]);
+      await repo.reemplazarEstados([{ numero: '1', tenido: true, repes: 0, actualizado: T }]);
+      const estados = await repo.cargarEstados();
+      expect(estados).toHaveLength(1);
+      expect(estados[0].numero).toBe('1');
+    });
   });
 }
 
