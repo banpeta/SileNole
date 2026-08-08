@@ -8,10 +8,17 @@ interface Props {
   estados: MapaEstados;
   onVerCategorias: () => void;
   onVerFaltan: () => void;
+  onVerCambiar: () => void;
 }
 
 /** Pantalla de inicio: progreso total de la colección (HU-04). */
-export function PantallaInicio({ coleccion, estados, onVerCategorias, onVerFaltan }: Props) {
+export function PantallaInicio({
+  coleccion,
+  estados,
+  onVerCategorias,
+  onVerFaltan,
+  onVerCambiar,
+}: Props) {
   const p = progresoTotal(coleccion, estados);
   const faltan = totalFaltan(coleccion, estados);
   return (
@@ -33,6 +40,9 @@ export function PantallaInicio({ coleccion, estados, onVerCategorias, onVerFalta
         </button>
         <button className="boton-grande secundario" onClick={onVerFaltan}>
           🔍 Me faltan
+        </button>
+        <button className="boton-grande secundario" onClick={onVerCambiar}>
+          🔁 Para cambiar
         </button>
       </nav>
     </section>

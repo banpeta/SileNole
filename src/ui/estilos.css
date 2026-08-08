@@ -296,3 +296,77 @@ main {
     animation: none;
   }
 }
+
+/* --- Fase 6: repes --- */
+
+.celda-cromo {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 0.25rem;
+}
+
+.repes-control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+
+.repes-boton {
+  width: 1.9rem;
+  height: 1.9rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  line-height: 1;
+  border: 2px solid var(--verde);
+  border-radius: 0.5rem;
+  background: #fff;
+  color: var(--verde);
+  cursor: pointer;
+}
+
+.repes-boton:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.repes-num {
+  min-width: 1.2rem;
+  text-align: center;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
+
+.lista-cambiar {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lista-cambiar li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.6rem;
+  background: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.repes-badge {
+  background: var(--verde);
+  color: #fff;
+  font-weight: 800;
+  border-radius: 1rem;
+  padding: 0.05rem 0.5rem;
+  font-size: 0.9rem;
+}
+
+.vacio {
+  color: var(--gris-texto);
+  text-align: center;
+  margin-top: 1.5rem;
+}

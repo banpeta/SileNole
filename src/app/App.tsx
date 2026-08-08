@@ -7,12 +7,14 @@ import { PantallaInicio } from '../ui/PantallaInicio';
 import { ListaCategorias } from '../ui/ListaCategorias';
 import { DetalleCategoria } from '../ui/DetalleCategoria';
 import { PantallaFaltan } from '../ui/PantallaFaltan';
+import { PantallaParaCambiar } from '../ui/PantallaParaCambiar';
 
 type Vista =
   | { nombre: 'inicio' }
   | { nombre: 'categorias' }
   | { nombre: 'detalle'; categoriaId: string }
-  | { nombre: 'faltan' };
+  | { nombre: 'faltan' }
+  | { nombre: 'cambiar' };
 
 interface Props {
   /** Repositorio de datos. Por defecto IndexedDB (inyectable para tests). */
@@ -23,7 +25,10 @@ interface Props {
 
 export function App({ repo, cargarSemilla = cargarSemillaDesdePublic }: Props = {}) {
   const repositorio = useMemo(() => repo ?? new RepositorioIndexedDB(), [repo]);
-  const { cargando, error, coleccion, estados, alternar } = useSileNole(repositorio, cargarSemilla);
+  const { cargando, error, coleccion, estados, alternar, ajustarRepes } = useSileNole(
+    repositorio,
+    cargarSemilla,
+  );
   const [vista, setVista] = useState<Vista>({ nombre: 'inicio' });
 
   return (
@@ -44,6 +49,7 @@ export function App({ repo, cargarSemilla = cargarSemillaDesdePublic }: Props = 
                 estados={estados}
                 onVerCategorias={() => setVista({ nombre: 'categorias' })}
                 onVerFaltan={() => setVista({ nombre: 'faltan' })}
+                onVerCambiar={() => setVista({ nombre: 'cambiar' })}
               />
             )}
             {vista.nombre === 'categorias' && (
@@ -63,12 +69,20 @@ export function App({ repo, cargarSemilla = cargarSemillaDesdePublic }: Props = 
                     categoria={categoria}
                     estados={estados}
                     onToggle={alternar}
+                    onAjustarRepes={ajustarRepes}
                     onVolver={() => setVista({ nombre: 'categorias' })}
                   />
                 );
               })()}
             {vista.nombre === 'faltan' && (
               <PantallaFaltan
+                coleccion={coleccion}
+                estados={estados}
+                onVolver={() => setVista({ nombre: 'inicio' })}
+              />
+            )}
+            {vista.nombre === 'cambiar' && (
+              <PantallaParaCambiar
                 coleccion={coleccion}
                 estados={estados}
                 onVolver={() => setVista({ nombre: 'inicio' })}

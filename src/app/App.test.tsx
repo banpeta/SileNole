@@ -37,6 +37,29 @@ describe('App — flujo de consulta y marcado', () => {
     await waitFor(() => expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '1'));
   });
 
+  it('registra repes y aparecen en "Para cambiar" (HU-08)', async () => {
+    const repo = new RepositorioEnMemoria();
+    render(<App repo={repo} cargarSemilla={semilla} />);
+    await screen.findByRole('progressbar');
+
+    // Marcar el cromo 1 y sumarle 2 repes.
+    fireEvent.click(screen.getByRole('button', { name: /equipos/i }));
+    fireEvent.click(await screen.findByRole('button', { name: /Equipo A/ }));
+    fireEvent.click(await screen.findByRole('button', { name: /Cromo 1(,|$)/i }));
+    fireEvent.click(await screen.findByRole('button', { name: /añadir un repetido/i }));
+    fireEvent.click(screen.getByRole('button', { name: /añadir un repetido/i }));
+
+    // Se guarda con repes = 2.
+    await waitFor(async () =>
+      expect((await repo.cargarEstados()).find((e) => e.numero === '1')?.repes).toBe(2),
+    );
+
+    // Aparece en "Para cambiar".
+    fireEvent.click(screen.getByRole('button', { name: /SileNole/i }));
+    fireEvent.click(await screen.findByRole('button', { name: /cambiar/i }));
+    expect(await screen.findByText(/x\s*2/i)).toBeInTheDocument();
+  });
+
   it('el estado persiste al reabrir la app (guardado automático, HU-06)', async () => {
     const repo = new RepositorioEnMemoria();
 

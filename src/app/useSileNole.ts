@@ -8,7 +8,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import type { Coleccion, EstadoCromo } from '../model/tipos';
 import type { ColeccionRepository } from '../data/repositorio';
-import { alternarTenido, estadoDe, type MapaEstados } from '../domain/estado';
+import { alternarTenido, establecerRepes, estadoDe, type MapaEstados } from '../domain/estado';
 import { obtenerColeccion, estadosAMapa, type CargarSemilla } from './servicio';
 
 export interface EstadoSileNole {
@@ -18,6 +18,8 @@ export interface EstadoSileNole {
   estados: MapaEstados;
   /** Marca/desmarca un cromo y lo guarda automáticamente. */
   alternar: (numero: string) => void;
+  /** Suma o resta repetidos a un cromo (no baja de 0) y lo guarda. */
+  ajustarRepes: (numero: string, delta: number) => void;
 }
 
 export function useSileNole(
@@ -68,5 +70,19 @@ export function useSileNole(
     [repo],
   );
 
-  return { cargando, error, coleccion, estados, alternar };
+  const ajustarRepes = useCallback(
+    (numero: string, delta: number) => {
+      const actual = estadoDe(estadosRef.current, numero);
+      const repes = Math.max(0, actual.repes + delta);
+      const nuevo = establecerRepes(actual, repes, new Date().toISOString());
+      const mapa = new Map(estadosRef.current);
+      mapa.set(numero, nuevo);
+      estadosRef.current = mapa;
+      setEstados(mapa);
+      void repo.guardarEstado(nuevo);
+    },
+    [repo],
+  );
+
+  return { cargando, error, coleccion, estados, alternar, ajustarRepes };
 }

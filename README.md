@@ -21,7 +21,9 @@ comportamiento que no esté especificado allí.
   (service worker + precache del catálogo).
 - ✅ **Fase 5** — Diseño para niños: colores por club, celebración al
   completar, "te faltan N" y carga de la colección real 2026/27 (provisional).
-- ⏳ **Fase 6** — Gestión de repes (para cambios). Ver
+- ✅ **Fase 6** — Repes: registrar repetidos por cromo y pantalla "Para
+  cambiar", pensadas para intercambios.
+- ⏳ **Fases 7-8** — Multi-dispositivo y despliegue. Ver
   [`docs/05-plan-y-tdd.md`](docs/05-plan-y-tdd.md).
 
 ## Requisitos

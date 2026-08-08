@@ -71,8 +71,13 @@
   `etiqueta` visible (incluye variantes A/B). Provisional hasta cotejar con el
   álbum.
 
-### Fase 6 · Repes (para cambios) `[v2]`
-- Interfaz para registrar repetidos y pantalla "Para cambiar" (HU-08).
+### Fase 6 · Repes (para cambios) (entregada) ✅
+- [x] Control `−  n  +` en cada cromo que se tiene, para registrar repetidos
+  (HU-08), con guardado automático (`useSileNole.ajustarRepes`).
+- [x] Pantalla "Para cambiar" con los repes agrupados por equipo y su cantidad
+  (`PantallaParaCambiar`).
+- [x] **Tests primero**: controles de repes, pantalla y flujo de integración
+  (marcar → +repes → aparece en "Para cambiar" → persiste). 69 tests en verde.
 
 ### Fase 7 · Multi-dispositivo `[v2]`
 - Segunda implementación de `ColeccionRepository` en la nube (candidato:

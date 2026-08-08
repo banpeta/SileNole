@@ -6,6 +6,7 @@ interface Props {
   categoria: Categoria;
   estados: MapaEstados;
   onToggle: (numero: string) => void;
+  onAjustarRepes: (numero: string, delta: number) => void;
   onVolver: () => void;
 }
 
@@ -13,7 +14,13 @@ interface Props {
  * Detalle de una categoría: cuadrícula de cromos. Tocar un cromo lo marca o lo
  * desmarca (HU-02, HU-03). No depende solo del color: añade ✓ y aria-label.
  */
-export function DetalleCategoria({ categoria, estados, onToggle, onVolver }: Props) {
+export function DetalleCategoria({
+  categoria,
+  estados,
+  onToggle,
+  onAjustarRepes,
+  onVolver,
+}: Props) {
   const cromos = [...categoria.cromos].sort((a, b) => a.orden - b.orden);
   const p = progresoCategoria(categoria, estados);
   const acento = categoria.color ?? undefined;
@@ -38,13 +45,14 @@ export function DetalleCategoria({ categoria, estados, onToggle, onVolver }: Pro
       )}
       <ul className="rejilla-cromos">
         {cromos.map((cromo) => {
-          const tenido = estadoDe(estados, cromo.numero).tenido;
+          const estado = estadoDe(estados, cromo.numero);
+          const tenido = estado.tenido;
           const visible = etiquetaVisible(cromo);
           const aria = `Cromo ${visible}${cromo.nombre ? `, ${cromo.nombre}` : ''}, ${
             tenido ? 'lo tengo' : 'me falta'
           }`;
           return (
-            <li key={cromo.numero}>
+            <li key={cromo.numero} className="celda-cromo">
               <button
                 className={tenido ? 'cromo tengo' : 'cromo falta'}
                 style={tenido && acento ? { background: acento, borderColor: acento } : undefined}
@@ -59,6 +67,28 @@ export function DetalleCategoria({ categoria, estados, onToggle, onVolver }: Pro
                   </span>
                 )}
               </button>
+              {tenido && (
+                <div className="repes-control">
+                  <button
+                    className="repes-boton"
+                    aria-label={`Quitar un repetido del cromo ${visible}`}
+                    disabled={estado.repes === 0}
+                    onClick={() => onAjustarRepes(cromo.numero, -1)}
+                  >
+                    −
+                  </button>
+                  <span className="repes-num" aria-label={`${estado.repes} repetidos`}>
+                    {estado.repes}
+                  </span>
+                  <button
+                    className="repes-boton"
+                    aria-label={`Añadir un repetido al cromo ${visible}`}
+                    onClick={() => onAjustarRepes(cromo.numero, 1)}
+                  >
+                    +
+                  </button>
+                </div>
+              )}
             </li>
           );
         })}
