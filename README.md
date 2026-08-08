@@ -17,7 +17,9 @@ comportamiento que no esté especificado allí.
   persistencia (`ColeccionRepository`: en memoria e IndexedDB).
 - ✅ **Fase 3** — Interfaz principal: pantallas de Inicio, Categorías, Detalle
   (tocar para marcar/desmarcar) y Faltan, con guardado automático.
-- ⏳ **Fase 4** — PWA (instalable y offline). Ver
+- ✅ **Fase 4** — PWA: instalable en el móvil y funciona sin conexión
+  (service worker + precache del catálogo).
+- ⏳ **Fase 5** — Diseño para niños. Ver
   [`docs/05-plan-y-tdd.md`](docs/05-plan-y-tdd.md).
 
 ## Requisitos

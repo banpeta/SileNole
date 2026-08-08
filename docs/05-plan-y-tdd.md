@@ -51,9 +51,14 @@
 - [ ] *Pendiente para más adelante*: pantalla de importar/editar el catálogo
   desde la app (HU-07).
 
-### Fase 4 · PWA y offline
-- `vite-plugin-pwa`: manifest, service worker, instalable y offline (HU-06).
-- Prueba manual de instalación en un móvil real.
+### Fase 4 · PWA y offline (entregada) ✅
+- [x] `vite-plugin-pwa`: manifest, service worker (autoUpdate) e iconos.
+- [x] Instalable en la pantalla de inicio (manifest + apple-touch-icon).
+- [x] Funcionamiento **offline** verificado automáticamente con Chromium:
+  tras cargar y desconectar la red, la app recarga desde caché y conserva el
+  estado (HU-06).
+- [ ] *Pendiente (manual)*: instalar en un móvil real cuando se despliegue
+  (Fase 8).
 
 ### Fase 5 · Diseño para niños
 - Botones grandes, colores por equipo, ✓ además del color (accesibilidad),
