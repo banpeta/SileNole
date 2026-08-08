@@ -1,8 +1,8 @@
-# Mis cromos · La Liga 26/27
+# SileNole
 
-App personal para móvil que ayuda a seguir la colección de cromos **Panini
-La Liga Este 26/27**: saber qué cromos se tienen y cuáles faltan, organizados
-por equipo y por la sección Fichajes.
+**SileNole** es una app personal para móvil que ayuda a seguir la colección de
+cromos **Panini La Liga Este 26/27**: saber qué cromos se tienen y cuáles
+faltan, organizados por equipo y por la sección Fichajes.
 
 Desarrollo guiado por especificación (**SDD**) y por tests (**TDD**). La fuente
 de la verdad está en [`docs/`](docs/README.md); ningún código introduce
@@ -13,7 +13,9 @@ comportamiento que no esté especificado allí.
 - ✅ **Fase 0** — Especificación (`docs/`).
 - ✅ **Fase 1** — Cimientos: React + Vite + TypeScript + Vitest, modelo de datos
   y validación de invariantes (con tests).
-- ⏳ **Fase 2** — Lógica de dominio (progreso, filtros). Ver
+- ✅ **Fase 2** — Lógica de dominio (progreso, faltan, repes) y capa de
+  persistencia (`ColeccionRepository`: en memoria e IndexedDB).
+- ⏳ **Fase 3** — Interfaz principal. Ver
   [`docs/05-plan-y-tdd.md`](docs/05-plan-y-tdd.md).
 
 ## Requisitos

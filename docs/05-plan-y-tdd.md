@@ -29,12 +29,15 @@
 - [x] Semilla de ejemplo (`public/coleccion.json`) con categorías ficticias,
   validada por un test.
 
-### Fase 2 · Lógica de dominio (sin UI)
-- Cálculos derivados: progreso por categoría, progreso total, "faltan",
-  "para cambiar", categoría completa.
-- `ColeccionRepository` sobre IndexedDB (ADR-003) con su implementación en
-  memoria para tests.
-- **Tests primero** cubriendo HU-04, HU-05 y las derivaciones.
+### Fase 2 · Lógica de dominio (sin UI) (entregada) ✅
+- [x] Transiciones de estado (`src/domain/estado.ts`): estado por defecto,
+  alternar tenido, establecer repes (HU-03, HU-08).
+- [x] Cálculos derivados (`src/domain/progreso.ts`): progreso por categoría,
+  progreso total, categoría completa, "faltan", "para cambiar" (HU-04, HU-05).
+- [x] `ColeccionRepository` (ADR-003): interfaz + implementación en memoria
+  (`src/data/repositorio.ts`) y en IndexedDB (`src/data/repositorioIndexedDB.ts`).
+- [x] **Tests primero**: 45 tests en verde (misma batería de contrato contra
+  ambas implementaciones del repositorio).
 
 ### Fase 3 · Interfaz principal
 - Pantallas: Inicio (progreso), Categorías, Detalle de categoría, Faltan.

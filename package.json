@@ -1,9 +1,9 @@
 {
-  "name": "cromos-laliga-26-27",
+  "name": "silenole",
   "private": true,
   "version": "0.1.0",
   "type": "module",
-  "description": "App personal para seguir la colección de cromos Panini La Liga Este 26/27",
+  "description": "SileNole — app personal para seguir la colección de cromos Panini La Liga Este 26/27",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -23,6 +23,7 @@
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.1",
+    "fake-indexeddb": "^6.2.5",
     "jsdom": "^25.0.0",
     "typescript": "^5.5.4",
     "vite": "^5.4.2",

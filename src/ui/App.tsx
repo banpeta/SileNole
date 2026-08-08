@@ -8,8 +8,8 @@
 export function App() {
   return (
     <main>
-      <h1>Mis cromos · La Liga 26/27</h1>
-      <p>App en construcción (Fase 1: cimientos y modelo de datos).</p>
+      <h1>SileNole</h1>
+      <p>Tus cromos de La Liga 26/27. App en construcción.</p>
     </main>
   );
 }
