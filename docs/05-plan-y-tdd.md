@@ -14,17 +14,20 @@
 
 ## Fases
 
-### Fase 0 · Especificación (esta entrega)
+### Fase 0 · Especificación (entregada) ✅
 - [x] Documentos `docs/` como fuente de la verdad.
-- [ ] **Revisión y aprobación** de las specs. ← *puerta antes de escribir código*
+- [x] **Revisión y aprobación** de las specs.
 
-### Fase 1 · Cimientos del proyecto
-- Configurar React + Vite + TypeScript + Vitest (ADR-002, ADR-006).
-- Definir los **tipos** del modelo (`03-modelo-de-datos.md`).
-- Implementar la validación de `coleccion.json` y los invariantes.
-- **Tests primero**: unicidad de `numero`, referencias válidas, `repes >= 0`,
-  coherencia repes/tenido.
-- Semilla de ejemplo con 2–3 categorías ficticias para poder probar ya.
+### Fase 1 · Cimientos del proyecto (entregada) ✅
+- [x] Configurar React + Vite + TypeScript + Vitest (ADR-002, ADR-006).
+- [x] Definir los **tipos** del modelo (`src/model/tipos.ts`, según
+  `03-modelo-de-datos.md`).
+- [x] Implementar la validación de `coleccion.json` y los invariantes
+  (`src/model/validacion.ts`).
+- [x] **Tests primero** (`src/model/validacion.test.ts`): unicidad de `numero`,
+  referencias válidas, `repes >= 0`, coherencia repes/tenido. 13 tests en verde.
+- [x] Semilla de ejemplo (`public/coleccion.json`) con categorías ficticias,
+  validada por un test.
 
 ### Fase 2 · Lógica de dominio (sin UI)
 - Cálculos derivados: progreso por categoría, progreso total, "faltan",

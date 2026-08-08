@@ -1,0 +1,43 @@
+{
+  "id": "laliga-este-26-27",
+  "nombre": "La Liga Este 26/27",
+  "temporada": "2026/2027",
+  "version": 1,
+  "categorias": [
+    {
+      "id": "equipo-ejemplo-a",
+      "nombre": "Equipo Ejemplo A",
+      "tipo": "equipo",
+      "orden": 1,
+      "color": "#0b7a3b",
+      "cromos": [
+        { "numero": "1", "nombre": "Portero A", "orden": 1 },
+        { "numero": "2", "nombre": "Defensa A", "orden": 2 },
+        { "numero": "3", "nombre": "Delantero A", "orden": 3 }
+      ]
+    },
+    {
+      "id": "equipo-ejemplo-b",
+      "nombre": "Equipo Ejemplo B",
+      "tipo": "equipo",
+      "orden": 2,
+      "color": "#1e50a2",
+      "cromos": [
+        { "numero": "4", "nombre": "Portero B", "orden": 1 },
+        { "numero": "5", "nombre": "Defensa B", "orden": 2 },
+        { "numero": "6", "nombre": "Delantero B", "orden": 3 }
+      ]
+    },
+    {
+      "id": "fichajes",
+      "nombre": "Fichajes",
+      "tipo": "fichajes",
+      "orden": 99,
+      "color": null,
+      "cromos": [
+        { "numero": "F1", "nombre": null, "orden": 1 },
+        { "numero": "F2", "nombre": null, "orden": 2 }
+      ]
+    }
+  ]
+}
