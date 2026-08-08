@@ -201,3 +201,98 @@ main {
 .error {
   color: #b00020;
 }
+
+/* --- Fase 5: diseño para niños --- */
+
+.te-faltan {
+  text-align: center;
+  font-size: 1.15rem;
+  color: var(--gris-texto);
+}
+
+.te-faltan strong {
+  color: var(--texto);
+  font-size: 1.3rem;
+}
+
+.boton-grande.secundario {
+  background: #fff;
+  color: var(--verde);
+  border: 3px solid var(--verde);
+}
+
+.punto-color {
+  display: inline-block;
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+
+.progreso-detalle {
+  margin: 0.2rem 0 0.6rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--gris-texto);
+}
+
+.celebracion {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: var(--verde);
+  background: var(--verde-claro);
+  border-radius: 0.75rem;
+  padding: 0.6rem;
+  animation: aparece 0.4s ease, late 1.2s ease 0.2s;
+}
+
+/* Animación al marcar un cromo como conseguido. */
+.cromo.tengo {
+  animation: pop 0.25s ease;
+}
+
+.cromo:active {
+  transform: scale(0.94);
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.7);
+  }
+  60% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes aparece {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes late {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cromo.tengo,
+  .celebracion {
+    animation: none;
+  }
+}

@@ -1,42 +1,3334 @@
 {
   "id": "laliga-este-26-27",
-  "nombre": "La Liga Este 26/27",
+  "nombre": "LaLiga Este 2026/27",
   "temporada": "2026/2027",
   "version": 1,
   "categorias": [
     {
-      "id": "equipo-ejemplo-a",
-      "nombre": "Equipo Ejemplo A",
+      "id": "deportivo-alaves",
+      "nombre": "Deportivo Alavés",
       "tipo": "equipo",
       "orden": 1,
-      "color": "#0b7a3b",
+      "color": "#1E4B9B",
       "cromos": [
-        { "numero": "1", "nombre": "Portero A", "orden": 1 },
-        { "numero": "2", "nombre": "Defensa A", "orden": 2 },
-        { "numero": "3", "nombre": "Delantero A", "orden": 3 }
+        {
+          "numero": "deportivo-alaves-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "deportivo-alaves-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "deportivo-alaves-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "deportivo-alaves-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "deportivo-alaves-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "deportivo-alaves-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "deportivo-alaves-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "deportivo-alaves-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "deportivo-alaves-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "deportivo-alaves-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "deportivo-alaves-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "deportivo-alaves-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "deportivo-alaves-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "deportivo-alaves-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "deportivo-alaves-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "deportivo-alaves-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "deportivo-alaves-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "deportivo-alaves-18A",
+          "etiqueta": "18A",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "deportivo-alaves-18B",
+          "etiqueta": "18B",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "deportivo-alaves-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "deportivo-alaves-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 21
+        }
       ]
     },
     {
-      "id": "equipo-ejemplo-b",
-      "nombre": "Equipo Ejemplo B",
+      "id": "athletic-club",
+      "nombre": "Athletic Club",
       "tipo": "equipo",
       "orden": 2,
-      "color": "#1e50a2",
+      "color": "#EE2523",
       "cromos": [
-        { "numero": "4", "nombre": "Portero B", "orden": 1 },
-        { "numero": "5", "nombre": "Defensa B", "orden": 2 },
-        { "numero": "6", "nombre": "Delantero B", "orden": 3 }
+        {
+          "numero": "athletic-club-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "athletic-club-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "athletic-club-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "athletic-club-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "athletic-club-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "athletic-club-6A",
+          "etiqueta": "6A",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "athletic-club-6B",
+          "etiqueta": "6B",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "athletic-club-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "athletic-club-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "athletic-club-9A",
+          "etiqueta": "9A",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "athletic-club-9B",
+          "etiqueta": "9B",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "athletic-club-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "athletic-club-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "athletic-club-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "athletic-club-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "athletic-club-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "athletic-club-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "athletic-club-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "athletic-club-17A",
+          "etiqueta": "17A",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "athletic-club-17B",
+          "etiqueta": "17B",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "athletic-club-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 21
+        },
+        {
+          "numero": "athletic-club-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 22
+        },
+        {
+          "numero": "athletic-club-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 23
+        }
       ]
     },
     {
-      "id": "fichajes",
-      "nombre": "Fichajes",
-      "tipo": "fichajes",
-      "orden": 99,
-      "color": null,
+      "id": "atletico-de-madrid",
+      "nombre": "Atlético de Madrid",
+      "tipo": "equipo",
+      "orden": 3,
+      "color": "#CB3524",
       "cromos": [
-        { "numero": "F1", "nombre": null, "orden": 1 },
-        { "numero": "F2", "nombre": null, "orden": 2 }
+        {
+          "numero": "atletico-de-madrid-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "atletico-de-madrid-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "atletico-de-madrid-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "atletico-de-madrid-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "atletico-de-madrid-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "atletico-de-madrid-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "atletico-de-madrid-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "atletico-de-madrid-8A",
+          "etiqueta": "8A",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "atletico-de-madrid-8B",
+          "etiqueta": "8B",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "atletico-de-madrid-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "atletico-de-madrid-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "atletico-de-madrid-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "atletico-de-madrid-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "atletico-de-madrid-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "atletico-de-madrid-14A",
+          "etiqueta": "14A",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "atletico-de-madrid-14B",
+          "etiqueta": "14B",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "atletico-de-madrid-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "atletico-de-madrid-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "atletico-de-madrid-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "atletico-de-madrid-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "atletico-de-madrid-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 21
+        },
+        {
+          "numero": "atletico-de-madrid-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 22
+        }
+      ]
+    },
+    {
+      "id": "fc-barcelona",
+      "nombre": "FC Barcelona",
+      "tipo": "equipo",
+      "orden": 4,
+      "color": "#A50044",
+      "cromos": [
+        {
+          "numero": "fc-barcelona-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "fc-barcelona-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "fc-barcelona-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "fc-barcelona-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "fc-barcelona-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "fc-barcelona-6A",
+          "etiqueta": "6A",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "fc-barcelona-6B",
+          "etiqueta": "6B",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "fc-barcelona-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "fc-barcelona-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "fc-barcelona-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "fc-barcelona-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "fc-barcelona-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "fc-barcelona-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "fc-barcelona-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "fc-barcelona-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "fc-barcelona-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "fc-barcelona-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "fc-barcelona-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "fc-barcelona-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "fc-barcelona-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "fc-barcelona-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 21
+        }
+      ]
+    },
+    {
+      "id": "real-betis",
+      "nombre": "Real Betis",
+      "tipo": "equipo",
+      "orden": 5,
+      "color": "#00954C",
+      "cromos": [
+        {
+          "numero": "real-betis-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "real-betis-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "real-betis-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "real-betis-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "real-betis-5A",
+          "etiqueta": "5A",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "real-betis-5B",
+          "etiqueta": "5B",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "real-betis-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "real-betis-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "real-betis-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "real-betis-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "real-betis-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "real-betis-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "real-betis-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "real-betis-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "real-betis-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "real-betis-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "real-betis-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "real-betis-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "real-betis-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "real-betis-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "real-betis-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 21
+        }
+      ]
+    },
+    {
+      "id": "rc-celta-de-vigo",
+      "nombre": "RC Celta de Vigo",
+      "tipo": "equipo",
+      "orden": 6,
+      "color": "#6FB7E9",
+      "cromos": [
+        {
+          "numero": "rc-celta-de-vigo-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "rc-celta-de-vigo-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "rc-celta-de-vigo-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "rc-celta-de-vigo-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "rc-celta-de-vigo-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "rc-celta-de-vigo-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "rc-celta-de-vigo-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "rc-celta-de-vigo-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "rc-celta-de-vigo-9A",
+          "etiqueta": "9A",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "rc-celta-de-vigo-9B",
+          "etiqueta": "9B",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "rc-celta-de-vigo-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "rc-celta-de-vigo-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "rc-celta-de-vigo-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "rc-celta-de-vigo-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "rc-celta-de-vigo-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "rc-celta-de-vigo-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "rc-celta-de-vigo-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "rc-celta-de-vigo-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "rc-celta-de-vigo-18A",
+          "etiqueta": "18A",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "rc-celta-de-vigo-18B",
+          "etiqueta": "18B",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "rc-celta-de-vigo-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 21
+        },
+        {
+          "numero": "rc-celta-de-vigo-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 22
+        }
+      ]
+    },
+    {
+      "id": "deportivo-la-coruna",
+      "nombre": "Deportivo La Coruña",
+      "tipo": "equipo",
+      "orden": 7,
+      "color": "#2A6DC2",
+      "cromos": [
+        {
+          "numero": "deportivo-la-coruna-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "deportivo-la-coruna-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "deportivo-la-coruna-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "deportivo-la-coruna-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "deportivo-la-coruna-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "deportivo-la-coruna-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "deportivo-la-coruna-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "deportivo-la-coruna-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "deportivo-la-coruna-9A",
+          "etiqueta": "9A",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "deportivo-la-coruna-9B",
+          "etiqueta": "9B",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "deportivo-la-coruna-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "deportivo-la-coruna-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "deportivo-la-coruna-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "deportivo-la-coruna-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "deportivo-la-coruna-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "deportivo-la-coruna-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "deportivo-la-coruna-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "deportivo-la-coruna-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "deportivo-la-coruna-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "deportivo-la-coruna-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "deportivo-la-coruna-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 21
+        }
+      ]
+    },
+    {
+      "id": "elche-cf",
+      "nombre": "Elche CF",
+      "tipo": "equipo",
+      "orden": 8,
+      "color": "#0C8A3F",
+      "cromos": [
+        {
+          "numero": "elche-cf-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "elche-cf-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "elche-cf-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "elche-cf-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "elche-cf-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "elche-cf-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "elche-cf-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "elche-cf-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "elche-cf-9A",
+          "etiqueta": "9A",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "elche-cf-9B",
+          "etiqueta": "9B",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "elche-cf-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "elche-cf-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "elche-cf-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "elche-cf-13A",
+          "etiqueta": "13A",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "elche-cf-13B",
+          "etiqueta": "13B",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "elche-cf-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "elche-cf-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "elche-cf-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "elche-cf-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "elche-cf-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "elche-cf-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 21
+        },
+        {
+          "numero": "elche-cf-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 22
+        }
+      ]
+    },
+    {
+      "id": "rcd-espanyol",
+      "nombre": "RCD Espanyol",
+      "tipo": "equipo",
+      "orden": 9,
+      "color": "#007FC8",
+      "cromos": [
+        {
+          "numero": "rcd-espanyol-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "rcd-espanyol-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "rcd-espanyol-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "rcd-espanyol-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "rcd-espanyol-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "rcd-espanyol-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "rcd-espanyol-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "rcd-espanyol-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "rcd-espanyol-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "rcd-espanyol-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "rcd-espanyol-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "rcd-espanyol-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "rcd-espanyol-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "rcd-espanyol-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "rcd-espanyol-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "rcd-espanyol-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "rcd-espanyol-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "rcd-espanyol-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "rcd-espanyol-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "rcd-espanyol-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 20
+        }
+      ]
+    },
+    {
+      "id": "getafe-cf",
+      "nombre": "Getafe CF",
+      "tipo": "equipo",
+      "orden": 10,
+      "color": "#005999",
+      "cromos": [
+        {
+          "numero": "getafe-cf-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "getafe-cf-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "getafe-cf-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "getafe-cf-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "getafe-cf-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "getafe-cf-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "getafe-cf-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "getafe-cf-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "getafe-cf-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "getafe-cf-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "getafe-cf-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "getafe-cf-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "getafe-cf-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "getafe-cf-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "getafe-cf-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "getafe-cf-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "getafe-cf-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "getafe-cf-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "getafe-cf-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "getafe-cf-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 20
+        }
+      ]
+    },
+    {
+      "id": "levante-ud",
+      "nombre": "Levante UD",
+      "tipo": "equipo",
+      "orden": 11,
+      "color": "#9E1B32",
+      "cromos": [
+        {
+          "numero": "levante-ud-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "levante-ud-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "levante-ud-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "levante-ud-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "levante-ud-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "levante-ud-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "levante-ud-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "levante-ud-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "levante-ud-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "levante-ud-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "levante-ud-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "levante-ud-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "levante-ud-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "levante-ud-14A",
+          "etiqueta": "14A",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "levante-ud-14B",
+          "etiqueta": "14B",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "levante-ud-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "levante-ud-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "levante-ud-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "levante-ud-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "levante-ud-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "levante-ud-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 21
+        }
+      ]
+    },
+    {
+      "id": "real-madrid-cf",
+      "nombre": "Real Madrid CF",
+      "tipo": "equipo",
+      "orden": 12,
+      "color": "#00529F",
+      "cromos": [
+        {
+          "numero": "real-madrid-cf-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "real-madrid-cf-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "real-madrid-cf-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "real-madrid-cf-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "real-madrid-cf-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "real-madrid-cf-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "real-madrid-cf-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "real-madrid-cf-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "real-madrid-cf-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "real-madrid-cf-10A",
+          "etiqueta": "10A",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "real-madrid-cf-10B",
+          "etiqueta": "10B",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "real-madrid-cf-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "real-madrid-cf-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "real-madrid-cf-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "real-madrid-cf-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "real-madrid-cf-15A",
+          "etiqueta": "15A",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "real-madrid-cf-15B",
+          "etiqueta": "15B",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "real-madrid-cf-16A",
+          "etiqueta": "16A",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "real-madrid-cf-16B",
+          "etiqueta": "16B",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "real-madrid-cf-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "real-madrid-cf-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 21
+        },
+        {
+          "numero": "real-madrid-cf-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 22
+        },
+        {
+          "numero": "real-madrid-cf-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 23
+        }
+      ]
+    },
+    {
+      "id": "malaga-cf",
+      "nombre": "Málaga CF",
+      "tipo": "equipo",
+      "orden": 13,
+      "color": "#009FE3",
+      "cromos": [
+        {
+          "numero": "malaga-cf-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "malaga-cf-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "malaga-cf-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "malaga-cf-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "malaga-cf-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "malaga-cf-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "malaga-cf-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "malaga-cf-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "malaga-cf-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "malaga-cf-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "malaga-cf-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "malaga-cf-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "malaga-cf-13A",
+          "etiqueta": "13A",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "malaga-cf-13B",
+          "etiqueta": "13B",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "malaga-cf-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "malaga-cf-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "malaga-cf-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "malaga-cf-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "malaga-cf-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "malaga-cf-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "malaga-cf-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 21
+        }
+      ]
+    },
+    {
+      "id": "ca-osasuna",
+      "nombre": "CA Osasuna",
+      "tipo": "equipo",
+      "orden": 14,
+      "color": "#0A346F",
+      "cromos": [
+        {
+          "numero": "ca-osasuna-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "ca-osasuna-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "ca-osasuna-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "ca-osasuna-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "ca-osasuna-5A",
+          "etiqueta": "5A",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "ca-osasuna-5B",
+          "etiqueta": "5B",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "ca-osasuna-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "ca-osasuna-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "ca-osasuna-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "ca-osasuna-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "ca-osasuna-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "ca-osasuna-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "ca-osasuna-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "ca-osasuna-13A",
+          "etiqueta": "13A",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "ca-osasuna-13B",
+          "etiqueta": "13B",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "ca-osasuna-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "ca-osasuna-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "ca-osasuna-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "ca-osasuna-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "ca-osasuna-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "ca-osasuna-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 21
+        },
+        {
+          "numero": "ca-osasuna-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 22
+        }
+      ]
+    },
+    {
+      "id": "racing-de-santander",
+      "nombre": "Racing de Santander",
+      "tipo": "equipo",
+      "orden": 15,
+      "color": "#009A44",
+      "cromos": [
+        {
+          "numero": "racing-de-santander-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "racing-de-santander-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "racing-de-santander-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "racing-de-santander-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "racing-de-santander-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "racing-de-santander-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "racing-de-santander-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "racing-de-santander-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "racing-de-santander-9A",
+          "etiqueta": "9A",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "racing-de-santander-9B",
+          "etiqueta": "9B",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "racing-de-santander-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "racing-de-santander-11A",
+          "etiqueta": "11A",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "racing-de-santander-11B",
+          "etiqueta": "11B",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "racing-de-santander-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "racing-de-santander-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "racing-de-santander-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "racing-de-santander-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "racing-de-santander-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "racing-de-santander-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "racing-de-santander-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "racing-de-santander-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 21
+        },
+        {
+          "numero": "racing-de-santander-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 22
+        }
+      ]
+    },
+    {
+      "id": "rayo-vallecano",
+      "nombre": "Rayo Vallecano",
+      "tipo": "equipo",
+      "orden": 16,
+      "color": "#E53027",
+      "cromos": [
+        {
+          "numero": "rayo-vallecano-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "rayo-vallecano-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "rayo-vallecano-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "rayo-vallecano-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "rayo-vallecano-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "rayo-vallecano-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "rayo-vallecano-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "rayo-vallecano-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "rayo-vallecano-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "rayo-vallecano-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "rayo-vallecano-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "rayo-vallecano-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "rayo-vallecano-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "rayo-vallecano-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "rayo-vallecano-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "rayo-vallecano-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "rayo-vallecano-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "rayo-vallecano-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "rayo-vallecano-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "rayo-vallecano-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 20
+        }
+      ]
+    },
+    {
+      "id": "real-sociedad",
+      "nombre": "Real Sociedad",
+      "tipo": "equipo",
+      "orden": 17,
+      "color": "#0067B1",
+      "cromos": [
+        {
+          "numero": "real-sociedad-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "real-sociedad-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "real-sociedad-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "real-sociedad-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "real-sociedad-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "real-sociedad-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "real-sociedad-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "real-sociedad-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "real-sociedad-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "real-sociedad-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "real-sociedad-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "real-sociedad-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "real-sociedad-13A",
+          "etiqueta": "13A",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "real-sociedad-13B",
+          "etiqueta": "13B",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "real-sociedad-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "real-sociedad-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "real-sociedad-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "real-sociedad-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "real-sociedad-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "real-sociedad-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "real-sociedad-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 21
+        }
+      ]
+    },
+    {
+      "id": "sevilla-fc",
+      "nombre": "Sevilla FC",
+      "tipo": "equipo",
+      "orden": 18,
+      "color": "#D9202E",
+      "cromos": [
+        {
+          "numero": "sevilla-fc-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "sevilla-fc-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "sevilla-fc-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "sevilla-fc-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "sevilla-fc-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "sevilla-fc-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "sevilla-fc-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "sevilla-fc-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "sevilla-fc-9A",
+          "etiqueta": "9A",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "sevilla-fc-9B",
+          "etiqueta": "9B",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "sevilla-fc-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "sevilla-fc-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "sevilla-fc-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "sevilla-fc-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "sevilla-fc-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "sevilla-fc-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "sevilla-fc-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "sevilla-fc-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "sevilla-fc-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "sevilla-fc-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "sevilla-fc-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 21
+        }
+      ]
+    },
+    {
+      "id": "valencia-cf",
+      "nombre": "Valencia CF",
+      "tipo": "equipo",
+      "orden": 19,
+      "color": "#F18E00",
+      "cromos": [
+        {
+          "numero": "valencia-cf-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "valencia-cf-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "valencia-cf-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "valencia-cf-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "valencia-cf-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "valencia-cf-6",
+          "etiqueta": "6",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "valencia-cf-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "valencia-cf-8A",
+          "etiqueta": "8A",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "valencia-cf-8B",
+          "etiqueta": "8B",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "valencia-cf-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "valencia-cf-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "valencia-cf-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "valencia-cf-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "valencia-cf-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "valencia-cf-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "valencia-cf-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "valencia-cf-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "valencia-cf-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "valencia-cf-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "valencia-cf-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "valencia-cf-20A",
+          "etiqueta": "20A",
+          "nombre": null,
+          "orden": 21
+        },
+        {
+          "numero": "valencia-cf-20B",
+          "etiqueta": "20B",
+          "nombre": null,
+          "orden": 22
+        }
+      ]
+    },
+    {
+      "id": "villarreal-cf",
+      "nombre": "Villarreal CF",
+      "tipo": "equipo",
+      "orden": 20,
+      "color": "#E8B900",
+      "cromos": [
+        {
+          "numero": "villarreal-cf-1",
+          "etiqueta": "1",
+          "nombre": "Escudo",
+          "orden": 1
+        },
+        {
+          "numero": "villarreal-cf-2",
+          "etiqueta": "2",
+          "nombre": "Entrenador",
+          "orden": 2
+        },
+        {
+          "numero": "villarreal-cf-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
+          "numero": "villarreal-cf-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
+          "numero": "villarreal-cf-5",
+          "etiqueta": "5",
+          "nombre": null,
+          "orden": 5
+        },
+        {
+          "numero": "villarreal-cf-6A",
+          "etiqueta": "6A",
+          "nombre": null,
+          "orden": 6
+        },
+        {
+          "numero": "villarreal-cf-6B",
+          "etiqueta": "6B",
+          "nombre": null,
+          "orden": 7
+        },
+        {
+          "numero": "villarreal-cf-7A",
+          "etiqueta": "7A",
+          "nombre": null,
+          "orden": 8
+        },
+        {
+          "numero": "villarreal-cf-7B",
+          "etiqueta": "7B",
+          "nombre": null,
+          "orden": 9
+        },
+        {
+          "numero": "villarreal-cf-8A",
+          "etiqueta": "8A",
+          "nombre": null,
+          "orden": 10
+        },
+        {
+          "numero": "villarreal-cf-8B",
+          "etiqueta": "8B",
+          "nombre": null,
+          "orden": 11
+        },
+        {
+          "numero": "villarreal-cf-9",
+          "etiqueta": "9",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "villarreal-cf-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "villarreal-cf-11",
+          "etiqueta": "11",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "villarreal-cf-12",
+          "etiqueta": "12",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "villarreal-cf-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 16
+        },
+        {
+          "numero": "villarreal-cf-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 17
+        },
+        {
+          "numero": "villarreal-cf-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 18
+        },
+        {
+          "numero": "villarreal-cf-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 19
+        },
+        {
+          "numero": "villarreal-cf-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 20
+        },
+        {
+          "numero": "villarreal-cf-18",
+          "etiqueta": "18",
+          "nombre": null,
+          "orden": 21
+        },
+        {
+          "numero": "villarreal-cf-19",
+          "etiqueta": "19",
+          "nombre": null,
+          "orden": 22
+        },
+        {
+          "numero": "villarreal-cf-20",
+          "etiqueta": "20",
+          "nombre": null,
+          "orden": 23
+        }
+      ]
+    },
+    {
+      "id": "adn",
+      "nombre": "ADN / LaLiga Prime",
+      "tipo": "especial",
+      "orden": 21,
+      "color": "#6A2C91",
+      "cromos": [
+        {
+          "numero": "adn-1",
+          "etiqueta": "1",
+          "nombre": "ADN1",
+          "orden": 1
+        },
+        {
+          "numero": "adn-2",
+          "etiqueta": "2",
+          "nombre": "ADN2",
+          "orden": 2
+        },
+        {
+          "numero": "adn-3",
+          "etiqueta": "3",
+          "nombre": "ADN3",
+          "orden": 3
+        },
+        {
+          "numero": "adn-4",
+          "etiqueta": "4",
+          "nombre": "ADN4",
+          "orden": 4
+        },
+        {
+          "numero": "adn-5",
+          "etiqueta": "5",
+          "nombre": "ADN5",
+          "orden": 5
+        },
+        {
+          "numero": "adn-6",
+          "etiqueta": "6",
+          "nombre": "ADN6",
+          "orden": 6
+        },
+        {
+          "numero": "adn-7",
+          "etiqueta": "7",
+          "nombre": "ADN7",
+          "orden": 7
+        },
+        {
+          "numero": "adn-8",
+          "etiqueta": "8",
+          "nombre": "ADN8",
+          "orden": 8
+        },
+        {
+          "numero": "adn-9",
+          "etiqueta": "9",
+          "nombre": "ADN9",
+          "orden": 9
+        },
+        {
+          "numero": "adn-10",
+          "etiqueta": "10",
+          "nombre": "ADN10",
+          "orden": 10
+        },
+        {
+          "numero": "adn-11",
+          "etiqueta": "11",
+          "nombre": "ADN11",
+          "orden": 11
+        },
+        {
+          "numero": "adn-12",
+          "etiqueta": "12",
+          "nombre": "ADN12",
+          "orden": 12
+        },
+        {
+          "numero": "adn-13",
+          "etiqueta": "13",
+          "nombre": "ADN13",
+          "orden": 13
+        },
+        {
+          "numero": "adn-14",
+          "etiqueta": "14",
+          "nombre": "ADN14",
+          "orden": 14
+        },
+        {
+          "numero": "adn-15",
+          "etiqueta": "15",
+          "nombre": "ADN15",
+          "orden": 15
+        }
+      ]
+    },
+    {
+      "id": "fantasy",
+      "nombre": "LaLiga Fantasy",
+      "tipo": "especial",
+      "orden": 22,
+      "color": "#0FA3A3",
+      "cromos": [
+        {
+          "numero": "fantasy-1",
+          "etiqueta": "1",
+          "nombre": "Fantasy 1",
+          "orden": 1
+        },
+        {
+          "numero": "fantasy-2",
+          "etiqueta": "2",
+          "nombre": "Fantasy 2",
+          "orden": 2
+        },
+        {
+          "numero": "fantasy-3",
+          "etiqueta": "3",
+          "nombre": "Fantasy 3",
+          "orden": 3
+        },
+        {
+          "numero": "fantasy-4",
+          "etiqueta": "4",
+          "nombre": "Fantasy 4",
+          "orden": 4
+        },
+        {
+          "numero": "fantasy-5",
+          "etiqueta": "5",
+          "nombre": "Fantasy 5",
+          "orden": 5
+        },
+        {
+          "numero": "fantasy-6",
+          "etiqueta": "6",
+          "nombre": "Fantasy 6",
+          "orden": 6
+        },
+        {
+          "numero": "fantasy-7",
+          "etiqueta": "7",
+          "nombre": "Fantasy 7",
+          "orden": 7
+        },
+        {
+          "numero": "fantasy-8",
+          "etiqueta": "8",
+          "nombre": "Fantasy 8",
+          "orden": 8
+        },
+        {
+          "numero": "fantasy-9",
+          "etiqueta": "9",
+          "nombre": "Fantasy 9",
+          "orden": 9
+        }
+      ]
+    },
+    {
+      "id": "draft-23",
+      "nombre": "Draft 23",
+      "tipo": "especial",
+      "orden": 23,
+      "color": "#455A64",
+      "cromos": [
+        {
+          "numero": "draft-23-1",
+          "etiqueta": "1",
+          "nombre": "D1",
+          "orden": 1
+        },
+        {
+          "numero": "draft-23-2",
+          "etiqueta": "2",
+          "nombre": "D2",
+          "orden": 2
+        },
+        {
+          "numero": "draft-23-3",
+          "etiqueta": "3",
+          "nombre": "D3",
+          "orden": 3
+        },
+        {
+          "numero": "draft-23-4",
+          "etiqueta": "4",
+          "nombre": "D4",
+          "orden": 4
+        },
+        {
+          "numero": "draft-23-5",
+          "etiqueta": "5",
+          "nombre": "D5",
+          "orden": 5
+        },
+        {
+          "numero": "draft-23-6",
+          "etiqueta": "6",
+          "nombre": "D6",
+          "orden": 6
+        },
+        {
+          "numero": "draft-23-7",
+          "etiqueta": "7",
+          "nombre": "D7",
+          "orden": 7
+        },
+        {
+          "numero": "draft-23-8",
+          "etiqueta": "8",
+          "nombre": "D8",
+          "orden": 8
+        },
+        {
+          "numero": "draft-23-9",
+          "etiqueta": "9",
+          "nombre": "D9",
+          "orden": 9
+        },
+        {
+          "numero": "draft-23-10",
+          "etiqueta": "10",
+          "nombre": "D10",
+          "orden": 10
+        },
+        {
+          "numero": "draft-23-11",
+          "etiqueta": "11",
+          "nombre": "D11",
+          "orden": 11
+        },
+        {
+          "numero": "draft-23-12",
+          "etiqueta": "12",
+          "nombre": "D12",
+          "orden": 12
+        },
+        {
+          "numero": "draft-23-13",
+          "etiqueta": "13",
+          "nombre": "D13",
+          "orden": 13
+        },
+        {
+          "numero": "draft-23-14",
+          "etiqueta": "14",
+          "nombre": "D14",
+          "orden": 14
+        },
+        {
+          "numero": "draft-23-15",
+          "etiqueta": "15",
+          "nombre": "D15",
+          "orden": 15
+        },
+        {
+          "numero": "draft-23-16",
+          "etiqueta": "16",
+          "nombre": "D16",
+          "orden": 16
+        },
+        {
+          "numero": "draft-23-17",
+          "etiqueta": "17",
+          "nombre": "D17",
+          "orden": 17
+        },
+        {
+          "numero": "draft-23-18",
+          "etiqueta": "18",
+          "nombre": "D18",
+          "orden": 18
+        },
+        {
+          "numero": "draft-23-19",
+          "etiqueta": "19",
+          "nombre": "D19",
+          "orden": 19
+        },
+        {
+          "numero": "draft-23-20",
+          "etiqueta": "20",
+          "nombre": "D20",
+          "orden": 20
+        },
+        {
+          "numero": "draft-23-21",
+          "etiqueta": "21",
+          "nombre": "D21",
+          "orden": 21
+        },
+        {
+          "numero": "draft-23-22",
+          "etiqueta": "22",
+          "nombre": "D22",
+          "orden": 22
+        },
+        {
+          "numero": "draft-23-23",
+          "etiqueta": "23",
+          "nombre": "D23",
+          "orden": 23
+        }
+      ]
+    },
+    {
+      "id": "draft-23-kromix",
+      "nombre": "Draft 23 Kromix",
+      "tipo": "especial",
+      "orden": 24,
+      "color": "#C2185B",
+      "cromos": [
+        {
+          "numero": "draft-23-kromix-1",
+          "etiqueta": "1",
+          "nombre": "K1",
+          "orden": 1
+        },
+        {
+          "numero": "draft-23-kromix-2",
+          "etiqueta": "2",
+          "nombre": "K2",
+          "orden": 2
+        },
+        {
+          "numero": "draft-23-kromix-3",
+          "etiqueta": "3",
+          "nombre": "K3",
+          "orden": 3
+        },
+        {
+          "numero": "draft-23-kromix-4",
+          "etiqueta": "4",
+          "nombre": "K4",
+          "orden": 4
+        },
+        {
+          "numero": "draft-23-kromix-5",
+          "etiqueta": "5",
+          "nombre": "K5",
+          "orden": 5
+        },
+        {
+          "numero": "draft-23-kromix-6",
+          "etiqueta": "6",
+          "nombre": "K6",
+          "orden": 6
+        },
+        {
+          "numero": "draft-23-kromix-7",
+          "etiqueta": "7",
+          "nombre": "K7",
+          "orden": 7
+        },
+        {
+          "numero": "draft-23-kromix-8",
+          "etiqueta": "8",
+          "nombre": "K8",
+          "orden": 8
+        },
+        {
+          "numero": "draft-23-kromix-9",
+          "etiqueta": "9",
+          "nombre": "K9",
+          "orden": 9
+        },
+        {
+          "numero": "draft-23-kromix-10",
+          "etiqueta": "10",
+          "nombre": "K10",
+          "orden": 10
+        },
+        {
+          "numero": "draft-23-kromix-11",
+          "etiqueta": "11",
+          "nombre": "K11",
+          "orden": 11
+        },
+        {
+          "numero": "draft-23-kromix-12",
+          "etiqueta": "12",
+          "nombre": "K12",
+          "orden": 12
+        },
+        {
+          "numero": "draft-23-kromix-13",
+          "etiqueta": "13",
+          "nombre": "K13",
+          "orden": 13
+        },
+        {
+          "numero": "draft-23-kromix-14",
+          "etiqueta": "14",
+          "nombre": "K14",
+          "orden": 14
+        },
+        {
+          "numero": "draft-23-kromix-15",
+          "etiqueta": "15",
+          "nombre": "K15",
+          "orden": 15
+        },
+        {
+          "numero": "draft-23-kromix-16",
+          "etiqueta": "16",
+          "nombre": "K16",
+          "orden": 16
+        },
+        {
+          "numero": "draft-23-kromix-17",
+          "etiqueta": "17",
+          "nombre": "K17",
+          "orden": 17
+        },
+        {
+          "numero": "draft-23-kromix-18",
+          "etiqueta": "18",
+          "nombre": "K18",
+          "orden": 18
+        },
+        {
+          "numero": "draft-23-kromix-19",
+          "etiqueta": "19",
+          "nombre": "K19",
+          "orden": 19
+        },
+        {
+          "numero": "draft-23-kromix-20",
+          "etiqueta": "20",
+          "nombre": "K20",
+          "orden": 20
+        },
+        {
+          "numero": "draft-23-kromix-21",
+          "etiqueta": "21",
+          "nombre": "K21",
+          "orden": 21
+        },
+        {
+          "numero": "draft-23-kromix-22",
+          "etiqueta": "22",
+          "nombre": "K22",
+          "orden": 22
+        },
+        {
+          "numero": "draft-23-kromix-23",
+          "etiqueta": "23",
+          "nombre": "K23",
+          "orden": 23
+        }
+      ]
+    },
+    {
+      "id": "extra-bronce",
+      "nombre": "Extra Sticker · Bronce",
+      "tipo": "especial",
+      "orden": 25,
+      "color": "#8C6239",
+      "cromos": [
+        {
+          "numero": "extra-bronce-1",
+          "etiqueta": "1",
+          "nombre": "Bronce 1",
+          "orden": 1
+        },
+        {
+          "numero": "extra-bronce-2",
+          "etiqueta": "2",
+          "nombre": "Bronce 2",
+          "orden": 2
+        },
+        {
+          "numero": "extra-bronce-3",
+          "etiqueta": "3",
+          "nombre": "Bronce 3",
+          "orden": 3
+        },
+        {
+          "numero": "extra-bronce-4",
+          "etiqueta": "4",
+          "nombre": "Bronce 4",
+          "orden": 4
+        },
+        {
+          "numero": "extra-bronce-5",
+          "etiqueta": "5",
+          "nombre": "Bronce 5",
+          "orden": 5
+        }
+      ]
+    },
+    {
+      "id": "extra-plata",
+      "nombre": "Extra Sticker · Plata",
+      "tipo": "especial",
+      "orden": 26,
+      "color": "#9E9E9E",
+      "cromos": [
+        {
+          "numero": "extra-plata-1",
+          "etiqueta": "1",
+          "nombre": "Plata 1",
+          "orden": 1
+        },
+        {
+          "numero": "extra-plata-2",
+          "etiqueta": "2",
+          "nombre": "Plata 2",
+          "orden": 2
+        },
+        {
+          "numero": "extra-plata-3",
+          "etiqueta": "3",
+          "nombre": "Plata 3",
+          "orden": 3
+        },
+        {
+          "numero": "extra-plata-4",
+          "etiqueta": "4",
+          "nombre": "Plata 4",
+          "orden": 4
+        },
+        {
+          "numero": "extra-plata-5",
+          "etiqueta": "5",
+          "nombre": "Plata 5",
+          "orden": 5
+        }
+      ]
+    },
+    {
+      "id": "extra-oro",
+      "nombre": "Extra Sticker · Oro",
+      "tipo": "especial",
+      "orden": 27,
+      "color": "#D4AF37",
+      "cromos": [
+        {
+          "numero": "extra-oro-1",
+          "etiqueta": "1",
+          "nombre": "Oro 1",
+          "orden": 1
+        },
+        {
+          "numero": "extra-oro-2",
+          "etiqueta": "2",
+          "nombre": "Oro 2",
+          "orden": 2
+        },
+        {
+          "numero": "extra-oro-3",
+          "etiqueta": "3",
+          "nombre": "Oro 3",
+          "orden": 3
+        },
+        {
+          "numero": "extra-oro-4",
+          "etiqueta": "4",
+          "nombre": "Oro 4",
+          "orden": 4
+        },
+        {
+          "numero": "extra-oro-5",
+          "etiqueta": "5",
+          "nombre": "Oro 5",
+          "orden": 5
+        }
       ]
     }
   ]

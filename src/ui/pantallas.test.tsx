@@ -112,6 +112,21 @@ describe('DetalleCategoria — HU-02/HU-03', () => {
     );
   });
 
+  it('muestra la etiqueta impresa, no el identificador interno', () => {
+    const cat = {
+      id: 'x',
+      nombre: 'X',
+      tipo: 'equipo' as const,
+      orden: 1,
+      color: null,
+      cromos: [{ numero: 'x-18A', etiqueta: '18A', nombre: null, orden: 1 }],
+    };
+    render(<DetalleCategoria categoria={cat} estados={mapaDe()} onToggle={noop} onVolver={noop} />);
+    expect(screen.getByRole('button', { name: /Cromo 18A/ })).toBeInTheDocument();
+    expect(screen.getByText('18A')).toBeInTheDocument();
+    expect(screen.queryByText('x-18A')).not.toBeInTheDocument();
+  });
+
   it('al tocar un cromo llama a onToggle con su número', () => {
     const onToggle = vi.fn();
     render(

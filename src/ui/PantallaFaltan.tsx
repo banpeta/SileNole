@@ -1,4 +1,4 @@
-import type { Coleccion } from '../model/tipos';
+import { etiquetaVisible, type Coleccion } from '../model/tipos';
 import type { MapaEstados } from '../domain/estado';
 import { cromosQueFaltan } from '../domain/progreso';
 
@@ -22,11 +22,20 @@ export function PantallaFaltan({ coleccion, estados, onVolver }: Props) {
       ) : (
         grupos.map((grupo) => (
           <div key={grupo.categoria.id} className="grupo-faltan">
-            <h3>{grupo.categoria.nombre}</h3>
+            <h3>
+              {grupo.categoria.color && (
+                <span
+                  className="punto-color"
+                  style={{ background: grupo.categoria.color }}
+                  aria-hidden="true"
+                />
+              )}
+              {grupo.categoria.nombre}
+            </h3>
             <ul className="lista-faltan">
               {grupo.cromos.map((cromo) => (
                 <li key={cromo.numero}>
-                  <span className="numero">{cromo.numero}</span>
+                  <span className="numero">{etiquetaVisible(cromo)}</span>
                   {cromo.nombre ? ` · ${cromo.nombre}` : ''}
                 </li>
               ))}

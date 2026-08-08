@@ -12,12 +12,19 @@ export type TipoCategoria = 'equipo' | 'fichajes' | 'especial';
 
 /** Un cromo del catálogo. `numero` es único en toda la colección. */
 export interface Cromo {
-  /** Número del cromo. String para admitir formatos como "F12". */
+  /** Identificador único en toda la colección (no tiene por qué ser legible). */
   numero: string;
+  /** Número/código impreso que se muestra (ej. "5", "18A"). Si falta, se usa `numero`. */
+  etiqueta?: string | null;
   /** Nombre del jugador/elemento (opcional). */
   nombre: string | null;
   /** Orden dentro de la categoría. */
   orden: number;
+}
+
+/** Texto que se muestra de un cromo: su etiqueta si tiene, o su número. */
+export function etiquetaVisible(cromo: Cromo): string {
+  return cromo.etiqueta ?? cromo.numero;
 }
 
 /** Una categoría: un equipo, la sección Fichajes o una sección especial. */

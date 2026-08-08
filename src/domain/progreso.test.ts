@@ -3,6 +3,7 @@ import type { Coleccion, EstadoCromo } from '../model/tipos';
 import {
   progresoCategoria,
   progresoTotal,
+  totalFaltan,
   categoriaCompleta,
   cromosQueFaltan,
   cromosParaCambiar,
@@ -107,6 +108,14 @@ describe('progresoTotal — HU-04', () => {
       { numero: '3', tenido: true, repes: 0, actualizado: T },
     );
     expect(progresoTotal(c, m).completa).toBe(true);
+  });
+});
+
+describe('totalFaltan', () => {
+  it('cuenta los cromos que faltan en toda la colección', () => {
+    const c = coleccion();
+    const m = mapa({ numero: '1', tenido: true, repes: 0, actualizado: T });
+    expect(totalFaltan(c, m)).toBe(2); // total 3 - 1 conseguido
   });
 });
 

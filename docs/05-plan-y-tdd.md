@@ -60,9 +60,16 @@
 - [ ] *Pendiente (manual)*: instalar en un móvil real cuando se despliegue
   (Fase 8).
 
-### Fase 5 · Diseño para niños
-- Botones grandes, colores por equipo, ✓ además del color (accesibilidad),
-  animación al completar una categoría.
+### Fase 5 · Diseño para niños (entregada) ✅
+- [x] Colores de acento por club (borde en la lista, punto de color en el
+  detalle y color del club al marcar un cromo).
+- [x] Celebración al completar un equipo y al completar la colección 🎉.
+- [x] "Te faltan N" bien visible en el inicio; botones grandes con iconos.
+- [x] Animación al marcar (con respeto a `prefers-reduced-motion`).
+- [x] Carga de la **colección real** 2026/27 (20 equipos + 7 series
+  especiales, 514 cromos) en `public/coleccion.json`, con `numero` único y
+  `etiqueta` visible (incluye variantes A/B). Provisional hasta cotejar con el
+  álbum.
 
 ### Fase 6 · Repes (para cambios) `[v2]`
 - Interfaz para registrar repetidos y pantalla "Para cambiar" (HU-08).
@@ -95,11 +102,19 @@
 - Documentación coherente con el código.
 - Comportamiento verificado en móvil cuando aplique (fases 3+).
 
-## Datos pendientes de obtener de internet
+## Datos: estado actual y pendientes
 
-- Lista real de **equipos** de La Liga Este 26/27 y su **orden**.
-- **Rangos de números** por equipo y de la sección **Fichajes**.
-- Otras secciones especiales si las hubiera (escudos, estadios, etc.).
+Ya cargados en `public/coleccion.json` (provisional, checklist 2026/27):
 
-Estos datos se volcarán en `public/coleccion.json` siguiendo el formato de
-`03-modelo-de-datos.md`.
+- 20 equipos con escudo (1), entrenador (2) y plantilla (3-20), incluyendo
+  **variantes A/B**.
+- Series especiales: ADN/LaLiga Prime (15), LaLiga Fantasy (9), Draft 23 (23),
+  Draft 23 Kromix (23), Extra Sticker Bronce/Plata/Oro (5 cada una).
+
+Pendiente de dato (se añadirá cuando exista numeración o con el álbum delante):
+
+- **Últimos Fichajes** — numeración no publicada aún.
+- **Colocas** — estructura no publicada aún.
+- **Extra Sticker** (Bronce/Plata/Oro) — sin numeración individual publicada;
+  cargados como 5 placeholders cada uno.
+- Cotejo final de todos los números con el álbum físico.

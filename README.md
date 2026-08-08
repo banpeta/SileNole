@@ -19,7 +19,9 @@ comportamiento que no esté especificado allí.
   (tocar para marcar/desmarcar) y Faltan, con guardado automático.
 - ✅ **Fase 4** — PWA: instalable en el móvil y funciona sin conexión
   (service worker + precache del catálogo).
-- ⏳ **Fase 5** — Diseño para niños. Ver
+- ✅ **Fase 5** — Diseño para niños: colores por club, celebración al
+  completar, "te faltan N" y carga de la colección real 2026/27 (provisional).
+- ⏳ **Fase 6** — Gestión de repes (para cambios). Ver
   [`docs/05-plan-y-tdd.md`](docs/05-plan-y-tdd.md).
 
 ## Requisitos

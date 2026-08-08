@@ -49,6 +49,12 @@ export function categoriaCompleta(categoria: Categoria, mapa: MapaEstados): bool
   return progresoCategoria(categoria, mapa).completa;
 }
 
+/** Número de cromos que faltan en toda la colección. */
+export function totalFaltan(coleccion: Coleccion, mapa: MapaEstados): number {
+  const p = progresoTotal(coleccion, mapa);
+  return p.total - p.conseguidos;
+}
+
 /** Progreso de toda la colección. */
 export function progresoTotal(coleccion: Coleccion, mapa: MapaEstados): Progreso {
   let conseguidos = 0;

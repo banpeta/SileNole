@@ -44,11 +44,16 @@ catálogo sin perder el progreso y, más adelante, sincronizar.
 
 | Campo | Tipo | Descripción |
 |-------|------|-------------|
-| `numero` | string | Número del cromo. **Único en toda la colección.** String para admitir formatos como `F12`. |
-| `nombre` | string \| null | Nombre del jugador/elemento (opcional). |
+| `numero` | string | **Identificador único en toda la colección.** Enlaza catálogo y estado. No tiene por qué ser legible (ej. `real-betis-5`). |
+| `etiqueta` | string \| null | Lo que aparece **impreso** en el cromo y se muestra en pantalla (ej. `5`, `18A`, `ADN3`). Opcional; si falta, se usa `numero`. **No** tiene que ser única. |
+| `nombre` | string \| null | Nombre del jugador/elemento (opcional; ej. "Escudo", "Vinícius Jr."). |
 | `orden` | number | Para ordenar dentro de la categoría. |
 
-> El `numero` es la **clave** que enlaza el catálogo con el estado del usuario.
+> **Por qué `numero` y `etiqueta` separados:** en la colección "Este" la
+> numeración es **por equipo** (cada equipo tiene su escudo=1, entrenador=2,
+> plantilla 3-20), así que el número impreso se repite entre equipos. Para que
+> la identidad sea única en toda la colección, `numero` lleva un prefijo interno
+> y `etiqueta` guarda el número visible.
 
 ### EstadoCromo (estado del usuario, separado del catálogo)
 
@@ -104,8 +109,8 @@ catálogo sin perder el progreso y, más adelante, sincronizar.
       "orden": 1,
       "color": "#FEBE10",
       "cromos": [
-        { "numero": "245", "nombre": "Courtois", "orden": 1 },
-        { "numero": "246", "nombre": "Vinícius Jr.", "orden": 2 }
+        { "numero": "real-madrid-1", "etiqueta": "1", "nombre": "Courtois", "orden": 1 },
+        { "numero": "real-madrid-2", "etiqueta": "2", "nombre": "Vinícius Jr.", "orden": 2 }
       ]
     },
     {
@@ -115,7 +120,7 @@ catálogo sin perder el progreso y, más adelante, sincronizar.
       "orden": 99,
       "color": null,
       "cromos": [
-        { "numero": "F12", "nombre": null, "orden": 1 }
+        { "numero": "fichajes-F12", "etiqueta": "F12", "nombre": null, "orden": 1 }
       ]
     }
   ]

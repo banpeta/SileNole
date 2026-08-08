@@ -86,6 +86,13 @@ export function validarColeccion(data: unknown): ResultadoValidacion {
       if (cromo.nombre !== null && typeof cromo.nombre !== 'string') {
         errores.push(`${cref}.nombre debe ser texto o null.`);
       }
+      if (
+        cromo.etiqueta !== undefined &&
+        cromo.etiqueta !== null &&
+        typeof cromo.etiqueta !== 'string'
+      ) {
+        errores.push(`${cref}.etiqueta debe ser texto, null o no estar.`);
+      }
       if (typeof cromo.orden !== 'number') errores.push(`${cref}.orden debe ser número.`);
     });
   });
