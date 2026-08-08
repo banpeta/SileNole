@@ -1,6 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-import { App } from './ui/App';
+import { App } from './app/App';
+import './ui/estilos.css';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

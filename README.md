@@ -15,7 +15,9 @@ comportamiento que no esté especificado allí.
   y validación de invariantes (con tests).
 - ✅ **Fase 2** — Lógica de dominio (progreso, faltan, repes) y capa de
   persistencia (`ColeccionRepository`: en memoria e IndexedDB).
-- ⏳ **Fase 3** — Interfaz principal. Ver
+- ✅ **Fase 3** — Interfaz principal: pantallas de Inicio, Categorías, Detalle
+  (tocar para marcar/desmarcar) y Faltan, con guardado automático.
+- ⏳ **Fase 4** — PWA (instalable y offline). Ver
   [`docs/05-plan-y-tdd.md`](docs/05-plan-y-tdd.md).
 
 ## Requisitos

@@ -1,0 +1,203 @@
+/* Estilos de SileNole. Pensados para móvil y para dedos de niño:
+   objetivos de toque grandes, colores claros, verde = lo tengo. */
+
+:root {
+  --verde: #0b7a3b;
+  --verde-claro: #d6f0e0;
+  --gris: #e6e6e6;
+  --gris-texto: #666;
+  --texto: #1a1a1a;
+  --fondo: #fafafa;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--texto);
+  background: var(--fondo);
+}
+
+.app {
+  max-width: 640px;
+  margin: 0 auto;
+  padding-bottom: 2rem;
+}
+
+.cabecera {
+  position: sticky;
+  top: 0;
+  background: var(--verde);
+  padding: 0.75rem 1rem;
+  z-index: 10;
+}
+
+.titulo {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+
+main {
+  padding: 1rem;
+}
+
+.pantalla > h2 {
+  margin-top: 0.5rem;
+}
+
+.resumen {
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.barra {
+  height: 1.5rem;
+  background: var(--gris);
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.barra-relleno {
+  height: 100%;
+  background: var(--verde);
+  transition: width 0.3s ease;
+}
+
+.enhorabuena {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--verde);
+}
+
+.acciones {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.boton-grande {
+  min-height: 3.5rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 0.75rem;
+  background: var(--verde);
+  color: #fff;
+  cursor: pointer;
+}
+
+.boton-volver {
+  min-height: 2.75rem;
+  padding: 0 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(--gris);
+  cursor: pointer;
+}
+
+.lista-categorias {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  gap: 0.6rem;
+}
+
+.fila-categoria {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 0 1rem;
+  font-size: 1.1rem;
+  border: none;
+  border-inline-start: 6px solid var(--verde);
+  border-radius: 0.5rem;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  text-align: left;
+}
+
+.fila-categoria .nombre {
+  flex: 1;
+  font-weight: 600;
+}
+
+.fila-categoria .progreso {
+  color: var(--gris-texto);
+  font-variant-numeric: tabular-nums;
+}
+
+.fila-categoria.completa {
+  background: var(--verde-claro);
+}
+
+.marca-completa {
+  color: var(--verde);
+  font-weight: 800;
+}
+
+.rejilla-cromos {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(4rem, 1fr));
+  gap: 0.6rem;
+}
+
+.cromo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  min-height: 4rem;
+  font-size: 1.3rem;
+  font-weight: 700;
+  border: 2px solid var(--gris);
+  border-radius: 0.6rem;
+  background: #fff;
+  color: var(--gris-texto);
+  cursor: pointer;
+}
+
+.cromo.tengo {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+}
+
+.cromo .marca {
+  position: absolute;
+  top: 0.15rem;
+  right: 0.3rem;
+  font-size: 0.9rem;
+}
+
+.grupo-faltan h3 {
+  margin-bottom: 0.3rem;
+}
+
+.lista-faltan {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+}
+
+.lista-faltan .numero {
+  font-weight: 700;
+}
+
+.error {
+  color: #b00020;
+}

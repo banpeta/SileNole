@@ -39,11 +39,17 @@
 - [x] **Tests primero**: 45 tests en verde (misma batería de contrato contra
   ambas implementaciones del repositorio).
 
-### Fase 3 · Interfaz principal
-- Pantallas: Inicio (progreso), Categorías, Detalle de categoría, Faltan.
-- Marcar/desmarcar con un toque (HU-01, HU-02, HU-03).
-- Guardado automático (HU-06, parte de persistencia).
-- **Tests primero** con Testing Library por componente.
+### Fase 3 · Interfaz principal (pantallas de consulta) (entregada) ✅
+- [x] Pantallas: Inicio (progreso), Categorías, Detalle de categoría, Faltan
+  (`src/ui/`).
+- [x] Marcar/desmarcar con un toque (HU-01, HU-02, HU-03).
+- [x] Guardado automático conectando la UI al `ColeccionRepository`
+  (`src/app/useSileNole.ts`, HU-06).
+- [x] Carga del catálogo desde la semilla en el primer arranque
+  (`src/app/servicio.ts`).
+- [x] **Tests primero** con Testing Library + test de integración de la app.
+- [ ] *Pendiente para más adelante*: pantalla de importar/editar el catálogo
+  desde la app (HU-07).
 
 ### Fase 4 · PWA y offline
 - `vite-plugin-pwa`: manifest, service worker, instalable y offline (HU-06).
