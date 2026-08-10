@@ -25,6 +25,10 @@ body {
   max-width: 640px;
   margin: 0 auto;
   padding-bottom: 2rem;
+  /* Principio 5 (docs/01): todo el texto en MAYÚSCULAS para el niño.
+     Es solo presentación; el texto almacenado no se altera. Excepciones
+     concretas (p. ej. el editor de JSON) se anulan con text-transform: none. */
+  text-transform: uppercase;
 }
 
 .cabecera {
@@ -413,6 +417,8 @@ main {
   border-radius: 0.5rem;
   resize: vertical;
   white-space: pre;
+  /* El JSON del catálogo se edita tal cual: sin transformar a mayúsculas. */
+  text-transform: none;
 }
 
 .errores {
