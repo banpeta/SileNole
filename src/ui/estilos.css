@@ -25,6 +25,10 @@ body {
   max-width: 640px;
   margin: 0 auto;
   padding-bottom: 2rem;
+  /* Principio 5 (docs/01): todo el texto en MAYÚSCULAS para el niño.
+     Es solo presentación; el texto almacenado no se altera. Excepciones
+     concretas (p. ej. el editor de JSON) se anulan con text-transform: none. */
+  text-transform: uppercase;
 }
 
 .cabecera {
@@ -413,6 +417,8 @@ main {
   border-radius: 0.5rem;
   resize: vertical;
   white-space: pre;
+  /* El JSON del catálogo se edita tal cual: sin transformar a mayúsculas. */
+  text-transform: none;
 }
 
 .errores {
@@ -427,4 +433,24 @@ main {
 .errores ul {
   margin: 0.3rem 0 0;
   padding-left: 1.2rem;
+}
+
+/* --- HU-09: sincronizar --- */
+
+.codigo-sync {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.3rem 0 0.6rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1rem;
+  border: 2px solid var(--gris);
+  border-radius: 0.5rem;
+  /* El código es un identificador tecnico: se muestra tal cual, sin mayusculas. */
+  text-transform: none;
+}
+
+.estado-sync {
+  text-align: center;
+  font-weight: 700;
+  color: var(--gris-texto);
 }

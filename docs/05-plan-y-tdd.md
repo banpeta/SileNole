@@ -90,9 +90,44 @@
 - [x] **Tests primero**: controles de repes, pantalla y flujo de integración
   (marcar → +repes → aparece en "Para cambiar" → persiste). 69 tests en verde.
 
-### Fase 7 · Multi-dispositivo `[v2]`
-- Segunda implementación de `ColeccionRepository` en la nube (candidato:
-  Supabase, ADR-004) y fusión por fecha (HU-09).
+### Fase 7 · Multi-dispositivo (en desarrollo)
+
+Sincronización opcional entre dispositivos con Supabase (ADR-004 confirmado),
+identidad por código (ADR-008) y arquitectura offline-first (ADR-009). Cubre
+HU-09. Se desarrolla en sub-fases, cada una TDD (test primero) y sin regresiones.
+
+- **7.1 · Lógica de fusión (sin red, sin UI). (entregada) ✅** Función pura de
+  fusión LWW de estados y de catálogo, con reaplicación de invariantes (doc 03).
+  `src/domain/fusion.ts`. Casos: solo local, solo remoto, gana el más reciente,
+  empate -> remoto, invariante repes/tenido, catálogo por versión, idempotencia.
+- **7.2 · Cliente Supabase y esquema. (entregada) ✅** Tablas
+  `silenole_colecciones` y `silenole_estados` en el proyecto compartido (prefijo
+  obligatorio) con RLS y funciones `SECURITY DEFINER` que exigen el código
+  (ADR-008). `RepositorioSupabase` habla solo con esas RPC. Batería de contrato
+  compartida contra un doble del cliente. Backend probado en el proyecto real.
+- **7.3 · Repositorio compuesto (offline-first). (entregada) ✅**
+  `RepositorioCompuesto` = local (fuente de verdad) + remoto opcional.
+  `sincronizar()` hace descargar + fusionar + subir, nunca reemplazar lo local
+  (primer sync conserva lo local). Un fallo del remoto no lanza ni pierde datos.
+- **7.4 · UI de sincronización + cableado. (entregada) ✅** Código de colección
+  (UUID en localStorage, `src/data/codigoColeccion.ts`), pantalla "Sincronizar"
+  (activar/mostrar código, emparejar validando formato, estado), y cableado en
+  la app: siempre `RepositorioCompuesto`, auto-sync al activar/arrancar y al
+  evento `online`. Verificado de punta a punta contra Supabase en el navegador.
+- **7.5 · Despliegue y verificación en dispositivos reales.** Pasar
+  `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` al build de GitHub Actions
+  (secrets del repo). Probar en móvil + portátil reales (emparejar y ver que los
+  cambios se reflejan). Pendiente.
+
+> Configuración: la URL y la clave publishable/anon de Supabase se inyectan por
+> variables de entorno de Vite (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`) y
+> en CI como secrets. Nunca se commitea la `service_role`.
+
+### Cross-cutting · Texto en mayúsculas
+- Mostrar todos los textos visibles en MAYÚSCULAS con CSS `text-transform`
+  (Principio 5 del doc 01, requisito no funcional del doc 04). Test de que las
+  pantallas principales aplican la transformación y de que el texto almacenado
+  (por ejemplo el JSON del catálogo) no se altera.
 
 ### Fase 8 · Despliegue (entregada) ✅
 - [x] Workflow de GitHub Actions (`.github/workflows/deploy.yml`) que ejecuta

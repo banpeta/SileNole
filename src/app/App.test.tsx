@@ -1,4 +1,4 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { App } from './App';
 import { RepositorioEnMemoria } from '../data/repositorio';
@@ -13,6 +13,10 @@ import { coleccionEjemplo } from '../test/fixtures';
  */
 
 const semilla = () => Promise.resolve(coleccionEjemplo());
+
+// El código de sincronización se guarda en localStorage; lo limpiamos para
+// que cada test parta de "sin sincronización".
+beforeEach(() => localStorage.clear());
 
 describe('App — flujo de consulta y marcado', () => {
   it('marca un cromo y el progreso total se actualiza', async () => {
@@ -100,6 +104,42 @@ describe('App — flujo de consulta y marcado', () => {
 
     // Segunda sesión con el mismo repositorio: el progreso ya es 1.
     render(<App repo={repo} cargarSemilla={semilla} />);
+    await waitFor(() => expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '1'));
+  });
+
+  it('activa la sincronización y sube el progreso local a la nube (HU-09)', async () => {
+    const local = new RepositorioEnMemoria();
+    const remoto = new RepositorioEnMemoria();
+    render(<App repo={local} cargarSemilla={semilla} crearRemoto={() => remoto} />);
+    await screen.findByRole('progressbar');
+
+    // Marcar el cromo 1 (Equipo A) y volver al inicio.
+    fireEvent.click(screen.getByRole('button', { name: /equipos/i }));
+    fireEvent.click(await screen.findByRole('button', { name: /Equipo A/ }));
+    fireEvent.click(await screen.findByRole('button', { name: /Cromo 1(,|$)/i }));
+    fireEvent.click(screen.getByRole('button', { name: /SileNole/i }));
+
+    // Ir a Sincronizar y activar (genera un código).
+    fireEvent.click(await screen.findByRole('button', { name: /sincronizar/i }));
+    fireEvent.click(await screen.findByRole('button', { name: /activar/i }));
+
+    // El auto-sync sube el estado local a la nube.
+    await waitFor(async () =>
+      expect((await remoto.cargarEstados()).some((e) => e.numero === '1' && e.tenido)).toBe(true),
+    );
+  });
+
+  it('con un código emparejado, al arrancar baja lo de la nube y lo fusiona', async () => {
+    const local = new RepositorioEnMemoria();
+    const remoto = new RepositorioEnMemoria();
+    // La nube ya tiene el cromo 2 marcado (de otro dispositivo).
+    await remoto.guardarEstado({ numero: '2', tenido: true, repes: 0, actualizado: '2026-08-09T10:00:00.000Z' });
+    // Este dispositivo ya está emparejado.
+    localStorage.setItem('silenole:codigo', '33333333-3333-4333-8333-333333333333');
+
+    render(<App repo={local} cargarSemilla={semilla} crearRemoto={() => remoto} />);
+
+    // Tras el sync de arranque, el progreso local refleja el cromo 2 de la nube.
     await waitFor(() => expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '1'));
   });
 });

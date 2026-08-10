@@ -28,6 +28,8 @@ export interface EstadoSileNole {
   ajustarRepes: (numero: string, delta: number) => void;
   /** Importa un catálogo nuevo conservando el estado (HU-07). */
   importarCatalogo: (datos: unknown) => Promise<ResultadoValidacion>;
+  /** Recarga catálogo y estados desde el repositorio (p. ej. tras sincronizar). */
+  recargar: () => Promise<void>;
 }
 
 export function useSileNole(
@@ -107,5 +109,13 @@ export function useSileNole(
     [repo],
   );
 
-  return { cargando, error, coleccion, estados, alternar, ajustarRepes, importarCatalogo };
+  const recargar = useCallback(async () => {
+    const col = await repo.cargarColeccion();
+    const mapa = estadosAMapa(await repo.cargarEstados());
+    if (col) setColeccion(col);
+    estadosRef.current = mapa;
+    setEstados(mapa);
+  }, [repo]);
+
+  return { cargando, error, coleccion, estados, alternar, ajustarRepes, importarCatalogo, recargar };
 }
