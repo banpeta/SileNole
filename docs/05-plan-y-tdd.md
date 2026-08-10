@@ -139,11 +139,10 @@ HU-09. Se desarrolla en sub-fases, cada una TDD (test primero) y sin regresiones
   `github-pages` solo permite la rama por defecto). URL:
   `https://banpeta.github.io/hello-world/`.
 
-> Nota de flujo: el desarrollo sigue en la rama
-> `claude/football-stickers-tracker-app-y9g81g`; para desplegar se fusiona en
-> `master`, que es la rama que publica Pages. Al renombrar el repo a
-> "SileNole", la URL pasará a `https://banpeta.github.io/SileNole/`
-> automáticamente (el `base` se deriva del nombre del repo).
+> Nota de flujo: el desarrollo se hace **directamente en `master`** (la antigua
+> rama de feature se borró tras fusionar la Fase 7). Un push a `master` dispara
+> el despliegue en GitHub Pages. URL: `https://banpeta.github.io/SileNole/` (el
+> `base` de Vite se deriva del nombre del repo).
 
 ## Estructura de carpetas prevista
 
@@ -177,7 +176,9 @@ Ya cargados en `public/coleccion.json` (provisional, checklist 2026/27):
 
 Pendiente de dato (se añadirá cuando exista numeración o con el álbum delante):
 
-- **Últimos Fichajes** — numeración no publicada aún.
+- **Últimos fichajes** (añadida en la versión 2 del catálogo): 69 cromos
+  (`ultimos-fichajes-1..69`), orden 28, color amarillo. Nombres provisionales
+  ("Últ. Fichajes N") hasta cotejar con el álbum.
 - **Colocas** — estructura no publicada aún.
 - **Extra Sticker** (Bronce/Plata/Oro) — sin numeración individual publicada;
   cargados como 5 placeholders cada uno.

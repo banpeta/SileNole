@@ -2,7 +2,7 @@
   "id": "laliga-este-26-27",
   "nombre": "LaLiga Este 2026/27",
   "temporada": "2026/2027",
-  "version": 1,
+  "version": 2,
   "categorias": [
     {
       "id": "deportivo-alaves",
@@ -3328,6 +3328,429 @@
           "etiqueta": "5",
           "nombre": "Oro 5",
           "orden": 5
+        }
+      ]
+    },
+    {
+      "id": "ultimos-fichajes",
+      "nombre": "Últimos fichajes",
+      "tipo": "especial",
+      "orden": 28,
+      "color": "#FFFF00",
+      "cromos": [
+        {
+          "numero": "ultimos-fichajes-1",
+          "etiqueta": "1",
+          "nombre": "Últ. Fichajes 1",
+          "orden": 1
+        },
+        {
+          "numero": "ultimos-fichajes-2",
+          "etiqueta": "2",
+          "nombre": "Últ. Fichajes 2",
+          "orden": 2
+        },
+        {
+          "numero": "ultimos-fichajes-3",
+          "etiqueta": "3",
+          "nombre": "Últ. Fichajes 3",
+          "orden": 3
+        },
+        {
+          "numero": "ultimos-fichajes-4",
+          "etiqueta": "4",
+          "nombre": "Últ. Fichajes 4",
+          "orden": 4
+        },
+        {
+          "numero": "ultimos-fichajes-5",
+          "etiqueta": "5",
+          "nombre": "Últ. Fichajes 5",
+          "orden": 5
+        },
+        {
+          "numero": "ultimos-fichajes-6",
+          "etiqueta": "6",
+          "nombre": "Últ. Fichajes 6",
+          "orden": 6
+        },
+        {
+          "numero": "ultimos-fichajes-7",
+          "etiqueta": "7",
+          "nombre": "Últ. Fichajes 7",
+          "orden": 7
+        },
+        {
+          "numero": "ultimos-fichajes-8",
+          "etiqueta": "8",
+          "nombre": "Últ. Fichajes 8",
+          "orden": 8
+        },
+        {
+          "numero": "ultimos-fichajes-9",
+          "etiqueta": "9",
+          "nombre": "Últ. Fichajes 9",
+          "orden": 9
+        },
+        {
+          "numero": "ultimos-fichajes-10",
+          "etiqueta": "10",
+          "nombre": "Últ. Fichajes 10",
+          "orden": 10
+        },
+        {
+          "numero": "ultimos-fichajes-11",
+          "etiqueta": "11",
+          "nombre": "Últ. Fichajes 11",
+          "orden": 11
+        },
+        {
+          "numero": "ultimos-fichajes-12",
+          "etiqueta": "12",
+          "nombre": "Últ. Fichajes 12",
+          "orden": 12
+        },
+        {
+          "numero": "ultimos-fichajes-13",
+          "etiqueta": "13",
+          "nombre": "Últ. Fichajes 13",
+          "orden": 13
+        },
+        {
+          "numero": "ultimos-fichajes-14",
+          "etiqueta": "14",
+          "nombre": "Últ. Fichajes 14",
+          "orden": 14
+        },
+        {
+          "numero": "ultimos-fichajes-15",
+          "etiqueta": "15",
+          "nombre": "Últ. Fichajes 15",
+          "orden": 15
+        },
+        {
+          "numero": "ultimos-fichajes-16",
+          "etiqueta": "16",
+          "nombre": "Últ. Fichajes 16",
+          "orden": 16
+        },
+        {
+          "numero": "ultimos-fichajes-17",
+          "etiqueta": "17",
+          "nombre": "Últ. Fichajes 17",
+          "orden": 17
+        },
+        {
+          "numero": "ultimos-fichajes-18",
+          "etiqueta": "18",
+          "nombre": "Últ. Fichajes 18",
+          "orden": 18
+        },
+        {
+          "numero": "ultimos-fichajes-19",
+          "etiqueta": "19",
+          "nombre": "Últ. Fichajes 19",
+          "orden": 19
+        },
+        {
+          "numero": "ultimos-fichajes-20",
+          "etiqueta": "20",
+          "nombre": "Últ. Fichajes 20",
+          "orden": 20
+        },
+        {
+          "numero": "ultimos-fichajes-21",
+          "etiqueta": "21",
+          "nombre": "Últ. Fichajes 21",
+          "orden": 21
+        },
+        {
+          "numero": "ultimos-fichajes-22",
+          "etiqueta": "22",
+          "nombre": "Últ. Fichajes 22",
+          "orden": 22
+        },
+        {
+          "numero": "ultimos-fichajes-23",
+          "etiqueta": "23",
+          "nombre": "Últ. Fichajes 23",
+          "orden": 23
+        },
+        {
+          "numero": "ultimos-fichajes-24",
+          "etiqueta": "24",
+          "nombre": "Últ. Fichajes 24",
+          "orden": 24
+        },
+        {
+          "numero": "ultimos-fichajes-25",
+          "etiqueta": "25",
+          "nombre": "Últ. Fichajes 25",
+          "orden": 25
+        },
+        {
+          "numero": "ultimos-fichajes-26",
+          "etiqueta": "26",
+          "nombre": "Últ. Fichajes 26",
+          "orden": 26
+        },
+        {
+          "numero": "ultimos-fichajes-27",
+          "etiqueta": "27",
+          "nombre": "Últ. Fichajes 27",
+          "orden": 27
+        },
+        {
+          "numero": "ultimos-fichajes-28",
+          "etiqueta": "28",
+          "nombre": "Últ. Fichajes 28",
+          "orden": 28
+        },
+        {
+          "numero": "ultimos-fichajes-29",
+          "etiqueta": "29",
+          "nombre": "Últ. Fichajes 29",
+          "orden": 29
+        },
+        {
+          "numero": "ultimos-fichajes-30",
+          "etiqueta": "30",
+          "nombre": "Últ. Fichajes 30",
+          "orden": 30
+        },
+        {
+          "numero": "ultimos-fichajes-31",
+          "etiqueta": "31",
+          "nombre": "Últ. Fichajes 31",
+          "orden": 31
+        },
+        {
+          "numero": "ultimos-fichajes-32",
+          "etiqueta": "32",
+          "nombre": "Últ. Fichajes 32",
+          "orden": 32
+        },
+        {
+          "numero": "ultimos-fichajes-33",
+          "etiqueta": "33",
+          "nombre": "Últ. Fichajes 33",
+          "orden": 33
+        },
+        {
+          "numero": "ultimos-fichajes-34",
+          "etiqueta": "34",
+          "nombre": "Últ. Fichajes 34",
+          "orden": 34
+        },
+        {
+          "numero": "ultimos-fichajes-35",
+          "etiqueta": "35",
+          "nombre": "Últ. Fichajes 35",
+          "orden": 35
+        },
+        {
+          "numero": "ultimos-fichajes-36",
+          "etiqueta": "36",
+          "nombre": "Últ. Fichajes 36",
+          "orden": 36
+        },
+        {
+          "numero": "ultimos-fichajes-37",
+          "etiqueta": "37",
+          "nombre": "Últ. Fichajes 37",
+          "orden": 37
+        },
+        {
+          "numero": "ultimos-fichajes-38",
+          "etiqueta": "38",
+          "nombre": "Últ. Fichajes 38",
+          "orden": 38
+        },
+        {
+          "numero": "ultimos-fichajes-39",
+          "etiqueta": "39",
+          "nombre": "Últ. Fichajes 39",
+          "orden": 39
+        },
+        {
+          "numero": "ultimos-fichajes-40",
+          "etiqueta": "40",
+          "nombre": "Últ. Fichajes 40",
+          "orden": 40
+        },
+        {
+          "numero": "ultimos-fichajes-41",
+          "etiqueta": "41",
+          "nombre": "Últ. Fichajes 41",
+          "orden": 41
+        },
+        {
+          "numero": "ultimos-fichajes-42",
+          "etiqueta": "42",
+          "nombre": "Últ. Fichajes 42",
+          "orden": 42
+        },
+        {
+          "numero": "ultimos-fichajes-43",
+          "etiqueta": "43",
+          "nombre": "Últ. Fichajes 43",
+          "orden": 43
+        },
+        {
+          "numero": "ultimos-fichajes-44",
+          "etiqueta": "44",
+          "nombre": "Últ. Fichajes 44",
+          "orden": 44
+        },
+        {
+          "numero": "ultimos-fichajes-45",
+          "etiqueta": "45",
+          "nombre": "Últ. Fichajes 45",
+          "orden": 45
+        },
+        {
+          "numero": "ultimos-fichajes-46",
+          "etiqueta": "46",
+          "nombre": "Últ. Fichajes 46",
+          "orden": 46
+        },
+        {
+          "numero": "ultimos-fichajes-47",
+          "etiqueta": "47",
+          "nombre": "Últ. Fichajes 47",
+          "orden": 47
+        },
+        {
+          "numero": "ultimos-fichajes-48",
+          "etiqueta": "48",
+          "nombre": "Últ. Fichajes 48",
+          "orden": 48
+        },
+        {
+          "numero": "ultimos-fichajes-49",
+          "etiqueta": "49",
+          "nombre": "Últ. Fichajes 49",
+          "orden": 49
+        },
+        {
+          "numero": "ultimos-fichajes-50",
+          "etiqueta": "50",
+          "nombre": "Últ. Fichajes 50",
+          "orden": 50
+        },
+        {
+          "numero": "ultimos-fichajes-51",
+          "etiqueta": "51",
+          "nombre": "Últ. Fichajes 51",
+          "orden": 51
+        },
+        {
+          "numero": "ultimos-fichajes-52",
+          "etiqueta": "52",
+          "nombre": "Últ. Fichajes 52",
+          "orden": 52
+        },
+        {
+          "numero": "ultimos-fichajes-53",
+          "etiqueta": "53",
+          "nombre": "Últ. Fichajes 53",
+          "orden": 53
+        },
+        {
+          "numero": "ultimos-fichajes-54",
+          "etiqueta": "54",
+          "nombre": "Últ. Fichajes 54",
+          "orden": 54
+        },
+        {
+          "numero": "ultimos-fichajes-55",
+          "etiqueta": "55",
+          "nombre": "Últ. Fichajes 55",
+          "orden": 55
+        },
+        {
+          "numero": "ultimos-fichajes-56",
+          "etiqueta": "56",
+          "nombre": "Últ. Fichajes 56",
+          "orden": 56
+        },
+        {
+          "numero": "ultimos-fichajes-57",
+          "etiqueta": "57",
+          "nombre": "Últ. Fichajes 57",
+          "orden": 57
+        },
+        {
+          "numero": "ultimos-fichajes-58",
+          "etiqueta": "58",
+          "nombre": "Últ. Fichajes 58",
+          "orden": 58
+        },
+        {
+          "numero": "ultimos-fichajes-59",
+          "etiqueta": "59",
+          "nombre": "Últ. Fichajes 59",
+          "orden": 59
+        },
+        {
+          "numero": "ultimos-fichajes-60",
+          "etiqueta": "60",
+          "nombre": "Últ. Fichajes 60",
+          "orden": 60
+        },
+        {
+          "numero": "ultimos-fichajes-61",
+          "etiqueta": "61",
+          "nombre": "Últ. Fichajes 61",
+          "orden": 61
+        },
+        {
+          "numero": "ultimos-fichajes-62",
+          "etiqueta": "62",
+          "nombre": "Últ. Fichajes 62",
+          "orden": 62
+        },
+        {
+          "numero": "ultimos-fichajes-63",
+          "etiqueta": "63",
+          "nombre": "Últ. Fichajes 63",
+          "orden": 63
+        },
+        {
+          "numero": "ultimos-fichajes-64",
+          "etiqueta": "64",
+          "nombre": "Últ. Fichajes 64",
+          "orden": 64
+        },
+        {
+          "numero": "ultimos-fichajes-65",
+          "etiqueta": "65",
+          "nombre": "Últ. Fichajes 65",
+          "orden": 65
+        },
+        {
+          "numero": "ultimos-fichajes-66",
+          "etiqueta": "66",
+          "nombre": "Últ. Fichajes 66",
+          "orden": 66
+        },
+        {
+          "numero": "ultimos-fichajes-67",
+          "etiqueta": "67",
+          "nombre": "Últ. Fichajes 67",
+          "orden": 67
+        },
+        {
+          "numero": "ultimos-fichajes-68",
+          "etiqueta": "68",
+          "nombre": "Últ. Fichajes 68",
+          "orden": 68
+        },
+        {
+          "numero": "ultimos-fichajes-69",
+          "etiqueta": "69",
+          "nombre": "Últ. Fichajes 69",
+          "orden": 69
         }
       ]
     }
