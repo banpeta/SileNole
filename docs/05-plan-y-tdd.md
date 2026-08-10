@@ -96,22 +96,28 @@ Sincronización opcional entre dispositivos con Supabase (ADR-004 confirmado),
 identidad por código (ADR-008) y arquitectura offline-first (ADR-009). Cubre
 HU-09. Se desarrolla en sub-fases, cada una TDD (test primero) y sin regresiones.
 
-- **7.1 · Lógica de fusión (sin red, sin UI).** Función pura de fusión LWW de
-  estados y de catálogo, con reaplicación de invariantes (doc 03). Tests primero
-  con casos: solo local, solo remoto, gana el más reciente, empate -> remoto,
-  invariante repes/tenido, poda de huérfanos al cambiar catálogo, idempotencia.
-- **7.2 · Cliente Supabase y esquema.** Crear las tablas `silenole_colecciones`
-  y `silenole_estados` en el proyecto compartido existente (prefijo obligatorio)
-  y las políticas RLS. Implementar `RepositorioSupabase` (implementa
-  `ColeccionRepository`). Tests de contrato contra un doble/mock del cliente.
-- **7.3 · Repositorio compuesto + outbox.** `RepositorioCompuesto` (local +
-  sincronizador con cola de salida). Escritura local inmediata, empuje diferido,
-  descarga y fusión al arrancar/recuperar red. Tests: offline no bloquea, la
-  cola se vacía al volver la red, fallo de nube no pierde datos locales.
-- **7.4 · UI de sincronización.** Pantalla "Sincronizar": generar/mostrar código,
-  introducir código de otro dispositivo, validar formato, estado de conexión.
-  Tests de componente e integración (emparejar -> cambio en A -> aparece en B).
-- **7.5 · Verificación en dispositivos reales** (manual): móvil + portátil.
+- **7.1 · Lógica de fusión (sin red, sin UI). (entregada) ✅** Función pura de
+  fusión LWW de estados y de catálogo, con reaplicación de invariantes (doc 03).
+  `src/domain/fusion.ts`. Casos: solo local, solo remoto, gana el más reciente,
+  empate -> remoto, invariante repes/tenido, catálogo por versión, idempotencia.
+- **7.2 · Cliente Supabase y esquema. (entregada) ✅** Tablas
+  `silenole_colecciones` y `silenole_estados` en el proyecto compartido (prefijo
+  obligatorio) con RLS y funciones `SECURITY DEFINER` que exigen el código
+  (ADR-008). `RepositorioSupabase` habla solo con esas RPC. Batería de contrato
+  compartida contra un doble del cliente. Backend probado en el proyecto real.
+- **7.3 · Repositorio compuesto (offline-first). (entregada) ✅**
+  `RepositorioCompuesto` = local (fuente de verdad) + remoto opcional.
+  `sincronizar()` hace descargar + fusionar + subir, nunca reemplazar lo local
+  (primer sync conserva lo local). Un fallo del remoto no lanza ni pierde datos.
+- **7.4 · UI de sincronización + cableado. (entregada) ✅** Código de colección
+  (UUID en localStorage, `src/data/codigoColeccion.ts`), pantalla "Sincronizar"
+  (activar/mostrar código, emparejar validando formato, estado), y cableado en
+  la app: siempre `RepositorioCompuesto`, auto-sync al activar/arrancar y al
+  evento `online`. Verificado de punta a punta contra Supabase en el navegador.
+- **7.5 · Despliegue y verificación en dispositivos reales.** Pasar
+  `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` al build de GitHub Actions
+  (secrets del repo). Probar en móvil + portátil reales (emparejar y ver que los
+  cambios se reflejan). Pendiente.
 
 > Configuración: la URL y la clave publishable/anon de Supabase se inyectan por
 > variables de entorno de Vite (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`) y

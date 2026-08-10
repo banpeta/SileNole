@@ -434,3 +434,23 @@ main {
   margin: 0.3rem 0 0;
   padding-left: 1.2rem;
 }
+
+/* --- HU-09: sincronizar --- */
+
+.codigo-sync {
+  width: 100%;
+  padding: 0.6rem;
+  margin: 0.3rem 0 0.6rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 1rem;
+  border: 2px solid var(--gris);
+  border-radius: 0.5rem;
+  /* El código es un identificador tecnico: se muestra tal cual, sin mayusculas. */
+  text-transform: none;
+}
+
+.estado-sync {
+  text-align: center;
+  font-weight: 700;
+  color: var(--gris-texto);
+}

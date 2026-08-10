@@ -1,6 +1,14 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { RepositorioIndexedDB } from '../data/repositorioIndexedDB';
 import type { ColeccionRepository } from '../data/repositorio';
+import { RepositorioCompuesto } from '../data/repositorioCompuesto';
+import { crearRepositorioSupabase } from '../data/supabaseCliente';
+import {
+  generarCodigo,
+  guardarCodigo,
+  leerCodigo,
+  normalizarCodigo,
+} from '../data/codigoColeccion';
 import { cargarSemillaDesdePublic, type CargarSemilla } from './servicio';
 import { useSileNole } from './useSileNole';
 import { PantallaInicio } from '../ui/PantallaInicio';
@@ -9,6 +17,7 @@ import { DetalleCategoria } from '../ui/DetalleCategoria';
 import { PantallaFaltan } from '../ui/PantallaFaltan';
 import { PantallaParaCambiar } from '../ui/PantallaParaCambiar';
 import { PantallaEditarCatalogo } from '../ui/PantallaEditarCatalogo';
+import { PantallaSincronizar } from '../ui/PantallaSincronizar';
 
 type Vista =
   | { nombre: 'inicio' }
@@ -16,20 +25,74 @@ type Vista =
   | { nombre: 'detalle'; categoriaId: string }
   | { nombre: 'faltan' }
   | { nombre: 'cambiar' }
-  | { nombre: 'editar' };
+  | { nombre: 'editar' }
+  | { nombre: 'sincronizar' };
+
+/** Construye el repositorio remoto para un código (inyectable para tests). */
+export type CrearRemoto = (codigo: string) => ColeccionRepository | null;
 
 interface Props {
-  /** Repositorio de datos. Por defecto IndexedDB (inyectable para tests). */
+  /** Repositorio LOCAL de datos. Por defecto IndexedDB (inyectable para tests). */
   repo?: ColeccionRepository;
   /** Origen de la semilla del catálogo (inyectable para tests). */
   cargarSemilla?: CargarSemilla;
+  /** Fábrica del repositorio remoto (por defecto Supabase; inyectable para tests). */
+  crearRemoto?: CrearRemoto;
 }
 
-export function App({ repo, cargarSemilla = cargarSemillaDesdePublic }: Props = {}) {
-  const repositorio = useMemo(() => repo ?? new RepositorioIndexedDB(), [repo]);
-  const { cargando, error, coleccion, estados, alternar, ajustarRepes, importarCatalogo } =
+export function App({
+  repo,
+  cargarSemilla = cargarSemillaDesdePublic,
+  crearRemoto = crearRepositorioSupabase,
+}: Props = {}) {
+  const local = useMemo(() => repo ?? new RepositorioIndexedDB(), [repo]);
+  const [codigo, setCodigo] = useState<string | null>(() => leerCodigo());
+
+  // La app siempre habla con un repositorio compuesto (local + remoto opcional).
+  // Sin código, el remoto es null y el compuesto es transparente (modo local).
+  const repositorio = useMemo(
+    () => new RepositorioCompuesto(local, codigo ? crearRemoto(codigo) : null),
+    [local, codigo, crearRemoto],
+  );
+
+  const { cargando, error, coleccion, estados, alternar, ajustarRepes, importarCatalogo, recargar } =
     useSileNole(repositorio, cargarSemilla);
   const [vista, setVista] = useState<Vista>({ nombre: 'inicio' });
+  const [sincronizando, setSincronizando] = useState(false);
+  const [pendiente, setPendiente] = useState(false);
+
+  const sincronizar = useCallback(async () => {
+    if (!codigo) return;
+    setSincronizando(true);
+    try {
+      await repositorio.sincronizar();
+      await recargar();
+    } finally {
+      setPendiente(repositorio.pendiente);
+      setSincronizando(false);
+    }
+  }, [codigo, repositorio, recargar]);
+
+  // Sincroniza al activar/arrancar (si hay código) y al recuperar la red.
+  useEffect(() => {
+    if (!codigo) return;
+    void sincronizar();
+    const alReconectar = () => void sincronizar();
+    window.addEventListener('online', alReconectar);
+    return () => window.removeEventListener('online', alReconectar);
+  }, [codigo, sincronizar]);
+
+  const activarSync = useCallback(() => {
+    const nuevo = generarCodigo();
+    guardarCodigo(nuevo);
+    setCodigo(nuevo);
+  }, []);
+
+  const emparejar = useCallback((entrada: string) => {
+    const normalizado = normalizarCodigo(entrada);
+    guardarCodigo(normalizado);
+    setCodigo(normalizado);
+  }, []);
 
   return (
     <div className="app">
@@ -51,6 +114,7 @@ export function App({ repo, cargarSemilla = cargarSemillaDesdePublic }: Props = 
                 onVerFaltan={() => setVista({ nombre: 'faltan' })}
                 onVerCambiar={() => setVista({ nombre: 'cambiar' })}
                 onVerEditar={() => setVista({ nombre: 'editar' })}
+                onVerSincronizar={() => setVista({ nombre: 'sincronizar' })}
               />
             )}
             {vista.nombre === 'categorias' && (
@@ -93,6 +157,17 @@ export function App({ repo, cargarSemilla = cargarSemillaDesdePublic }: Props = 
               <PantallaEditarCatalogo
                 coleccion={coleccion}
                 onImportar={importarCatalogo}
+                onVolver={() => setVista({ nombre: 'inicio' })}
+              />
+            )}
+            {vista.nombre === 'sincronizar' && (
+              <PantallaSincronizar
+                codigo={codigo}
+                sincronizando={sincronizando}
+                pendiente={pendiente}
+                onActivar={activarSync}
+                onEmparejar={emparejar}
+                onSincronizar={() => void sincronizar()}
                 onVolver={() => setVista({ nombre: 'inicio' })}
               />
             )}

@@ -7,6 +7,8 @@ import { DetalleCategoria } from './DetalleCategoria';
 import { PantallaFaltan } from './PantallaFaltan';
 import { PantallaParaCambiar } from './PantallaParaCambiar';
 import { PantallaEditarCatalogo } from './PantallaEditarCatalogo';
+import { PantallaSincronizar } from './PantallaSincronizar';
+import { esCodigoValido } from '../data/codigoColeccion';
 
 /**
  * Tests de las pantallas de consulta y marcado.
@@ -26,6 +28,7 @@ describe('PantallaInicio — HU-04', () => {
         onVerFaltan={noop}
         onVerCambiar={noop}
         onVerEditar={noop}
+        onVerSincronizar={noop}
       />,
     );
     expect(screen.getByText(/1/)).toBeInTheDocument();
@@ -39,6 +42,7 @@ describe('PantallaInicio — HU-04', () => {
     const onVerFaltan = vi.fn();
     const onVerCambiar = vi.fn();
     const onVerEditar = vi.fn();
+    const onVerSincronizar = vi.fn();
     render(
       <PantallaInicio
         coleccion={coleccionEjemplo()}
@@ -47,16 +51,19 @@ describe('PantallaInicio — HU-04', () => {
         onVerFaltan={onVerFaltan}
         onVerCambiar={onVerCambiar}
         onVerEditar={onVerEditar}
+        onVerSincronizar={onVerSincronizar}
       />,
     );
     fireEvent.click(screen.getByRole('button', { name: /equipos/i }));
     fireEvent.click(screen.getByRole('button', { name: /faltan/i }));
     fireEvent.click(screen.getByRole('button', { name: /cambiar/i }));
     fireEvent.click(screen.getByRole('button', { name: /editar cat/i }));
+    fireEvent.click(screen.getByRole('button', { name: /sincronizar/i }));
     expect(onVerCategorias).toHaveBeenCalledOnce();
     expect(onVerFaltan).toHaveBeenCalledOnce();
     expect(onVerCambiar).toHaveBeenCalledOnce();
     expect(onVerEditar).toHaveBeenCalledOnce();
+    expect(onVerSincronizar).toHaveBeenCalledOnce();
   });
 });
 
@@ -309,5 +316,61 @@ describe('PantallaFaltan — HU-05', () => {
       />,
     );
     expect(screen.getByText(/completa/i)).toBeInTheDocument();
+  });
+});
+
+describe('PantallaSincronizar — HU-09', () => {
+  const props = {
+    codigo: null,
+    sincronizando: false,
+    pendiente: false,
+    onActivar: noop,
+    onEmparejar: noop,
+    onSincronizar: noop,
+    onVolver: noop,
+  };
+
+  it('sin código, ofrece activar la sincronización', () => {
+    const onActivar = vi.fn();
+    render(<PantallaSincronizar {...props} onActivar={onActivar} />);
+    expect(screen.getByText(/desactivada/i)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /activar/i }));
+    expect(onActivar).toHaveBeenCalledOnce();
+  });
+
+  it('con código, lo muestra y permite sincronizar ahora', () => {
+    const onSincronizar = vi.fn();
+    const codigo = '11111111-1111-4111-8111-111111111111';
+    render(
+      <PantallaSincronizar {...props} codigo={codigo} onSincronizar={onSincronizar} />,
+    );
+    expect(screen.getByLabelText(/tu código/i)).toHaveValue(codigo);
+    expect(screen.getByText(/al día/i)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /sincronizar ahora/i }));
+    expect(onSincronizar).toHaveBeenCalledOnce();
+  });
+
+  it('muestra "pendiente" cuando hay cambios sin subir', () => {
+    render(<PantallaSincronizar {...props} codigo="11111111-1111-4111-8111-111111111111" pendiente />);
+    expect(screen.getByText(/pendiente/i)).toBeInTheDocument();
+  });
+
+  it('rechaza un código con formato inválido y no llama a onEmparejar', () => {
+    const onEmparejar = vi.fn();
+    render(<PantallaSincronizar {...props} onEmparejar={onEmparejar} />);
+    fireEvent.change(screen.getByLabelText(/pegar código/i), { target: { value: 'no-es-uuid' } });
+    fireEvent.click(screen.getByRole('button', { name: /emparejar/i }));
+    expect(screen.getByRole('alert')).toBeInTheDocument();
+    expect(onEmparejar).not.toHaveBeenCalled();
+  });
+
+  it('empareja con un código válido', () => {
+    const onEmparejar = vi.fn();
+    const codigo = '22222222-2222-4222-8222-222222222222';
+    render(<PantallaSincronizar {...props} onEmparejar={onEmparejar} />);
+    fireEvent.change(screen.getByLabelText(/pegar código/i), { target: { value: codigo } });
+    fireEvent.click(screen.getByRole('button', { name: /emparejar/i }));
+    expect(onEmparejar).toHaveBeenCalledWith(codigo);
+    expect(esCodigoValido(codigo)).toBe(true);
   });
 });
