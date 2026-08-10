@@ -36,6 +36,13 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Config de Supabase para la sincronizacion (Fase 7). Son secrets del
+          # repo. Si faltan, el build sale igual y la sync queda desactivada
+          # (la app funciona en modo local). La clave publishable/anon es publica
+          # por diseno (viaja en el bundle del cliente).
+          VITE_SUPABASE_URL: ${{ secrets.VITE_SUPABASE_URL }}
+          VITE_SUPABASE_ANON_KEY: ${{ secrets.VITE_SUPABASE_ANON_KEY }}
 
       # Evita el procesado Jekyll (por si hubiera archivos con "_").
       - run: touch dist/.nojekyll
