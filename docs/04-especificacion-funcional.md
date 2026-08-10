@@ -22,6 +22,10 @@ Fichajes, para encontrarlos fácil.
   **entonces** muestra su nombre y su progreso (ej. "Barcelona 12/18").
 - **Dado** una categoría con todos los cromos conseguidos,
   **entonces** se marca visualmente como **completa** (✓).
+- **Dado** una categoría con `escudo` definido,
+  **entonces** se muestra su escudo **después del nombre** en la lista. Si la
+  categoría no tiene escudo (o la imagen no carga), no se muestra imagen y el
+  resto se ve con normalidad.
 
 ## HU-02 · Ver los cromos de una categoría `[MVP]`
 

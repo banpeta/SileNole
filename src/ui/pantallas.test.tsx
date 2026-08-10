@@ -107,6 +107,19 @@ describe('ListaCategorias — HU-01', () => {
     fireEvent.click(screen.getByRole('button', { name: /Equipo A/ }));
     expect(onAbrir).toHaveBeenCalledWith('a');
   });
+
+  it('muestra el escudo del equipo si la categoría lo tiene', () => {
+    const col = coleccionEjemplo();
+    col.categorias[0].escudo = 'escudos/a.webp';
+    const { container } = render(
+      <ListaCategorias coleccion={col} estados={mapaDe()} onAbrir={noop} onVolver={noop} />,
+    );
+    const img = container.querySelector('img.escudo') as HTMLImageElement | null;
+    expect(img).not.toBeNull();
+    expect(img!.getAttribute('src')).toContain('escudos/a.webp');
+    // La categoría sin escudo no muestra imagen.
+    expect(container.querySelectorAll('img.escudo')).toHaveLength(1);
+  });
 });
 
 describe('DetalleCategoria — HU-02/HU-03', () => {

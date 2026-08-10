@@ -28,7 +28,20 @@ export function ListaCategorias({ coleccion, estados, onAbrir, onVolver }: Props
                 style={cat.color ? { borderInlineStartColor: cat.color } : undefined}
                 onClick={() => onAbrir(cat.id)}
               >
-                <span className="nombre">{cat.nombre}</span>
+                <span className="nombre">
+                  {cat.nombre}
+                  {cat.escudo && (
+                    <img
+                      className="escudo"
+                      src={`${import.meta.env.BASE_URL}${cat.escudo}`}
+                      alt=""
+                      // Si el escudo aún no está disponible, se oculta (sin icono roto).
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none';
+                      }}
+                    />
+                  )}
+                </span>
                 <span className="progreso">
                   {p.conseguidos}/{p.total}
                 </span>

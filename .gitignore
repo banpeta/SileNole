@@ -5,3 +5,5 @@ dist-ssr
 .DS_Store
 coverage
 *.tsbuildinfo
+# Imagenes de origen de los escudos (solo se versionan las optimizadas en public/escudos/)
+escudos-fuente/

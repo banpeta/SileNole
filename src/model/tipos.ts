@@ -35,6 +35,8 @@ export interface Categoria {
   orden: number;
   /** Color de acento (opcional). */
   color: string | null;
+  /** Ruta al escudo del equipo, relativa a la base de la app (opcional, ej. "escudos/fc-barcelona.webp"). */
+  escudo?: string | null;
   cromos: Cromo[];
 }
 

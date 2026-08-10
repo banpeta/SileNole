@@ -38,6 +38,7 @@ catálogo sin perder el progreso y, más adelante, sincronizar.
 | `tipo` | `"equipo"` \| `"fichajes"` \| `"especial"` | Para agrupar y ordenar. |
 | `orden` | number | Orden de aparición en la app. |
 | `color` | string \| null | Color de acento (opcional, ej. escudo). |
+| `escudo` | string \| null (opcional) | Ruta a la imagen del escudo, relativa a la base de la app (ej. `escudos/fc-barcelona.webp`). Si falta o no carga, no se muestra imagen. |
 | `cromos` | Cromo[] | Cromos que pertenecen a la categoría. |
 
 ### Cromo

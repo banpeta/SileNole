@@ -62,6 +62,9 @@ export function validarColeccion(data: unknown): ResultadoValidacion {
     if (cat.color !== null && typeof cat.color !== 'string') {
       errores.push(`${ref}.color debe ser texto o null.`);
     }
+    if (cat.escudo !== undefined && cat.escudo !== null && typeof cat.escudo !== 'string') {
+      errores.push(`${ref}.escudo debe ser texto, null o no estar.`);
+    }
 
     if (!Array.isArray(cat.cromos)) {
       errores.push(`${ref}.cromos debe ser una lista.`);
