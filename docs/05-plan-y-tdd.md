@@ -90,9 +90,38 @@
 - [x] **Tests primero**: controles de repes, pantalla y flujo de integración
   (marcar → +repes → aparece en "Para cambiar" → persiste). 69 tests en verde.
 
-### Fase 7 · Multi-dispositivo `[v2]`
-- Segunda implementación de `ColeccionRepository` en la nube (candidato:
-  Supabase, ADR-004) y fusión por fecha (HU-09).
+### Fase 7 · Multi-dispositivo (en desarrollo)
+
+Sincronización opcional entre dispositivos con Supabase (ADR-004 confirmado),
+identidad por código (ADR-008) y arquitectura offline-first (ADR-009). Cubre
+HU-09. Se desarrolla en sub-fases, cada una TDD (test primero) y sin regresiones.
+
+- **7.1 · Lógica de fusión (sin red, sin UI).** Función pura de fusión LWW de
+  estados y de catálogo, con reaplicación de invariantes (doc 03). Tests primero
+  con casos: solo local, solo remoto, gana el más reciente, empate -> remoto,
+  invariante repes/tenido, poda de huérfanos al cambiar catálogo, idempotencia.
+- **7.2 · Cliente Supabase y esquema.** Crear las tablas `silenole_colecciones`
+  y `silenole_estados` en el proyecto compartido existente (prefijo obligatorio)
+  y las políticas RLS. Implementar `RepositorioSupabase` (implementa
+  `ColeccionRepository`). Tests de contrato contra un doble/mock del cliente.
+- **7.3 · Repositorio compuesto + outbox.** `RepositorioCompuesto` (local +
+  sincronizador con cola de salida). Escritura local inmediata, empuje diferido,
+  descarga y fusión al arrancar/recuperar red. Tests: offline no bloquea, la
+  cola se vacía al volver la red, fallo de nube no pierde datos locales.
+- **7.4 · UI de sincronización.** Pantalla "Sincronizar": generar/mostrar código,
+  introducir código de otro dispositivo, validar formato, estado de conexión.
+  Tests de componente e integración (emparejar -> cambio en A -> aparece en B).
+- **7.5 · Verificación en dispositivos reales** (manual): móvil + portátil.
+
+> Configuración: la URL y la clave publishable/anon de Supabase se inyectan por
+> variables de entorno de Vite (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`) y
+> en CI como secrets. Nunca se commitea la `service_role`.
+
+### Cross-cutting · Texto en mayúsculas
+- Mostrar todos los textos visibles en MAYÚSCULAS con CSS `text-transform`
+  (Principio 5 del doc 01, requisito no funcional del doc 04). Test de que las
+  pantallas principales aplican la transformación y de que el texto almacenado
+  (por ejemplo el JSON del catálogo) no se altera.
 
 ### Fase 8 · Despliegue (entregada) ✅
 - [x] Workflow de GitHub Actions (`.github/workflows/deploy.yml`) que ejecuta

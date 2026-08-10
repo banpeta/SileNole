@@ -127,8 +127,62 @@ catálogo sin perder el progreso y, más adelante, sincronizar.
 }
 ```
 
-## Notas para la sincronización futura (multi-dispositivo)
+## Sincronización multi-dispositivo (Fase 7)
 
 - El estado se guarda por `numero` con marca de tiempo `actualizado`, de modo
-  que fusionar dos dispositivos pueda resolverse con "gana el más reciente".
+  que fusionar dos dispositivos se resuelve con "gana el más reciente".
 - La capa `ColeccionRepository` (ver ADR-003) aísla el origen de los datos.
+- Identidad por `codigo` de colección (ver ADR-008). Arquitectura offline-first
+  con repositorio compuesto (ver ADR-009).
+
+### Esquema en Supabase (prefijo `silenole_`)
+
+Dos tablas, ambas particionadas por el `codigo` de colección. Tipos en notación
+Postgres.
+
+**`silenole_colecciones`** (el catálogo compartido entre dispositivos):
+
+| Columna | Tipo | Notas |
+|---------|------|-------|
+| `codigo` | uuid | Clave primaria. Código de colección (ADR-008). |
+| `data` | jsonb | Catálogo completo (`Coleccion` serializada). |
+| `version` | integer | Versión del catálogo (igual que `Coleccion.version`). |
+| `actualizado` | timestamptz | Último cambio del catálogo. |
+
+**`silenole_estados`** (el estado del usuario por cromo):
+
+| Columna | Tipo | Notas |
+|---------|------|-------|
+| `codigo` | uuid | Parte de la clave. A qué colección pertenece. |
+| `numero` | text | Parte de la clave. Cromo al que se refiere. |
+| `tenido` | boolean | Igual que `EstadoCromo.tenido`. |
+| `repes` | integer | Igual que `EstadoCromo.repes` (>= 0). |
+| `actualizado` | timestamptz | Igual que `EstadoCromo.actualizado`. |
+
+Clave primaria de `silenole_estados`: (`codigo`, `numero`).
+
+Seguridad: acceso solo con la clave publishable/anon y **RLS** que exige conocer
+el `codigo`. Nunca se usa la clave `service_role` en el cliente (ADR-008).
+
+### Algoritmo de fusión (last-write-wins)
+
+**Estados** (por cada `numero`, comparando el local y el remoto):
+
+1. Si solo existe en un lado, se conserva ese.
+2. Si existe en ambos, gana el de `actualizado` más reciente.
+3. En **empate** de `actualizado`, prevalece el **remoto** (regla determinista
+   para que todos los dispositivos converjan al mismo resultado).
+4. Tras elegir el ganador, se **reaplican los invariantes**: si el ganador queda
+   `tenido: false`, se fuerza `repes: 0` (invariante 4). `repes` nunca negativo.
+
+**Catálogo** (`silenole_colecciones` frente al local):
+
+1. Gana la `version` mayor.
+2. A igualdad de `version`, gana el `actualizado` más reciente (empate: remoto).
+3. Cambiar el catálogo **no borra** el estado del usuario: los `numero` que
+   sigan existiendo conservan su estado, los huérfanos se podan (invariante 6,
+   igual que en la importación de HU-07).
+
+> La fusión es **conmutativa e idempotente** respecto al resultado final: aplicar
+> la misma sincronización dos veces deja el mismo estado, y da igual qué
+> dispositivo sincronice primero.

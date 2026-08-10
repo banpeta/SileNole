@@ -107,16 +107,49 @@ cambiarlos.
 > Nota: el **dato** `repes` existe en el modelo desde la v1 (ver
 > `03-modelo-de-datos.md`); esta HU cubre la **interfaz** para gestionarlo.
 
-## HU-09 · Sincronizar entre dispositivos `[v2]`
+## HU-09 · Sincronizar entre dispositivos `[Fase 7]`
 
-Como usuario, quiero ver la misma colección en varios móviles.
+Como usuario, quiero ver la misma colección en varios dispositivos (móvil y
+portátil), sin crear una cuenta.
 
-- **Dado** dos dispositivos con la misma colección,
-  **cuando** cambio un cromo en uno,
-  **entonces** el cambio se refleja en el otro.
-- **Dado** un cambio en el mismo cromo en ambos,
-  **entonces** se resuelve el conflicto quedándose con el más reciente
-  (`actualizado`).
+**Emparejar (código de colección, ADR-008):**
+
+- **Dado** un dispositivo sin sincronización,
+  **cuando** activo la sincronización,
+  **entonces** la app genera un **código de colección** y me lo muestra para
+  copiarlo.
+- **Dado** un segundo dispositivo,
+  **cuando** introduzco ese código en la pantalla "Sincronizar",
+  **entonces** queda emparejado con la misma colección y el código se guarda en
+  local.
+- **Dado** un código con formato inválido,
+  **entonces** se rechaza con un mensaje claro y no se empareja.
+
+**Sincronizar estado y catálogo:**
+
+- **Dado** dos dispositivos emparejados,
+  **cuando** cambio un cromo (tenido o repes) en uno,
+  **entonces** el cambio acaba reflejándose en el otro.
+- **Dado** que edito el catálogo en un dispositivo (HU-07),
+  **entonces** la nueva `version` del catálogo llega al otro, conservando el
+  progreso de los números que siguen existiendo.
+
+**Conflictos (last-write-wins):**
+
+- **Dado** un cambio en el mismo cromo en ambos dispositivos,
+  **entonces** se resuelve quedándose con el de `actualizado` más reciente (en
+  empate, prevalece el remoto), reaplicando los invariantes del modelo (si el
+  ganador queda `tenido: false`, sus `repes` pasan a `0`).
+
+**Offline-first (no romper HU-06, ver ADR-009):**
+
+- **Dado** que hago cambios sin conexión,
+  **entonces** se guardan en local igualmente y se envían a la nube al recuperar
+  la red.
+- **Dado** que no hay red o no hay código configurado,
+  **entonces** la app funciona con normalidad en modo local.
+- **Dado** que la sincronización con la nube falla,
+  **entonces** no se pierden datos locales ni se bloquea la interfaz.
 
 ---
 
@@ -124,6 +157,12 @@ Como usuario, quiero ver la misma colección en varios móviles.
 
 - **Usabilidad infantil**: zonas de toque grandes (mín. 44×44 px), texto claro,
   feedback inmediato al tocar.
+- **Texto en mayúsculas**: todos los textos visibles de la app se muestran en
+  MAYÚSCULAS (el niño de 7 años lee mejor así). Se aplica con presentación (CSS
+  `text-transform: uppercase`), sin alterar el texto almacenado, para conservar
+  acentos, datos y accesibilidad (los lectores de pantalla leen el texto real).
+  No aplica a campos técnicos que el usuario edita tal cual (por ejemplo, el JSON
+  del catálogo en la pantalla de edición).
 - **Rendimiento**: la app debe responder al instante con colecciones de varios
   cientos de cromos.
 - **Accesibilidad**: contraste suficiente; no depender solo del color (usar

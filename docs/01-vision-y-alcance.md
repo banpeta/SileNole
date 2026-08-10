@@ -20,10 +20,17 @@ encontrarlos.
    (verde = lo tengo, gris = me falta), un toque para cambiar el estado.
 2. **Funciona sin conexión**: se usará en cualquier sitio (quiosco, casa de un
    amigo), a veces sin datos móviles.
-3. **Privada y sin cuentas**: no requiere registro ni login en la versión
-   inicial. Los datos viven en el móvil.
+3. **Privada y sin cuentas**: no requiere registro ni login. Los datos viven en
+   el móvil. La sincronización entre dispositivos (Fase 7) es **opcional** y se
+   activa con un **código de colección** (un identificador aleatorio), no con
+   una cuenta de usuario: el código no lleva datos personales y solo empareja
+   dispositivos. Sin activar la sincronización, la app funciona 100% en local.
 4. **Los datos son editables**: los números y categorías reales se obtienen de
    internet, así que la app debe permitir cargarlos y corregirlos.
+5. **Texto en mayúsculas**: el niño (7 años) todavía lee mejor en mayúsculas, así
+   que todos los textos visibles de la app se muestran en MAYÚSCULAS. Se logra
+   con presentación (CSS `text-transform: uppercase`), sin alterar el texto real
+   almacenado (se conservan acentos y la accesibilidad).
 
 ## Alcance de la versión 1 (MVP)
 
@@ -39,11 +46,19 @@ Entra:
 
 No entra en la v1 (fases posteriores):
 
-- **Sincronización entre varios dispositivos** (se usará solo en 1 móvil al
-  principio). Se contempla en el modelo de datos para no bloquearla después.
-- Gestión avanzada de **repes** (cromos repetidos para cambiar): el dato se
-  guarda desde la v1, pero la pantalla dedicada a gestionarlos llega después.
 - Compartir la colección o "buscar cambios" con otras personas.
+
+Ya entregado en fases posteriores a la v1:
+
+- Gestión de **repes** (cromos repetidos para cambiar): pantalla "Para cambiar"
+  (Fase 6, HU-08).
+
+En desarrollo (Fase 7):
+
+- **Sincronización entre varios dispositivos** (móvil y portátil). El modelo de
+  datos ya estaba preparado para no bloquearla (campo `actualizado` para fusión
+  por fecha). Se activa con un código de colección. Ver HU-09 en
+  `04-especificacion-funcional.md`.
 
 ## Fuera de alcance (por ahora)
 

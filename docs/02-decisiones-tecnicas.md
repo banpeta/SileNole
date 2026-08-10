@@ -66,6 +66,15 @@ complejidad (cuentas, conflictos) que no compensa aún.
   auth), por su capa gratuita y buena integración con PWAs. Decisión a
   confirmar cuando llegue esa fase.
 
+**Actualización (Fase 7, confirmada):** se adopta **Supabase** como backend de
+sincronización. Restricciones acordadas:
+- **No se crea un proyecto nuevo**: se reutiliza un proyecto Supabase gratuito
+  ya existente, compartido con otros proyectos.
+- Para no colisionar con otras tablas de ese proyecto compartido, **todas las
+  tablas de SileNole llevan el prefijo `silenole_`** (`silenole_colecciones`,
+  `silenole_estados`).
+- El detalle de identidad y de arquitectura offline queda en ADR-008 y ADR-009.
+
 ---
 
 ## ADR-005 · Carga de datos de la colección mediante `coleccion.json`
@@ -104,3 +113,61 @@ componentes. **Playwright** para pruebas E2E en fases avanzadas.
 
 **Consecuencias:** despliegue gratuito y automático; URL fija para "instalar" la
 app en el móvil.
+
+---
+
+## ADR-008 · Identidad por código de colección (sin cuentas)
+
+**Decisión:** la sincronización (Fase 7) empareja dispositivos con un **código de
+colección**: un identificador aleatorio (UUID v4) generado por la propia app, no
+una cuenta con email/contraseña.
+
+**Contexto:** el Principio 3 (doc 01) pide privacidad y "sin cuentas". El niño no
+va a gestionar un login. Necesitamos, aun así, saber qué dispositivos comparten
+la misma colección.
+
+**Flujo:**
+- Primer dispositivo: la app genera el `codigo` y lo muestra para copiarlo (y,
+  opcionalmente, como QR más adelante).
+- Segundo dispositivo: en la pantalla "Sincronizar" se pega el `codigo` y queda
+  emparejado. El `codigo` se guarda en local (IndexedDB).
+- Sin código introducido, la app sigue funcionando 100% en local, como hasta
+  ahora.
+
+**Modelo de amenazas (asumido y aceptado):**
+- El `codigo` **es** la credencial: quien lo tenga puede leer y escribir esa
+  colección. Al ser un UUID v4 aleatorio (122 bits), no es adivinable por fuerza
+  bruta.
+- El dato es de riesgo muy bajo (marcas de cromos de un niño, sin datos
+  personales). Se considera aceptable no tener autenticación fuerte.
+- **Acceso desde el cliente**: la app usa solo la **clave publishable/anon** de
+  Supabase (nunca la `service_role`). El aislamiento entre colecciones se
+  garantiza con **RLS** y funciones que exigen el `codigo` correcto en cada
+  operación.
+
+**Alternativa registrada (futura):** si algún día se quiere endurecer, se puede
+añadir **magic link por email** sin rehacer el modelo de datos (el `codigo`
+pasaría a asociarse a un usuario autenticado).
+
+---
+
+## ADR-009 · Repositorio compuesto offline-first (local + nube)
+
+**Decisión:** la sincronización **no sustituye** a IndexedDB. Se añade un
+`RepositorioCompuesto` que combina el repositorio **local** (IndexedDB, fuente de
+verdad para lectura y escritura inmediata) con un **sincronizador** en segundo
+plano hacia Supabase.
+
+**Contexto:** el offline es un requisito duro (HU-06). La UI no debe bloquearse
+esperando a la red ni fallar sin conexión.
+
+**Consecuencias:**
+- Toda escritura va **primero a IndexedDB** (respuesta instantánea) y se apunta
+  en una **cola de salida (outbox)** para empujarse a la nube cuando haya red.
+- Al arrancar y al recuperar conexión, se **baja** el estado remoto y se
+  **fusiona** con el local (ver algoritmo LWW en `03-modelo-de-datos.md`).
+- La interfaz `ColeccionRepository` (ADR-003) no cambia: la UI sigue sin saber
+  de dónde vienen los datos. `RepositorioCompuesto` también implementa esa
+  interfaz.
+- La sincronización es una **mejora opcional**: si no hay `codigo` configurado o
+  no hay red, el `RepositorioCompuesto` se comporta como el local puro.
