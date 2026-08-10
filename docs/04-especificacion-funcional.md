@@ -134,6 +134,19 @@ portátil), sin crear una cuenta.
   **entonces** la nueva `version` del catálogo llega al otro, conservando el
   progreso de los números que siguen existiendo.
 
+**Primera sincronización (nunca se pisa lo local):**
+
+- **Dado** un dispositivo con datos locales (cromos marcados antes de activar la
+  sincronización) y una nube **vacía** para ese código,
+  **cuando** sincronizo por primera vez,
+  **entonces** se **conservan todos los datos locales** y se suben a la nube (no
+  se sobrescriben ni se borran).
+- **Dado** datos en ambos lados (local y nube),
+  **cuando** sincronizo por primera vez,
+  **entonces** se **fusiona** (no se reemplaza): por cada cromo gana el de
+  `actualizado` más reciente. La sincronización siempre es descargar + fusionar
+  + subir, nunca "descargar y reemplazar lo local".
+
 **Conflictos (last-write-wins):**
 
 - **Dado** un cambio en el mismo cromo en ambos dispositivos,
