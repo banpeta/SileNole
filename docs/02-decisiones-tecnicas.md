@@ -171,3 +171,35 @@ esperando a la red ni fallar sin conexión.
   interfaz.
 - La sincronización es una **mejora opcional**: si no hay `codigo` configurado o
   no hay red, el `RepositorioCompuesto` se comporta como el local puro.
+
+---
+
+## ADR-010 · Tiempo real por Broadcast (no postgres_changes)
+
+**Decisión:** para que los cambios aparezcan en el otro dispositivo **sin pulsar
+nada**, se usa **Supabase Realtime Broadcast** (mensajes efímeros pub/sub) en un
+canal nombrado con el `codigo` de colección. NO se usa `postgres_changes`.
+
+**Contexto:** `postgres_changes` entrega filas de la base de datos al cliente y
+para ello exige **políticas RLS de lectura** sobre las tablas para el rol anon.
+Eso expondría los datos de **todas** las colecciones (cualquiera con la clave
+anon podría leerlas), rompiendo el modelo de ADR-008 (acceso solo por funciones
+que exigen el `codigo`).
+
+**Cómo funciona:**
+- Broadcast **no lee la base de datos**: solo transmite un aviso ("ha habido un
+  cambio") por el canal del `codigo`. Quien lo recibe **descarga** por las RPC de
+  siempre (que exigen el `codigo`). Así no se expone ninguna tabla.
+- **Auto-subida**: un cambio local se sube automáticamente tras un pequeño
+  retardo (debounce, para agrupar toques seguidos) y entonces emite el aviso.
+- **Auto-bajada**: al recibir un aviso, el dispositivo hace descargar + fusionar
+  (LWW) y actualiza la pantalla.
+- **Sin bucles**: el canal ignora los avisos propios (`self: false`) y solo se
+  emite en cambios locales del usuario, no al recibir/al arrancar.
+
+**Degradación elegante:** si no hay red o el tiempo real no está disponible, se
+sigue sincronizando al arrancar, al reconectar (`online`) y con el botón manual.
+
+**Abstracción y pruebas:** la app depende de una interfaz `CrearCanal` /
+`CanalTiempoReal` (como `ClienteRpc` en ADR-008), con implementación Supabase
+(cargada de forma diferida) y un doble para los tests.

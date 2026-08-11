@@ -11,6 +11,7 @@
  */
 
 import { RepositorioSupabase, type ClienteRpc } from './repositorioSupabase';
+import type { CanalTiempoReal } from './tiempoReal';
 
 /**
  * `@supabase/supabase-js` se carga de forma DIFERIDA (import dinámico), para que
@@ -29,4 +30,34 @@ export async function crearClienteSupabase(): Promise<ClienteRpc | null> {
 export async function crearRepositorioSupabase(codigo: string): Promise<RepositorioSupabase | null> {
   const cliente = await crearClienteSupabase();
   return cliente ? new RepositorioSupabase(cliente, codigo) : null;
+}
+
+/**
+ * Canal de tiempo real (Fase 7.6, ADR-010) por Broadcast en el canal del
+ * `codigo`. No lee la base de datos: solo transmite/recibe avisos de cambio.
+ * `self: false` evita recibir los avisos propios. Devuelve null si no hay
+ * configuración de Supabase.
+ */
+export async function crearCanalSupabase(
+  codigo: string,
+  alRecibirCambio: () => void,
+): Promise<CanalTiempoReal | null> {
+  const url = import.meta.env.VITE_SUPABASE_URL;
+  const clave = import.meta.env.VITE_SUPABASE_ANON_KEY;
+  if (!url || !clave) return null;
+  const { createClient } = await import('@supabase/supabase-js');
+  const cliente = createClient(url, clave);
+  const canal = cliente.channel(`silenole-${codigo}`, {
+    config: { broadcast: { self: false } },
+  });
+  canal.on('broadcast', { event: 'cambio' }, () => alRecibirCambio());
+  canal.subscribe();
+  return {
+    emitir: () => {
+      void canal.send({ type: 'broadcast', event: 'cambio', payload: {} });
+    },
+    cerrar: () => {
+      void cliente.removeChannel(canal);
+    },
+  };
 }

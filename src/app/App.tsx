@@ -1,8 +1,9 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { RepositorioIndexedDB } from '../data/repositorioIndexedDB';
 import type { ColeccionRepository } from '../data/repositorio';
 import { RepositorioCompuesto } from '../data/repositorioCompuesto';
-import { crearRepositorioSupabase } from '../data/supabaseCliente';
+import { crearRepositorioSupabase, crearCanalSupabase } from '../data/supabaseCliente';
+import type { CanalTiempoReal, CrearCanal } from '../data/tiempoReal';
 import {
   generarCodigo,
   guardarCodigo,
@@ -44,12 +45,18 @@ interface Props {
   cargarSemilla?: CargarSemilla;
   /** Fábrica del repositorio remoto (por defecto Supabase; inyectable para tests). */
   crearRemoto?: CrearRemoto;
+  /** Fábrica del canal de tiempo real (por defecto Supabase; inyectable para tests). */
+  crearCanal?: CrearCanal;
+  /** Retardo (ms) del auto-sync tras un cambio local. Bajarlo en tests. */
+  retardoSyncMs?: number;
 }
 
 export function App({
   repo,
   cargarSemilla = cargarSemillaDesdePublic,
   crearRemoto = crearRepositorioSupabase,
+  crearCanal = crearCanalSupabase,
+  retardoSyncMs = 800,
 }: Props = {}) {
   const local = useMemo(() => repo ?? new RepositorioIndexedDB(), [repo]);
   const [codigo, setCodigo] = useState<string | null>(() => leerCodigo());
@@ -78,25 +85,52 @@ export function App({
     [local, remoto],
   );
 
+  const canalRef = useRef<CanalTiempoReal | null>(null);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  // Callback estable que useSileNole invoca en cada cambio del usuario; apunta
+  // (vía ref) a la auto-subida, definida más abajo.
+  const alCambioLocalRef = useRef<() => void>(() => {});
+
   const { cargando, error, coleccion, estados, alternar, ajustarRepes, importarCatalogo, recargar } =
-    useSileNole(repositorio, cargarSemilla);
+    useSileNole(repositorio, cargarSemilla, () => alCambioLocalRef.current());
   const [vista, setVista] = useState<Vista>({ nombre: 'inicio' });
   const [sincronizando, setSincronizando] = useState(false);
   const [pendiente, setPendiente] = useState(false);
 
-  const sincronizar = useCallback(async () => {
-    if (!codigo) return;
-    setSincronizando(true);
-    try {
-      await repositorio.sincronizar();
-      await recargar();
-    } finally {
-      setPendiente(repositorio.pendiente);
-      setSincronizando(false);
-    }
-  }, [codigo, repositorio, recargar]);
+  const sincronizar = useCallback(
+    async (opciones?: { emitir?: boolean }) => {
+      if (!codigo) return;
+      setSincronizando(true);
+      try {
+        await repositorio.sincronizar();
+        await recargar();
+        // Avisar a los demás dispositivos solo cuando el disparo es local.
+        if (opciones?.emitir) canalRef.current?.emitir();
+      } finally {
+        setPendiente(repositorio.pendiente);
+        setSincronizando(false);
+      }
+    },
+    [codigo, repositorio, recargar],
+  );
 
-  // Sincroniza al activar/arrancar (si hay código) y al recuperar la red.
+  // Auto-subida: tras un cambio del usuario, sube (con retardo para agrupar
+  // toques seguidos) y emite el aviso de tiempo real.
+  const programarPush = useCallback(() => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => void sincronizar({ emitir: true }), retardoSyncMs);
+  }, [sincronizar, retardoSyncMs]);
+  useEffect(() => {
+    alCambioLocalRef.current = programarPush;
+  }, [programarPush]);
+  useEffect(
+    () => () => {
+      if (debounceRef.current) clearTimeout(debounceRef.current);
+    },
+    [],
+  );
+
+  // Sincroniza al arrancar (si hay código) y al recuperar la red (sin emitir).
   useEffect(() => {
     if (!codigo) return;
     void sincronizar();
@@ -104,6 +138,27 @@ export function App({
     window.addEventListener('online', alReconectar);
     return () => window.removeEventListener('online', alReconectar);
   }, [codigo, sincronizar]);
+
+  // Tiempo real: suscripción al canal del código. Al recibir un aviso de otro
+  // dispositivo, baja los cambios (sin volver a emitir, para no hacer bucle).
+  useEffect(() => {
+    if (!codigo || !remoto) return;
+    let vivo = true;
+    let canal: CanalTiempoReal | null = null;
+    Promise.resolve(crearCanal(codigo, () => void sincronizar({ emitir: false }))).then((c) => {
+      if (!vivo) {
+        c?.cerrar();
+        return;
+      }
+      canal = c;
+      canalRef.current = c;
+    });
+    return () => {
+      vivo = false;
+      canal?.cerrar();
+      canalRef.current = null;
+    };
+  }, [codigo, remoto, crearCanal, sincronizar]);
 
   const activarSync = useCallback(() => {
     const nuevo = generarCodigo();
@@ -190,7 +245,7 @@ export function App({
                 pendiente={pendiente}
                 onActivar={activarSync}
                 onEmparejar={emparejar}
-                onSincronizar={() => void sincronizar()}
+                onSincronizar={() => void sincronizar({ emitir: true })}
                 onVolver={() => setVista({ nombre: 'inicio' })}
               />
             )}

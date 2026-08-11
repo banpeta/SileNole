@@ -168,6 +168,16 @@ portátil), sin crear una cuenta.
   empate, prevalece el remoto), reaplicando los invariantes del modelo (si el
   ganador queda `tenido: false`, sus `repes` pasan a `0`).
 
+**Tiempo real (ver ADR-010):**
+
+- **Dado** dos dispositivos emparejados y con conexión,
+  **cuando** cambio un cromo (tenido o repes) en uno,
+  **entonces** el cambio aparece en el otro **automáticamente**, sin pulsar
+  "Sincronizar ahora" (en unos segundos).
+- **Dado** que no hay conexión o el tiempo real no está disponible,
+  **entonces** se sigue sincronizando al arrancar, al reconectar y con el botón
+  manual (degradación elegante).
+
 **Offline-first (no romper HU-06, ver ADR-009):**
 
 - **Dado** que hago cambios sin conexión,

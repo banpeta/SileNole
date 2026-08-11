@@ -35,6 +35,9 @@ export interface EstadoSileNole {
 export function useSileNole(
   repo: ColeccionRepository,
   cargarSemilla: CargarSemilla,
+  /** Se invoca tras cada cambio DEL USUARIO (marcar, repes, importar), para la
+   *  auto-subida en tiempo real. No se llama al recargar desde la nube. */
+  onCambioLocal?: () => void,
 ): EstadoSileNole {
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -45,6 +48,10 @@ export function useSileNole(
   // una versión obsoleta dentro de `alternar`.
   const estadosRef = useRef(estados);
   estadosRef.current = estados;
+
+  // Ref al callback para llamarlo sin recrear las acciones.
+  const onCambioRef = useRef(onCambioLocal);
+  onCambioRef.current = onCambioLocal;
 
   useEffect(() => {
     let vivo = true;
@@ -76,6 +83,7 @@ export function useSileNole(
       setEstados(mapa);
       // Guardado automático (no bloquea la UI).
       void repo.guardarEstado(nuevo);
+      onCambioRef.current?.();
     },
     [repo],
   );
@@ -90,6 +98,7 @@ export function useSileNole(
       estadosRef.current = mapa;
       setEstados(mapa);
       void repo.guardarEstado(nuevo);
+      onCambioRef.current?.();
     },
     [repo],
   );
@@ -103,6 +112,7 @@ export function useSileNole(
         setColeccion(col);
         estadosRef.current = mapa;
         setEstados(mapa);
+        onCambioRef.current?.();
       }
       return resultado;
     },

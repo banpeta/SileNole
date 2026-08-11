@@ -1,7 +1,8 @@
 import { describe, it, expect, beforeEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor, act } from '@testing-library/react';
 import { App } from './App';
 import { RepositorioEnMemoria } from '../data/repositorio';
+import type { CrearCanal } from '../data/tiempoReal';
 import { coleccionEjemplo } from '../test/fixtures';
 
 /**
@@ -141,5 +142,92 @@ describe('App — flujo de consulta y marcado', () => {
 
     // Tras el sync de arranque, el progreso local refleja el cromo 2 de la nube.
     await waitFor(() => expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '1'));
+  });
+});
+
+describe('App — sincronización en tiempo real (HU-09, ADR-010)', () => {
+  const CODIGO = '55555555-5555-4555-8555-555555555555';
+
+  /** Doble del canal: captura el callback de recepción y cuenta las emisiones. */
+  function canalFalso() {
+    const estado = { recibir: null as null | (() => void), emit: 0, cerrado: false };
+    const crear: CrearCanal = (_codigo, alRecibir) => {
+      estado.recibir = alRecibir;
+      return {
+        emitir: () => {
+          estado.emit++;
+        },
+        cerrar: () => {
+          estado.cerrado = true;
+        },
+      };
+    };
+    return { estado, crear };
+  }
+
+  it('sube un cambio local automáticamente y avisa por el canal (sin pulsar nada)', async () => {
+    localStorage.setItem('silenole:codigo', CODIGO);
+    const local = new RepositorioEnMemoria();
+    const remoto = new RepositorioEnMemoria();
+    const canal = canalFalso();
+    render(
+      <App
+        repo={local}
+        cargarSemilla={semilla}
+        crearRemoto={() => remoto}
+        crearCanal={canal.crear}
+        retardoSyncMs={10}
+      />,
+    );
+    await screen.findByRole('progressbar');
+
+    // Marcar el cromo 1 SIN ir a la pantalla de Sincronizar.
+    fireEvent.click(screen.getByRole('button', { name: /equipos/i }));
+    fireEvent.click(await screen.findByRole('button', { name: /Equipo A/ }));
+    fireEvent.click(await screen.findByRole('button', { name: /Cromo 1(,|$)/i }));
+
+    // Se sube solo a la nube (auto-push tras el retardo)...
+    await waitFor(async () =>
+      expect((await remoto.cargarEstados()).some((e) => e.numero === '1' && e.tenido)).toBe(true),
+    );
+    // ...y se emite el aviso de tiempo real a los demás dispositivos.
+    await waitFor(() => expect(canal.estado.emit).toBeGreaterThan(0));
+  });
+
+  it('baja un cambio remoto al recibir un aviso, sin pulsar nada', async () => {
+    localStorage.setItem('silenole:codigo', CODIGO);
+    const local = new RepositorioEnMemoria();
+    const remoto = new RepositorioEnMemoria();
+    const canal = canalFalso();
+    render(
+      <App
+        repo={local}
+        cargarSemilla={semilla}
+        crearRemoto={() => remoto}
+        crearCanal={canal.crear}
+        retardoSyncMs={10}
+      />,
+    );
+    await waitFor(() =>
+      expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '0'),
+    );
+    // El canal ya está suscrito (tenemos el callback de recepción).
+    await waitFor(() => expect(canal.estado.recibir).not.toBeNull());
+
+    // Otro dispositivo marca el cromo 1 en la nube y emite el aviso.
+    await remoto.guardarEstado({
+      numero: '1',
+      tenido: true,
+      repes: 0,
+      actualizado: '2026-08-11T12:00:00.000Z',
+    });
+    await act(async () => {
+      canal.estado.recibir!();
+    });
+
+    // La app baja y fusiona el cambio automáticamente (progreso pasa a 1).
+    await waitFor(() =>
+      expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '1'),
+    );
   });
 });

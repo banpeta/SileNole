@@ -114,10 +114,13 @@ HU-09. Se desarrolla en sub-fases, cada una TDD (test primero) y sin regresiones
   (activar/mostrar código, emparejar validando formato, estado), y cableado en
   la app: siempre `RepositorioCompuesto`, auto-sync al activar/arrancar y al
   evento `online`. Verificado de punta a punta contra Supabase en el navegador.
-- **7.5 · Despliegue y verificación en dispositivos reales.** Pasar
-  `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` al build de GitHub Actions
-  (secrets del repo). Probar en móvil + portátil reales (emparejar y ver que los
-  cambios se reflejan). Pendiente.
+- **7.5 · Despliegue y verificación en dispositivos reales. (entregada) ✅**
+  Secrets en GitHub Actions, desplegado en Pages y verificado en móvil + portátil
+  reales (emparejar, subir y bajar cambios).
+- **7.6 · Sincronización en tiempo real (ADR-010).** Supabase Realtime Broadcast
+  en un canal por `codigo`: auto-subida de cambios locales (con debounce) y
+  auto-bajada al recibir avisos, sin pulsar nada. Degradación elegante si no hay
+  tiempo real. Abstracción `CrearCanal`/`CanalTiempoReal` con doble para tests.
 
 > Configuración: la URL y la clave publishable/anon de Supabase se inyectan por
 > variables de entorno de Vite (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`) y
