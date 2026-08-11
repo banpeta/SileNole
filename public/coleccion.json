@@ -2,7 +2,7 @@
   "id": "laliga-este-26-27",
   "nombre": "LaLiga Este 2026/27",
   "temporada": "2026/2027",
-  "version": 2,
+  "version": 3,
   "categorias": [
     {
       "id": "deportivo-alaves",
@@ -137,7 +137,8 @@
           "nombre": null,
           "orden": 21
         }
-      ]
+      ],
+      "escudo": "escudos/deportivo-alaves.webp"
     },
     {
       "id": "athletic-club",
@@ -284,7 +285,8 @@
           "nombre": null,
           "orden": 23
         }
-      ]
+      ],
+      "escudo": "escudos/athletic-club.webp"
     },
     {
       "id": "atletico-de-madrid",
@@ -425,7 +427,8 @@
           "nombre": null,
           "orden": 22
         }
-      ]
+      ],
+      "escudo": "escudos/atletico-de-madrid.webp"
     },
     {
       "id": "fc-barcelona",
@@ -560,7 +563,8 @@
           "nombre": null,
           "orden": 21
         }
-      ]
+      ],
+      "escudo": "escudos/fc-barcelona.webp"
     },
     {
       "id": "real-betis",
@@ -695,7 +699,8 @@
           "nombre": null,
           "orden": 21
         }
-      ]
+      ],
+      "escudo": "escudos/real-betis.webp"
     },
     {
       "id": "rc-celta-de-vigo",
@@ -836,7 +841,8 @@
           "nombre": null,
           "orden": 22
         }
-      ]
+      ],
+      "escudo": "escudos/rc-celta-de-vigo.webp"
     },
     {
       "id": "deportivo-la-coruna",
@@ -971,7 +977,8 @@
           "nombre": null,
           "orden": 21
         }
-      ]
+      ],
+      "escudo": "escudos/deportivo-la-coruna.webp"
     },
     {
       "id": "elche-cf",
@@ -1112,7 +1119,8 @@
           "nombre": null,
           "orden": 22
         }
-      ]
+      ],
+      "escudo": "escudos/elche-cf.webp"
     },
     {
       "id": "rcd-espanyol",
@@ -1241,7 +1249,8 @@
           "nombre": null,
           "orden": 20
         }
-      ]
+      ],
+      "escudo": "escudos/rcd-espanyol.webp"
     },
     {
       "id": "getafe-cf",
@@ -1370,7 +1379,8 @@
           "nombre": null,
           "orden": 20
         }
-      ]
+      ],
+      "escudo": "escudos/getafe-cf.webp"
     },
     {
       "id": "levante-ud",
@@ -1505,7 +1515,8 @@
           "nombre": null,
           "orden": 21
         }
-      ]
+      ],
+      "escudo": "escudos/levante-ud.webp"
     },
     {
       "id": "real-madrid-cf",
@@ -1652,7 +1663,8 @@
           "nombre": null,
           "orden": 23
         }
-      ]
+      ],
+      "escudo": "escudos/real-madrid-cf.webp"
     },
     {
       "id": "malaga-cf",
@@ -1787,7 +1799,8 @@
           "nombre": null,
           "orden": 21
         }
-      ]
+      ],
+      "escudo": "escudos/malaga-cf.webp"
     },
     {
       "id": "ca-osasuna",
@@ -1928,7 +1941,8 @@
           "nombre": null,
           "orden": 22
         }
-      ]
+      ],
+      "escudo": "escudos/ca-osasuna.webp"
     },
     {
       "id": "racing-de-santander",
@@ -2069,7 +2083,8 @@
           "nombre": null,
           "orden": 22
         }
-      ]
+      ],
+      "escudo": "escudos/racing-de-santander.webp"
     },
     {
       "id": "rayo-vallecano",
@@ -2198,7 +2213,8 @@
           "nombre": null,
           "orden": 20
         }
-      ]
+      ],
+      "escudo": "escudos/rayo-vallecano.webp"
     },
     {
       "id": "real-sociedad",
@@ -2333,7 +2349,8 @@
           "nombre": null,
           "orden": 21
         }
-      ]
+      ],
+      "escudo": "escudos/real-sociedad.webp"
     },
     {
       "id": "sevilla-fc",
@@ -2468,7 +2485,8 @@
           "nombre": null,
           "orden": 21
         }
-      ]
+      ],
+      "escudo": "escudos/sevilla-fc.webp"
     },
     {
       "id": "valencia-cf",
@@ -2609,7 +2627,8 @@
           "nombre": null,
           "orden": 22
         }
-      ]
+      ],
+      "escudo": "escudos/valencia-cf.webp"
     },
     {
       "id": "villarreal-cf",
@@ -2756,7 +2775,8 @@
           "nombre": null,
           "orden": 23
         }
-      ]
+      ],
+      "escudo": "escudos/villarreal-cf.webp"
     },
     {
       "id": "adn",
