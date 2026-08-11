@@ -183,6 +183,22 @@ describe('DetalleCategoria — HU-02/HU-03', () => {
     expect(onToggle).toHaveBeenCalledWith('2');
   });
 
+  it('muestra el escudo junto al nombre si la categoría lo tiene', () => {
+    const cat = { ...coleccionEjemplo().categorias[0], escudo: 'escudos/a.webp' };
+    const { container } = render(
+      <DetalleCategoria
+        categoria={cat}
+        estados={mapaDe()}
+        onToggle={noop}
+        onAjustarRepes={noop}
+        onVolver={noop}
+      />,
+    );
+    const img = container.querySelector('h2 img.escudo') as HTMLImageElement | null;
+    expect(img).not.toBeNull();
+    expect(img!.getAttribute('src')).toContain('escudos/a.webp');
+  });
+
   // HU-08: gestión de repes
   it('solo muestra el control de repes en los cromos que se tienen', () => {
     render(
@@ -329,6 +345,17 @@ describe('PantallaFaltan — HU-05', () => {
       />,
     );
     expect(screen.getByText(/completa/i)).toBeInTheDocument();
+  });
+
+  it('muestra el escudo junto al nombre de la categoría', () => {
+    const col = coleccionEjemplo();
+    col.categorias[0].escudo = 'escudos/a.webp';
+    const { container } = render(
+      <PantallaFaltan coleccion={col} estados={mapaDe()} onVolver={noop} />,
+    );
+    const img = container.querySelector('h3 img.escudo') as HTMLImageElement | null;
+    expect(img).not.toBeNull();
+    expect(img!.getAttribute('src')).toContain('escudos/a.webp');
   });
 });
 

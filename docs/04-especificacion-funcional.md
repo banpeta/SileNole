@@ -23,9 +23,11 @@ Fichajes, para encontrarlos fácil.
 - **Dado** una categoría con todos los cromos conseguidos,
   **entonces** se marca visualmente como **completa** (✓).
 - **Dado** una categoría con `escudo` definido,
-  **entonces** se muestra su escudo **después del nombre** en la lista. Si la
-  categoría no tiene escudo (o la imagen no carga), no se muestra imagen y el
-  resto se ve con normalidad.
+  **entonces** se muestra su escudo **después del nombre** en la lista de
+  categorías, en la pantalla de detalle del equipo (HU-02) y junto al nombre de
+  la categoría en la pantalla "Me faltan" (HU-05). Si la categoría no tiene
+  escudo (o la imagen no carga), no se muestra imagen y el resto se ve con
+  normalidad.
 
 ## HU-02 · Ver los cromos de una categoría `[MVP]`
 

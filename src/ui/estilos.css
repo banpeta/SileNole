@@ -14,6 +14,17 @@
   box-sizing: border-box;
 }
 
+/* Los controles de formulario no heredan text-transform por defecto en muchos
+   navegadores: forzamos la herencia para que el MAYÚSCULAS del .app (Principio 5)
+   también afecte a botones, entradas, etc. Las excepciones (editor de JSON,
+   código de sync) lo anulan con text-transform: none por clase. */
+button,
+input,
+select,
+textarea {
+  text-transform: inherit;
+}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -137,13 +148,13 @@ main {
   font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 0.4rem;
 }
 
 .escudo {
   height: 1.5rem;
   width: auto;
   max-width: 1.8rem;
+  margin-inline-start: 0.4rem;
   object-fit: contain;
   vertical-align: middle;
 }

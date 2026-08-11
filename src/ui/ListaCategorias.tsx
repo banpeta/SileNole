@@ -1,6 +1,7 @@
 import type { Coleccion } from '../model/tipos';
 import type { MapaEstados } from '../domain/estado';
 import { progresoCategoria } from '../domain/progreso';
+import { Escudo } from './Escudo';
 
 interface Props {
   coleccion: Coleccion;
@@ -30,17 +31,7 @@ export function ListaCategorias({ coleccion, estados, onAbrir, onVolver }: Props
               >
                 <span className="nombre">
                   {cat.nombre}
-                  {cat.escudo && (
-                    <img
-                      className="escudo"
-                      src={`${import.meta.env.BASE_URL}${cat.escudo}`}
-                      alt=""
-                      // Si el escudo aún no está disponible, se oculta (sin icono roto).
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none';
-                      }}
-                    />
-                  )}
+                  <Escudo ruta={cat.escudo} />
                 </span>
                 <span className="progreso">
                   {p.conseguidos}/{p.total}

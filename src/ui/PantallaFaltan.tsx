@@ -1,6 +1,7 @@
 import { etiquetaVisible, type Coleccion } from '../model/tipos';
 import type { MapaEstados } from '../domain/estado';
 import { cromosQueFaltan } from '../domain/progreso';
+import { Escudo } from './Escudo';
 
 interface Props {
   coleccion: Coleccion;
@@ -31,6 +32,7 @@ export function PantallaFaltan({ coleccion, estados, onVolver }: Props) {
                 />
               )}
               {grupo.categoria.nombre}
+              <Escudo ruta={grupo.categoria.escudo} />
             </h3>
             <ul className="lista-faltan">
               {grupo.cromos.map((cromo) => (

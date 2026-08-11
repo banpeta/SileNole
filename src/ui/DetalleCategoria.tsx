@@ -1,6 +1,7 @@
 import { etiquetaVisible, type Categoria } from '../model/tipos';
 import { estadoDe, type MapaEstados } from '../domain/estado';
 import { progresoCategoria } from '../domain/progreso';
+import { Escudo } from './Escudo';
 
 interface Props {
   categoria: Categoria;
@@ -34,6 +35,7 @@ export function DetalleCategoria({
           <span className="punto-color" style={{ background: categoria.color }} aria-hidden="true" />
         )}
         {categoria.nombre}
+        <Escudo ruta={categoria.escudo} />
       </h2>
       <p className="progreso-detalle">
         {p.conseguidos}/{p.total}
