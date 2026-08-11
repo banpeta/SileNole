@@ -199,6 +199,20 @@ describe('DetalleCategoria — HU-02/HU-03', () => {
     expect(img!.getAttribute('src')).toContain('escudos/a.webp');
   });
 
+  it('muestra el nombre del jugador bajo el número en la rejilla', () => {
+    render(
+      <DetalleCategoria
+        categoria={coleccionEjemplo().categorias[0]}
+        estados={mapaDe()}
+        onToggle={noop}
+        onAjustarRepes={noop}
+        onVolver={noop}
+      />,
+    );
+    expect(screen.getByText('Jugador Uno')).toBeInTheDocument();
+    expect(screen.getByText('Jugador Dos')).toBeInTheDocument();
+  });
+
   // HU-08: gestión de repes
   it('solo muestra el control de repes en los cromos que se tienen', () => {
     render(

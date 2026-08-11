@@ -2,7 +2,7 @@
   "id": "laliga-este-26-27",
   "nombre": "LaLiga Este 2026/27",
   "temporada": "2026/2027",
-  "version": 4,
+  "version": 5,
   "categorias": [
     {
       "id": "deportivo-alaves",
@@ -30,100 +30,112 @@
           "orden": 3
         },
         {
+          "numero": "deportivo-alaves-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
           "numero": "deportivo-alaves-5",
           "etiqueta": "5",
           "nombre": "Jonny",
-          "orden": 4
+          "orden": 5
         },
         {
           "numero": "deportivo-alaves-6",
           "etiqueta": "6",
           "nombre": "Koski",
-          "orden": 5
+          "orden": 6
         },
         {
           "numero": "deportivo-alaves-7",
           "etiqueta": "7",
           "nombre": "Tenaglia",
-          "orden": 6
+          "orden": 7
         },
         {
           "numero": "deportivo-alaves-8",
           "etiqueta": "8",
           "nombre": "Parada",
-          "orden": 7
+          "orden": 8
         },
         {
           "numero": "deportivo-alaves-9",
           "etiqueta": "9",
           "nombre": "Yusi",
-          "orden": 8
+          "orden": 9
+        },
+        {
+          "numero": "deportivo-alaves-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 10
         },
         {
           "numero": "deportivo-alaves-11",
           "etiqueta": "11",
           "nombre": "Benavidez",
-          "orden": 9
+          "orden": 11
         },
         {
           "numero": "deportivo-alaves-12",
           "etiqueta": "12",
           "nombre": "Blanco",
-          "orden": 10
+          "orden": 12
         },
         {
           "numero": "deportivo-alaves-13",
           "etiqueta": "13",
           "nombre": "Guevara",
-          "orden": 11
+          "orden": 13
         },
         {
           "numero": "deportivo-alaves-14",
           "etiqueta": "14",
           "nombre": "Aleñá",
-          "orden": 12
+          "orden": 14
         },
         {
           "numero": "deportivo-alaves-15",
           "etiqueta": "15",
           "nombre": "Pablo Ibáñez",
-          "orden": 13
+          "orden": 15
         },
         {
           "numero": "deportivo-alaves-16",
           "etiqueta": "16",
           "nombre": "Denis Suárez",
-          "orden": 14
+          "orden": 16
         },
         {
           "numero": "deportivo-alaves-17",
           "etiqueta": "17",
           "nombre": "Ángel Pérez",
-          "orden": 15
+          "orden": 17
         },
         {
           "numero": "deportivo-alaves-18A",
           "etiqueta": "18A",
           "nombre": "Abde",
-          "orden": 16
+          "orden": 18
         },
         {
           "numero": "deportivo-alaves-18B",
           "etiqueta": "18B",
           "nombre": "Mañas",
-          "orden": 17
+          "orden": 19
         },
         {
           "numero": "deportivo-alaves-19",
           "etiqueta": "19",
           "nombre": "Toni Martínez",
-          "orden": 18
+          "orden": 20
         },
         {
           "numero": "deportivo-alaves-20",
           "etiqueta": "20",
           "nombre": "Boyé",
-          "orden": 19
+          "orden": 21
         }
       ],
       "escudo": "escudos/deportivo-alaves.webp"
@@ -640,46 +652,52 @@
           "orden": 13
         },
         {
+          "numero": "real-betis-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 14
+        },
+        {
           "numero": "real-betis-14",
           "etiqueta": "14",
           "nombre": "Lo Celso",
-          "orden": 14
+          "orden": 15
         },
         {
           "numero": "real-betis-15",
           "etiqueta": "15",
           "nombre": "Pablo Fornals",
-          "orden": 15
+          "orden": 16
         },
         {
           "numero": "real-betis-16",
           "etiqueta": "16",
           "nombre": "Isco",
-          "orden": 16
+          "orden": 17
         },
         {
           "numero": "real-betis-17",
           "etiqueta": "17",
           "nombre": "Riquelme",
-          "orden": 17
+          "orden": 18
         },
         {
           "numero": "real-betis-18",
           "etiqueta": "18",
           "nombre": "Antony",
-          "orden": 18
+          "orden": 19
         },
         {
           "numero": "real-betis-19",
           "etiqueta": "19",
           "nombre": "Cucho Hernández",
-          "orden": 19
+          "orden": 20
         },
         {
           "numero": "real-betis-20",
           "etiqueta": "20",
           "nombre": "Abde",
-          "orden": 20
+          "orden": 21
         }
       ],
       "escudo": "escudos/real-betis.webp"
@@ -936,22 +954,28 @@
           "orden": 17
         },
         {
+          "numero": "deportivo-la-coruna-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 18
+        },
+        {
           "numero": "deportivo-la-coruna-18",
           "etiqueta": "18",
           "nombre": "Yeremay",
-          "orden": 18
+          "orden": 19
         },
         {
           "numero": "deportivo-la-coruna-19",
           "etiqueta": "19",
           "nombre": "Eddahchouri",
-          "orden": 19
+          "orden": 20
         },
         {
           "numero": "deportivo-la-coruna-20",
           "etiqueta": "20",
           "nombre": "Nsongo",
-          "orden": 20
+          "orden": 21
         }
       ],
       "escudo": "escudos/deportivo-la-coruna.webp"
@@ -982,106 +1006,118 @@
           "orden": 3
         },
         {
+          "numero": "elche-cf-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
           "numero": "elche-cf-5",
           "etiqueta": "5",
           "nombre": "Pétrot",
-          "orden": 4
+          "orden": 5
         },
         {
           "numero": "elche-cf-6",
           "etiqueta": "6",
           "nombre": "Chust",
-          "orden": 5
+          "orden": 6
         },
         {
           "numero": "elche-cf-7",
           "etiqueta": "7",
           "nombre": "Bigas",
-          "orden": 6
+          "orden": 7
         },
         {
           "numero": "elche-cf-8",
           "etiqueta": "8",
           "nombre": "Affengruber",
-          "orden": 7
+          "orden": 8
         },
         {
           "numero": "elche-cf-9A",
           "etiqueta": "9A",
           "nombre": "Pedrosa",
-          "orden": 8
+          "orden": 9
         },
         {
           "numero": "elche-cf-9B",
           "etiqueta": "9B",
           "nombre": "Sangaré",
-          "orden": 9
+          "orden": 10
         },
         {
           "numero": "elche-cf-10",
           "etiqueta": "10",
           "nombre": "German Valera",
-          "orden": 10
+          "orden": 11
         },
         {
           "numero": "elche-cf-11",
           "etiqueta": "11",
           "nombre": "Martim Neto",
-          "orden": 11
+          "orden": 12
         },
         {
           "numero": "elche-cf-12",
           "etiqueta": "12",
           "nombre": "Gonzalo Villar",
-          "orden": 12
+          "orden": 13
         },
         {
           "numero": "elche-cf-13A",
           "etiqueta": "13A",
           "nombre": "Fede Redondo",
-          "orden": 13
+          "orden": 14
         },
         {
           "numero": "elche-cf-13B",
           "etiqueta": "13B",
           "nombre": "Jon Chetauya",
-          "orden": 14
+          "orden": 15
         },
         {
           "numero": "elche-cf-14",
           "etiqueta": "14",
           "nombre": "Marc Aguado",
-          "orden": 15
+          "orden": 16
         },
         {
           "numero": "elche-cf-15",
           "etiqueta": "15",
           "nombre": "Josan",
-          "orden": 16
+          "orden": 17
         },
         {
           "numero": "elche-cf-16",
           "etiqueta": "16",
           "nombre": "Morente",
-          "orden": 17
+          "orden": 18
+        },
+        {
+          "numero": "elche-cf-17",
+          "etiqueta": "17",
+          "nombre": null,
+          "orden": 19
         },
         {
           "numero": "elche-cf-18",
           "etiqueta": "18",
           "nombre": "Cepeda",
-          "orden": 18
+          "orden": 20
         },
         {
           "numero": "elche-cf-19",
           "etiqueta": "19",
           "nombre": "Diangana",
-          "orden": 19
+          "orden": 21
         },
         {
           "numero": "elche-cf-20",
           "etiqueta": "20",
           "nombre": "Yago Santiago",
-          "orden": 20
+          "orden": 22
         }
       ],
       "escudo": "escudos/elche-cf.webp"
@@ -1148,58 +1184,70 @@
           "orden": 9
         },
         {
+          "numero": "rcd-espanyol-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 10
+        },
+        {
           "numero": "rcd-espanyol-11",
           "etiqueta": "11",
           "nombre": "Pol Lozano",
-          "orden": 10
+          "orden": 11
         },
         {
           "numero": "rcd-espanyol-12",
           "etiqueta": "12",
           "nombre": "Urko",
-          "orden": 11
+          "orden": 12
         },
         {
           "numero": "rcd-espanyol-13",
           "etiqueta": "13",
           "nombre": "Edu Expósito",
-          "orden": 12
+          "orden": 13
         },
         {
           "numero": "rcd-espanyol-14",
           "etiqueta": "14",
           "nombre": "Jofre",
-          "orden": 13
+          "orden": 14
+        },
+        {
+          "numero": "rcd-espanyol-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 15
         },
         {
           "numero": "rcd-espanyol-16",
           "etiqueta": "16",
           "nombre": "Dolan",
-          "orden": 14
+          "orden": 16
         },
         {
           "numero": "rcd-espanyol-17",
           "etiqueta": "17",
           "nombre": "Pere Milla",
-          "orden": 15
+          "orden": 17
         },
         {
           "numero": "rcd-espanyol-18",
           "etiqueta": "18",
           "nombre": "Puado",
-          "orden": 16
+          "orden": 18
         },
         {
           "numero": "rcd-espanyol-19",
           "etiqueta": "19",
           "nombre": "Kike García",
-          "orden": 17
+          "orden": 19
         },
         {
           "numero": "rcd-espanyol-20",
           "etiqueta": "20",
           "nombre": "Roberto Fernández",
-          "orden": 18
+          "orden": 20
         }
       ],
       "escudo": "escudos/rcd-espanyol.webp"
@@ -1284,28 +1332,52 @@
           "orden": 12
         },
         {
+          "numero": "getafe-cf-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 13
+        },
+        {
+          "numero": "getafe-cf-14",
+          "etiqueta": "14",
+          "nombre": null,
+          "orden": 14
+        },
+        {
+          "numero": "getafe-cf-15",
+          "etiqueta": "15",
+          "nombre": null,
+          "orden": 15
+        },
+        {
+          "numero": "getafe-cf-16",
+          "etiqueta": "16",
+          "nombre": null,
+          "orden": 16
+        },
+        {
           "numero": "getafe-cf-17",
           "etiqueta": "17",
           "nombre": "Álex Sancris",
-          "orden": 13
+          "orden": 17
         },
         {
           "numero": "getafe-cf-18",
           "etiqueta": "18",
           "nombre": "Borja Mayoral",
-          "orden": 14
+          "orden": 18
         },
         {
           "numero": "getafe-cf-19",
           "etiqueta": "19",
           "nombre": "Luis Vázquez",
-          "orden": 15
+          "orden": 19
         },
         {
           "numero": "getafe-cf-20",
           "etiqueta": "20",
           "nombre": "Satriano",
-          "orden": 16
+          "orden": 20
         }
       ],
       "escudo": "escudos/getafe-cf.webp"
@@ -1360,76 +1432,88 @@
           "orden": 7
         },
         {
+          "numero": "levante-ud-8",
+          "etiqueta": "8",
+          "nombre": null,
+          "orden": 8
+        },
+        {
           "numero": "levante-ud-9",
           "etiqueta": "9",
           "nombre": "Manu Sánchez",
-          "orden": 8
+          "orden": 9
         },
         {
           "numero": "levante-ud-10",
           "etiqueta": "10",
           "nombre": "Arriaga",
-          "orden": 9
+          "orden": 10
         },
         {
           "numero": "levante-ud-11",
           "etiqueta": "11",
           "nombre": "Oriol Rey",
-          "orden": 10
+          "orden": 11
         },
         {
           "numero": "levante-ud-12",
           "etiqueta": "12",
           "nombre": "Olasagasti",
-          "orden": 11
+          "orden": 12
+        },
+        {
+          "numero": "levante-ud-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 13
         },
         {
           "numero": "levante-ud-14A",
           "etiqueta": "14A",
           "nombre": "Victor García",
-          "orden": 12
+          "orden": 14
         },
         {
           "numero": "levante-ud-14B",
           "etiqueta": "14B",
           "nombre": "Paco Cortés",
-          "orden": 13
+          "orden": 15
         },
         {
           "numero": "levante-ud-15",
           "etiqueta": "15",
           "nombre": "Carlos Álvarez",
-          "orden": 14
+          "orden": 16
         },
         {
           "numero": "levante-ud-16",
           "etiqueta": "16",
           "nombre": "Tunde",
-          "orden": 15
+          "orden": 17
         },
         {
           "numero": "levante-ud-17",
           "etiqueta": "17",
           "nombre": "Brugué",
-          "orden": 16
+          "orden": 18
         },
         {
           "numero": "levante-ud-18",
           "etiqueta": "18",
           "nombre": "Iván Romero",
-          "orden": 17
+          "orden": 19
         },
         {
           "numero": "levante-ud-19",
           "etiqueta": "19",
           "nombre": "Etta Eyong",
-          "orden": 18
+          "orden": 20
         },
         {
           "numero": "levante-ud-20",
           "etiqueta": "20",
           "nombre": "Carlos Espí",
-          "orden": 19
+          "orden": 21
         }
       ],
       "escudo": "escudos/levante-ud.webp"
@@ -1626,82 +1710,94 @@
           "orden": 6
         },
         {
+          "numero": "malaga-cf-7",
+          "etiqueta": "7",
+          "nombre": null,
+          "orden": 7
+        },
+        {
           "numero": "malaga-cf-8",
           "etiqueta": "8",
           "nombre": "Einar Galilea",
-          "orden": 7
+          "orden": 8
         },
         {
           "numero": "malaga-cf-9",
           "etiqueta": "9",
           "nombre": "Rafita",
-          "orden": 8
+          "orden": 9
+        },
+        {
+          "numero": "malaga-cf-10",
+          "etiqueta": "10",
+          "nombre": null,
+          "orden": 10
         },
         {
           "numero": "malaga-cf-11",
           "etiqueta": "11",
           "nombre": "Izan Merino",
-          "orden": 9
+          "orden": 11
         },
         {
           "numero": "malaga-cf-12",
           "etiqueta": "12",
           "nombre": "Dani Lorenzo",
-          "orden": 10
+          "orden": 12
         },
         {
           "numero": "malaga-cf-13A",
           "etiqueta": "13A",
           "nombre": "Rafa Rodríguez",
-          "orden": 11
+          "orden": 13
         },
         {
           "numero": "malaga-cf-13B",
           "etiqueta": "13B",
           "nombre": "Juanpe",
-          "orden": 12
+          "orden": 14
         },
         {
           "numero": "malaga-cf-14",
           "etiqueta": "14",
           "nombre": "Dotor",
-          "orden": 13
+          "orden": 15
         },
         {
           "numero": "malaga-cf-15",
           "etiqueta": "15",
           "nombre": "Aarón Ochoa",
-          "orden": 14
+          "orden": 16
         },
         {
           "numero": "malaga-cf-16",
           "etiqueta": "16",
           "nombre": "Larrubia",
-          "orden": 15
+          "orden": 17
         },
         {
           "numero": "malaga-cf-17",
           "etiqueta": "17",
           "nombre": "Lobete",
-          "orden": 16
+          "orden": 18
         },
         {
           "numero": "malaga-cf-18",
           "etiqueta": "18",
           "nombre": "Adrián Niño",
-          "orden": 17
+          "orden": 19
         },
         {
           "numero": "malaga-cf-19",
           "etiqueta": "19",
           "nombre": "Joaquín",
-          "orden": 18
+          "orden": 20
         },
         {
           "numero": "malaga-cf-20",
           "etiqueta": "20",
           "nombre": "Chupe",
-          "orden": 19
+          "orden": 21
         }
       ],
       "escudo": "escudos/malaga-cf.webp"
@@ -1868,112 +1964,124 @@
           "orden": 2
         },
         {
+          "numero": "racing-de-santander-3",
+          "etiqueta": "3",
+          "nombre": null,
+          "orden": 3
+        },
+        {
           "numero": "racing-de-santander-4",
           "etiqueta": "4",
           "nombre": "Eriksson",
-          "orden": 3
+          "orden": 4
         },
         {
           "numero": "racing-de-santander-5",
           "etiqueta": "5",
           "nombre": "Mantilla",
-          "orden": 4
+          "orden": 5
         },
         {
           "numero": "racing-de-santander-6",
           "etiqueta": "6",
           "nombre": "Sangalli",
-          "orden": 5
+          "orden": 6
         },
         {
           "numero": "racing-de-santander-7",
           "etiqueta": "7",
           "nombre": "Facu González",
-          "orden": 6
+          "orden": 7
         },
         {
           "numero": "racing-de-santander-8",
           "etiqueta": "8",
           "nombre": "Javi Castro",
-          "orden": 7
+          "orden": 8
         },
         {
           "numero": "racing-de-santander-9A",
           "etiqueta": "9A",
           "nombre": "Manu Hernando",
-          "orden": 8
+          "orden": 9
         },
         {
           "numero": "racing-de-santander-9B",
           "etiqueta": "9B",
           "nombre": "Mario García",
-          "orden": 9
+          "orden": 10
         },
         {
           "numero": "racing-de-santander-10",
           "etiqueta": "10",
           "nombre": "Jorge Salinas",
-          "orden": 10
+          "orden": 11
         },
         {
-          "numero": "racing-de-santander-11",
-          "etiqueta": "11",
-          "nombre": "Maguette",
-          "orden": 11
+          "numero": "racing-de-santander-11A",
+          "etiqueta": "11A",
+          "nombre": null,
+          "orden": 12
+        },
+        {
+          "numero": "racing-de-santander-11B",
+          "etiqueta": "11B",
+          "nombre": null,
+          "orden": 13
         },
         {
           "numero": "racing-de-santander-12",
           "etiqueta": "12",
           "nombre": "Gustavo Puerta",
-          "orden": 12
+          "orden": 14
         },
         {
           "numero": "racing-de-santander-13",
           "etiqueta": "13",
           "nombre": "Iñigo",
-          "orden": 13
+          "orden": 15
         },
         {
           "numero": "racing-de-santander-14",
           "etiqueta": "14",
           "nombre": "Aldasoro",
-          "orden": 14
+          "orden": 16
         },
         {
           "numero": "racing-de-santander-15",
           "etiqueta": "15",
           "nombre": "Suleiman",
-          "orden": 15
+          "orden": 17
         },
         {
           "numero": "racing-de-santander-16",
           "etiqueta": "16",
           "nombre": "Andrés Martín",
-          "orden": 16
+          "orden": 18
         },
         {
           "numero": "racing-de-santander-17",
           "etiqueta": "17",
           "nombre": "Guliashvili",
-          "orden": 17
+          "orden": 19
         },
         {
           "numero": "racing-de-santander-18",
           "etiqueta": "18",
           "nombre": "Iñigo Vicente",
-          "orden": 18
+          "orden": 20
         },
         {
           "numero": "racing-de-santander-19",
           "etiqueta": "19",
           "nombre": "Arana",
-          "orden": 19
+          "orden": 21
         },
         {
           "numero": "racing-de-santander-20",
           "etiqueta": "20",
           "nombre": "Villalibre",
-          "orden": 20
+          "orden": 22
         }
       ],
       "escudo": "escudos/racing-de-santander.webp"
@@ -2046,70 +2154,64 @@
           "orden": 10
         },
         {
-          "numero": "rayo-vallecano-11A",
-          "etiqueta": "11A",
-          "nombre": "Pedro Díaz",
+          "numero": "rayo-vallecano-11",
+          "etiqueta": "11",
+          "nombre": null,
           "orden": 11
-        },
-        {
-          "numero": "rayo-vallecano-11B",
-          "etiqueta": "11B",
-          "nombre": "Nteka",
-          "orden": 12
         },
         {
           "numero": "rayo-vallecano-12",
           "etiqueta": "12",
           "nombre": "Pathé Ciss",
-          "orden": 13
+          "orden": 12
         },
         {
           "numero": "rayo-vallecano-13",
           "etiqueta": "13",
           "nombre": "Óscar Valentín",
-          "orden": 14
+          "orden": 13
         },
         {
           "numero": "rayo-vallecano-14",
           "etiqueta": "14",
           "nombre": "Unai López",
-          "orden": 15
+          "orden": 14
         },
         {
           "numero": "rayo-vallecano-15",
           "etiqueta": "15",
           "nombre": "Isi",
-          "orden": 16
+          "orden": 15
         },
         {
           "numero": "rayo-vallecano-16",
           "etiqueta": "16",
           "nombre": "De Frutos",
-          "orden": 17
+          "orden": 16
         },
         {
           "numero": "rayo-vallecano-17",
           "etiqueta": "17",
           "nombre": "Fran Pérez",
-          "orden": 18
+          "orden": 17
         },
         {
           "numero": "rayo-vallecano-18",
           "etiqueta": "18",
           "nombre": "Álvaro García",
-          "orden": 19
+          "orden": 18
         },
         {
           "numero": "rayo-vallecano-19",
           "etiqueta": "19",
           "nombre": "Camello",
-          "orden": 20
+          "orden": 19
         },
         {
           "numero": "rayo-vallecano-20",
           "etiqueta": "20",
           "nombre": "Alemao",
-          "orden": 21
+          "orden": 20
         }
       ],
       "escudo": "escudos/rayo-vallecano.webp"
@@ -2200,46 +2302,52 @@
           "orden": 13
         },
         {
+          "numero": "real-sociedad-13B",
+          "etiqueta": "13B",
+          "nombre": null,
+          "orden": 14
+        },
+        {
           "numero": "real-sociedad-14",
           "etiqueta": "14",
           "nombre": "Carlos Soler",
-          "orden": 14
+          "orden": 15
         },
         {
           "numero": "real-sociedad-15",
           "etiqueta": "15",
           "nombre": "Sucic",
-          "orden": 15
+          "orden": 16
         },
         {
           "numero": "real-sociedad-16",
           "etiqueta": "16",
           "nombre": "Barrenetxea",
-          "orden": 16
+          "orden": 17
         },
         {
           "numero": "real-sociedad-17",
           "etiqueta": "17",
           "nombre": "Kubo",
-          "orden": 17
+          "orden": 18
         },
         {
           "numero": "real-sociedad-18",
           "etiqueta": "18",
           "nombre": "Guedes",
-          "orden": 18
+          "orden": 19
         },
         {
           "numero": "real-sociedad-19",
           "etiqueta": "19",
           "nombre": "Oskarsson",
-          "orden": 19
+          "orden": 20
         },
         {
           "numero": "real-sociedad-20",
           "etiqueta": "20",
           "nombre": "Oyarzabal",
-          "orden": 20
+          "orden": 21
         }
       ],
       "escudo": "escudos/real-sociedad.webp"
@@ -2270,100 +2378,112 @@
           "orden": 3
         },
         {
+          "numero": "sevilla-fc-4",
+          "etiqueta": "4",
+          "nombre": null,
+          "orden": 4
+        },
+        {
           "numero": "sevilla-fc-5",
           "etiqueta": "5",
           "nombre": "Carmona",
-          "orden": 4
+          "orden": 5
         },
         {
           "numero": "sevilla-fc-6",
           "etiqueta": "6",
           "nombre": "Juanlu",
-          "orden": 5
+          "orden": 6
         },
         {
           "numero": "sevilla-fc-7",
           "etiqueta": "7",
           "nombre": "Kike Salas",
-          "orden": 6
+          "orden": 7
         },
         {
           "numero": "sevilla-fc-8",
           "etiqueta": "8",
           "nombre": "Nianzou",
-          "orden": 7
+          "orden": 8
         },
         {
           "numero": "sevilla-fc-9A",
           "etiqueta": "9A",
           "nombre": "Castrin",
-          "orden": 8
+          "orden": 9
         },
         {
           "numero": "sevilla-fc-9B",
           "etiqueta": "9B",
           "nombre": "Marcao",
-          "orden": 9
+          "orden": 10
         },
         {
           "numero": "sevilla-fc-10",
           "etiqueta": "10",
           "nombre": "Suazo",
-          "orden": 10
+          "orden": 11
         },
         {
           "numero": "sevilla-fc-11",
           "etiqueta": "11",
           "nombre": "Oso",
-          "orden": 11
+          "orden": 12
         },
         {
           "numero": "sevilla-fc-12",
           "etiqueta": "12",
           "nombre": "Agoumé",
-          "orden": 12
+          "orden": 13
+        },
+        {
+          "numero": "sevilla-fc-13",
+          "etiqueta": "13",
+          "nombre": null,
+          "orden": 14
         },
         {
           "numero": "sevilla-fc-14",
           "etiqueta": "14",
           "nombre": "Sow",
-          "orden": 13
+          "orden": 15
         },
         {
           "numero": "sevilla-fc-15",
           "etiqueta": "15",
           "nombre": "Vargas",
-          "orden": 14
+          "orden": 16
         },
         {
           "numero": "sevilla-fc-16",
           "etiqueta": "16",
           "nombre": "Manu Bueno",
-          "orden": 15
+          "orden": 17
         },
         {
           "numero": "sevilla-fc-17",
           "etiqueta": "17",
           "nombre": "Peque",
-          "orden": 16
+          "orden": 18
         },
         {
           "numero": "sevilla-fc-18",
           "etiqueta": "18",
           "nombre": "Ejuke",
-          "orden": 17
+          "orden": 19
         },
         {
           "numero": "sevilla-fc-19",
           "etiqueta": "19",
           "nombre": "Akor Adams",
-          "orden": 18
+          "orden": 20
         },
         {
           "numero": "sevilla-fc-20",
           "etiqueta": "20",
           "nombre": "Isaac Romero",
-          "orden": 19
+          "orden": 21
         }
       ],
       "escudo": "escudos/sevilla-fc.webp"

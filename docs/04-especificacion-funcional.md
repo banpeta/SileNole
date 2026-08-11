@@ -40,6 +40,9 @@ Como niño, quiero abrir un equipo y ver todos sus números.
   **entonces** se muestra en verde / marcado.
 - **Dado** un cromo que me falta (`tenido: false`),
   **entonces** se muestra en gris / sin marcar.
+- **Dado** un cromo con `nombre` conocido (jugador),
+  **entonces** se muestra el nombre en pequeño bajo el número. El Escudo y los
+  cromos sin nombre conocido muestran solo el número.
 
 ## HU-03 · Marcar y desmarcar un cromo `[MVP]`
 

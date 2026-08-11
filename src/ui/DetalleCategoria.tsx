@@ -63,6 +63,9 @@ export function DetalleCategoria({
                 onClick={() => onToggle(cromo.numero)}
               >
                 <span className="numero">{visible}</span>
+                {cromo.nombre && cromo.nombre !== 'Escudo' && (
+                  <span className="nombre-cromo">{cromo.nombre}</span>
+                )}
                 {tenido && (
                   <span className="marca" aria-hidden="true">
                     ✓
