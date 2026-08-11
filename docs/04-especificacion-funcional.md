@@ -96,6 +96,14 @@ números) obtenidos de internet.
 - **Dado** que se importa una nueva `version` del catálogo,
   **entonces** el estado del usuario (tengo / me falta / repes) de los números
   que siguen existiendo **se conserva**.
+- **Dado** que la app arranca y el `coleccion.json` incluido en la app trae una
+  `version` **mayor** que la del catálogo ya guardado en el dispositivo,
+  **entonces** se adopta automáticamente el catálogo nuevo **conservando el
+  progreso** (misma poda de huérfanos que al importar). Así los cambios de datos
+  llegan a dispositivos que ya tenían una versión anterior.
+- **Dado** que no hay conexión (no se puede cargar la semilla) o la semilla no
+  es válida, pero ya hay un catálogo guardado,
+  **entonces** se usa el guardado y la app no se rompe.
 
 ## HU-08 · Registrar repetidos (repes) `[v2]`
 

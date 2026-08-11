@@ -21,20 +21,62 @@ describe('obtenerColeccion', () => {
     expect(await repo.cargarColeccion()).not.toBeNull();
   });
 
-  it('si ya hay catálogo guardado, lo devuelve sin usar la semilla', async () => {
+  it('si ya hay catálogo guardado y la semilla no es más nueva, conserva el guardado', async () => {
     const repo = new RepositorioEnMemoria();
-    await repo.guardarColeccion(coleccionEjemplo());
-    const semilla = vi.fn().mockResolvedValue(coleccionEjemplo());
+    await repo.guardarColeccion(coleccionEjemplo()); // version 1
+    // Semilla con la misma version pero distinto nombre: no debe adoptarse.
+    const semilla = vi.fn().mockResolvedValue({ ...coleccionEjemplo(), nombre: 'Otra' });
 
-    await obtenerColeccion(repo, semilla);
+    const col = await obtenerColeccion(repo, semilla);
 
-    expect(semilla).not.toHaveBeenCalled();
+    expect(col.nombre).toBe('Colección de ejemplo');
   });
 
-  it('rechaza una semilla inválida con un error claro', async () => {
+  it('adopta la semilla si trae una version mayor, conservando el progreso', async () => {
+    const repo = new RepositorioEnMemoria();
+    await repo.guardarColeccion(coleccionEjemplo()); // version 1 (equipos A y B)
+    await repo.guardarEstados([tengo('1', 2), tengo('3')]); // '3' es del Equipo B
+
+    // Semilla v2: solo el Equipo A (números 1 y 2). El '3' desaparece.
+    const nueva = {
+      ...coleccionEjemplo(),
+      version: 2,
+      categorias: [coleccionEjemplo().categorias[0]],
+    };
+    const semilla = vi.fn().mockResolvedValue(nueva);
+
+    const col = await obtenerColeccion(repo, semilla);
+
+    expect(col.version).toBe(2);
+    const estados = await repo.cargarEstados();
+    expect(estados.map((e) => e.numero).sort()).toEqual(['1']); // '3' podado
+    expect(estados.find((e) => e.numero === '1')?.repes).toBe(2); // progreso conservado
+  });
+
+  it('si la semilla no se puede cargar (offline) y hay guardado, usa el guardado', async () => {
+    const repo = new RepositorioEnMemoria();
+    await repo.guardarColeccion(coleccionEjemplo());
+    const semilla = vi.fn().mockRejectedValue(new Error('sin red'));
+
+    const col = await obtenerColeccion(repo, semilla);
+
+    expect(col.id).toBe('ejemplo');
+  });
+
+  it('rechaza una semilla inválida con un error claro si no hay catálogo guardado', async () => {
     const repo = new RepositorioEnMemoria();
     const semilla = vi.fn().mockResolvedValue({ id: 'malo' });
     await expect(obtenerColeccion(repo, semilla)).rejects.toThrow();
+  });
+
+  it('si la semilla es inválida pero hay catálogo guardado, conserva el guardado', async () => {
+    const repo = new RepositorioEnMemoria();
+    await repo.guardarColeccion(coleccionEjemplo());
+    const semilla = vi.fn().mockResolvedValue({ id: 'malo' });
+
+    const col = await obtenerColeccion(repo, semilla);
+
+    expect(col.id).toBe('ejemplo');
   });
 });
 
