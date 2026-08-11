@@ -28,8 +28,14 @@ type Vista =
   | { nombre: 'editar' }
   | { nombre: 'sincronizar' };
 
-/** Construye el repositorio remoto para un código (inyectable para tests). */
-export type CrearRemoto = (codigo: string) => ColeccionRepository | null;
+/**
+ * Construye el repositorio remoto para un código (inyectable para tests).
+ * Puede ser síncrono (tests) o asíncrono (Supabase, que se carga de forma
+ * diferida): la app acepta ambos.
+ */
+export type CrearRemoto = (
+  codigo: string,
+) => (ColeccionRepository | null) | Promise<ColeccionRepository | null>;
 
 interface Props {
   /** Repositorio LOCAL de datos. Por defecto IndexedDB (inyectable para tests). */
@@ -47,12 +53,29 @@ export function App({
 }: Props = {}) {
   const local = useMemo(() => repo ?? new RepositorioIndexedDB(), [repo]);
   const [codigo, setCodigo] = useState<string | null>(() => leerCodigo());
+  const [remoto, setRemoto] = useState<ColeccionRepository | null>(null);
+
+  // El remoto (Supabase) se construye de forma asíncrona porque su cliente se
+  // carga de forma diferida. Sin código, no hay remoto.
+  useEffect(() => {
+    let vivo = true;
+    if (!codigo) {
+      setRemoto(null);
+      return;
+    }
+    Promise.resolve(crearRemoto(codigo)).then((r) => {
+      if (vivo) setRemoto(r);
+    });
+    return () => {
+      vivo = false;
+    };
+  }, [codigo, crearRemoto]);
 
   // La app siempre habla con un repositorio compuesto (local + remoto opcional).
-  // Sin código, el remoto es null y el compuesto es transparente (modo local).
+  // Sin remoto, el compuesto es transparente (modo local).
   const repositorio = useMemo(
-    () => new RepositorioCompuesto(local, codigo ? crearRemoto(codigo) : null),
-    [local, codigo, crearRemoto],
+    () => new RepositorioCompuesto(local, remoto),
+    [local, remoto],
   );
 
   const { cargando, error, coleccion, estados, alternar, ajustarRepes, importarCatalogo, recargar } =
