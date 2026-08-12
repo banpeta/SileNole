@@ -49,17 +49,27 @@ describe('normalizarCodigo', () => {
   });
 });
 
-describe('persistencia en local', () => {
-  beforeEach(() => localStorage.clear());
-
-  it('devuelve null si no hay código', () => {
-    expect(leerCodigo()).toBeNull();
+describe('persistencia en local (por colección)', () => {
+  beforeEach(() => {
+    localStorage.removeItem('silenole:codigo:col-a');
+    localStorage.removeItem('silenole:codigo:col-b');
   });
 
-  it('guarda (normalizado), lee y borra', () => {
-    guardarCodigo('  AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE ');
-    expect(leerCodigo()).toBe('aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee');
-    borrarCodigo();
-    expect(leerCodigo()).toBeNull();
+  it('devuelve null si no hay código', () => {
+    expect(leerCodigo('col-a')).toBeNull();
+  });
+
+  it('guarda (normalizado), lee y borra por colección', () => {
+    guardarCodigo('col-a', '  AAAAAAAA-BBBB-CCCC-DDDD-EEEEEEEEEEEE ');
+    expect(leerCodigo('col-a')).toBe('aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee');
+    borrarCodigo('col-a');
+    expect(leerCodigo('col-a')).toBeNull();
+  });
+
+  it('cada colección tiene su propio código', () => {
+    guardarCodigo('col-a', '11111111-1111-4111-8111-111111111111');
+    guardarCodigo('col-b', '22222222-2222-4222-8222-222222222222');
+    expect(leerCodigo('col-a')).toBe('11111111-1111-4111-8111-111111111111');
+    expect(leerCodigo('col-b')).toBe('22222222-2222-4222-8222-222222222222');
   });
 });

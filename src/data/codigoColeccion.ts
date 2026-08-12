@@ -1,13 +1,12 @@
 /**
- * Código de colección (Fase 7.4, ADR-008).
+ * Código de colección (Fase 7.4 / 9, ADR-008 y ADR-011).
  *
- * Identidad "sin cuentas": un UUID aleatorio que empareja dispositivos. Se
- * genera en el primer dispositivo y se pega en los demás. Se guarda en local
- * (localStorage) porque es configuración del dispositivo, no parte de la
- * colección (por eso no vive en ColeccionRepository).
+ * Identidad "sin cuentas": un UUID que empareja dispositivos. Se guarda en local
+ * (localStorage) **por colección** (`silenole:codigo:<coleccionId>`), porque cada
+ * colección se sincroniza por separado.
  */
 
-const CLAVE = 'silenole:codigo';
+const PREFIJO = 'silenole:codigo:';
 
 /** Formato UUID (aceptamos cualquier versión; comparación sin distinguir mayúsculas). */
 const RE_UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
@@ -27,28 +26,28 @@ export function generarCodigo(): string {
   return crypto.randomUUID();
 }
 
-/** Lee el código guardado en este dispositivo, o null si no hay. */
-export function leerCodigo(): string | null {
+/** Lee el código guardado para una colección, o null si no hay. */
+export function leerCodigo(coleccionId: string): string | null {
   try {
-    return localStorage.getItem(CLAVE);
+    return localStorage.getItem(PREFIJO + coleccionId);
   } catch {
     return null;
   }
 }
 
-/** Guarda el código en este dispositivo (normalizado). */
-export function guardarCodigo(codigo: string): void {
+/** Guarda el código de una colección (normalizado). */
+export function guardarCodigo(coleccionId: string, codigo: string): void {
   try {
-    localStorage.setItem(CLAVE, normalizarCodigo(codigo));
+    localStorage.setItem(PREFIJO + coleccionId, normalizarCodigo(codigo));
   } catch {
     /* almacenamiento no disponible: la sincronización quedará inactiva */
   }
 }
 
-/** Borra el código (deja de sincronizar en este dispositivo). */
-export function borrarCodigo(): void {
+/** Borra el código de una colección (deja de sincronizar). */
+export function borrarCodigo(coleccionId: string): void {
   try {
-    localStorage.removeItem(CLAVE);
+    localStorage.removeItem(PREFIJO + coleccionId);
   } catch {
     /* nada que hacer */
   }

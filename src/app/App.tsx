@@ -1,5 +1,4 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { RepositorioIndexedDB } from '../data/repositorioIndexedDB';
 import type { ColeccionRepository } from '../data/repositorio';
 import { RepositorioCompuesto } from '../data/repositorioCompuesto';
 import { crearRepositorioSupabase, crearCanalSupabase } from '../data/supabaseCliente';
@@ -10,7 +9,9 @@ import {
   leerCodigo,
   normalizarCodigo,
 } from '../data/codigoColeccion';
+import { activaId as leerActivaId } from '../data/registroColecciones';
 import { cargarSemillaDesdePublic, type CargarSemilla } from './servicio';
+import { bootstrapColecciones, crearRepositorioLocal, ID_LALIGA } from './colecciones';
 import { useSileNole } from './useSileNole';
 import { PantallaInicio } from '../ui/PantallaInicio';
 import { ListaCategorias } from '../ui/ListaCategorias';
@@ -39,14 +40,16 @@ export type CrearRemoto = (
 ) => (ColeccionRepository | null) | Promise<ColeccionRepository | null>;
 
 interface Props {
-  /** Repositorio LOCAL de datos. Por defecto IndexedDB (inyectable para tests). */
+  /** Repositorio LOCAL de la colección activa. Por defecto IndexedDB (inyectable para tests). */
   repo?: ColeccionRepository;
-  /** Origen de la semilla del catálogo (inyectable para tests). */
+  /** Origen de la semilla del catálogo de LaLiga (inyectable para tests). */
   cargarSemilla?: CargarSemilla;
   /** Fábrica del repositorio remoto (por defecto Supabase; inyectable para tests). */
   crearRemoto?: CrearRemoto;
   /** Fábrica del canal de tiempo real (por defecto Supabase; inyectable para tests). */
   crearCanal?: CrearCanal;
+  /** Fábrica del repositorio local por colección (inyectable para tests). */
+  crearRepoLocal?: (id: string) => ColeccionRepository;
   /** Retardo (ms) del auto-sync tras un cambio local. Bajarlo en tests. */
   retardoSyncMs?: number;
 }
@@ -56,11 +59,37 @@ export function App({
   cargarSemilla = cargarSemillaDesdePublic,
   crearRemoto = crearRepositorioSupabase,
   crearCanal = crearCanalSupabase,
+  crearRepoLocal = crearRepositorioLocal,
   retardoSyncMs = 800,
 }: Props = {}) {
-  const local = useMemo(() => repo ?? new RepositorioIndexedDB(), [repo]);
-  const [codigo, setCodigo] = useState<string | null>(() => leerCodigo());
+  // Colección activa (multi-colección, ADR-011). Al arrancar se asegura el
+  // registro y se migra la colección única previa.
+  const [coleccionId] = useState<string>(() => {
+    bootstrapColecciones();
+    return leerActivaId() ?? ID_LALIGA;
+  });
+
+  const local = useMemo(
+    () => repo ?? crearRepoLocal(coleccionId),
+    [repo, crearRepoLocal, coleccionId],
+  );
+  const [codigo, setCodigo] = useState<string | null>(() => leerCodigo(coleccionId));
   const [remoto, setRemoto] = useState<ColeccionRepository | null>(null);
+
+  // Al cambiar de colección activa, recargar su código.
+  useEffect(() => {
+    setCodigo(leerCodigo(coleccionId));
+  }, [coleccionId]);
+
+  // La semilla (autoactualización por versión) solo aplica a la colección de
+  // LaLiga; las creadas por el usuario no tienen semilla.
+  const semillaActiva = useMemo<CargarSemilla>(
+    () =>
+      coleccionId === ID_LALIGA
+        ? cargarSemilla
+        : () => Promise.reject(new Error('sin semilla')),
+    [coleccionId, cargarSemilla],
+  );
 
   // El remoto (Supabase) se construye de forma asíncrona porque su cliente se
   // carga de forma diferida. Sin código, no hay remoto.
@@ -92,7 +121,7 @@ export function App({
   const alCambioLocalRef = useRef<() => void>(() => {});
 
   const { cargando, error, coleccion, estados, alternar, ajustarRepes, importarCatalogo, recargar } =
-    useSileNole(repositorio, cargarSemilla, () => alCambioLocalRef.current());
+    useSileNole(repositorio, semillaActiva, () => alCambioLocalRef.current());
   const [vista, setVista] = useState<Vista>({ nombre: 'inicio' });
   const [sincronizando, setSincronizando] = useState(false);
   const [pendiente, setPendiente] = useState(false);
@@ -162,15 +191,18 @@ export function App({
 
   const activarSync = useCallback(() => {
     const nuevo = generarCodigo();
-    guardarCodigo(nuevo);
+    guardarCodigo(coleccionId, nuevo);
     setCodigo(nuevo);
-  }, []);
+  }, [coleccionId]);
 
-  const emparejar = useCallback((entrada: string) => {
-    const normalizado = normalizarCodigo(entrada);
-    guardarCodigo(normalizado);
-    setCodigo(normalizado);
-  }, []);
+  const emparejar = useCallback(
+    (entrada: string) => {
+      const normalizado = normalizarCodigo(entrada);
+      guardarCodigo(coleccionId, normalizado);
+      setCodigo(normalizado);
+    },
+    [coleccionId],
+  );
 
   return (
     <div className="app">
