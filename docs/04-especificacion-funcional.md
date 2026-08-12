@@ -191,6 +191,52 @@ portátil), sin crear una cuenta.
 - **Dado** que la sincronización con la nube falla,
   **entonces** no se pierden datos locales ni se bloquea la interfaz.
 
+## HU-10 · Elegir y abrir una colección `[Fase 9]`
+
+Como usuario, quiero tener varias colecciones y elegir cuál ver.
+
+- **Dado** que abro la app,
+  **entonces** se abre directamente la **última colección activa** (en el primer
+  uso, la de LaLiga).
+- **Dado** que voy a la pantalla "Mis colecciones",
+  **entonces** veo la lista de mis colecciones con su **progreso** (ej.
+  "LaLiga 26/27 · 120/583").
+- **Dado** que elijo una colección,
+  **entonces** pasa a ser la **activa** y entro a su pantalla de inicio; el resto
+  de pantallas (categorías, faltan, para cambiar, sincronizar) operan sobre ella.
+- **Dado** que reabro la app,
+  **entonces** se recuerda la colección que tenía activa.
+
+## HU-11 · Crear una colección `[Fase 9]`
+
+Como usuario, quiero crear una colección nueva indicando su estructura.
+
+- **Dado** que pulso "Nueva colección",
+  **cuando** introduzco un **nombre** y su **estructura**,
+  **entonces** se crea la colección y pasa a estar disponible en la lista.
+- **Estructura simple**: indico un **número total** `N` de cromos,
+  **entonces** se crea una sección con cromos de etiqueta `1..N`.
+- **Estructura por secciones**: indico varias secciones (nombre + cantidad),
+  **entonces** se crea una categoría por sección, con cromos `1..N` por sección.
+- **Dado** una colección recién creada,
+  **entonces** sus cromos no tienen nombre (se rellenan al editar, fase
+  posterior) y su progreso empieza a cero.
+- **Dado** un nombre vacío o una estructura sin cromos,
+  **entonces** no se crea y se avisa con un mensaje claro.
+
+## HU-12 · Borrar una colección `[Fase 9]`
+
+Como usuario, quiero borrar una colección que ya no quiero.
+
+- **Dado** una colección en la lista,
+  **cuando** pido borrarla y **confirmo**,
+  **entonces** se eliminan sus datos **locales** y desaparece de la lista.
+- **Dado** que borro la colección activa,
+  **entonces** la app pasa a otra colección (o a la pantalla "Mis colecciones"
+  si no queda ninguna).
+- **Nota**: borrar no toca los datos en la nube (si tenía código, se pueden
+  recuperar reintroduciéndolo).
+
 ---
 
 ## Requisitos no funcionales

@@ -3,9 +3,12 @@
 ## Objetivo
 
 Aplicación **personal** para móvil que ayuda a un niño (7 años) a llevar el
-seguimiento de su colección de cromos **Panini La Liga Este 26/27**: saber qué
-cromos **tiene** y cuáles le **faltan**, organizados de forma que sea fácil
-encontrarlos.
+seguimiento de sus colecciones de cromos: saber qué cromos **tiene** y cuáles le
+**faltan**, organizados de forma que sea fácil encontrarlos.
+
+La colección inicial es **Panini La Liga Este 26/27**, pero la app **gestiona
+varias colecciones** (ver Fase 9): se puede tener más de una a la vez, elegir
+cuál ver, y crear colecciones nuevas indicando su nombre y estructura.
 
 ## Usuarios
 

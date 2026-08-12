@@ -187,3 +187,41 @@ el `codigo`. Nunca se usa la clave `service_role` en el cliente (ADR-008).
 > La fusión es **conmutativa e idempotente** respecto al resultado final: aplicar
 > la misma sincronización dos veces deja el mismo estado, y da igual qué
 > dispositivo sincronice primero.
+
+## Multi-colección (Fase 9)
+
+La app gestiona **varias colecciones**. Cada colección es una `Coleccion`
+(catálogo) con su propio conjunto de `EstadoCromo[]` y su propio `codigo` de
+sincronización. Se ve una **activa** a la vez.
+
+### Registro de colecciones (local)
+
+Un registro pequeño guardado en el dispositivo (fuera de `ColeccionRepository`):
+
+| Campo | Tipo | Descripción |
+|-------|------|-------------|
+| `colecciones` | `{ id, nombre }[]` | Lista de colecciones existentes. |
+| `activaId` | string \| null | Id de la colección activa (la que se abre). |
+
+El `codigo` de sincronización se guarda **por colección** (clave por `id`), no
+uno global (ver ADR-011). El resto de datos (catálogo y estados) se guardan
+**aislados por `coleccionId`** en IndexedDB.
+
+### Reglas
+
+1. **Aislamiento**: los `numero`/`EstadoCromo` de una colección no se mezclan con
+   los de otra. La unicidad de `numero` (invariante 1) es **dentro de cada
+   colección**.
+2. **Migración**: al pasar a multi-colección, la colección única previa se
+   convierte en la primera del registro (id `laliga-este-26-27`) sin perder
+   catálogo, estados ni `codigo`. Idempotente.
+3. **Crear**: una colección nueva se define con `nombre` y estructura:
+   - *Simple*: un total `N` -> una categoría con cromos de etiqueta `1..N`.
+   - *Por secciones*: varias categorías, cada una con `nombre` y cantidad ->
+     cromos con etiqueta `1..N` **por sección**.
+   El `numero` interno se autogenera único dentro de la colección; el `nombre`
+   del cromo nace vacío (`null`).
+4. **Borrar**: elimina los datos locales de esa colección; no toca la nube.
+5. **Semilla y autoactualización** (ADR-005, HU-07): solo aplican a la colección
+   con semilla (`coleccion.json`, la de LaLiga). Las creadas por el usuario no
+   tienen semilla.

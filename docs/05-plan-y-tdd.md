@@ -117,10 +117,11 @@ HU-09. Se desarrolla en sub-fases, cada una TDD (test primero) y sin regresiones
 - **7.5 · Despliegue y verificación en dispositivos reales. (entregada) ✅**
   Secrets en GitHub Actions, desplegado en Pages y verificado en móvil + portátil
   reales (emparejar, subir y bajar cambios).
-- **7.6 · Sincronización en tiempo real (ADR-010).** Supabase Realtime Broadcast
-  en un canal por `codigo`: auto-subida de cambios locales (con debounce) y
-  auto-bajada al recibir avisos, sin pulsar nada. Degradación elegante si no hay
-  tiempo real. Abstracción `CrearCanal`/`CanalTiempoReal` con doble para tests.
+- **7.6 · Sincronización en tiempo real (ADR-010). (entregada) ✅** Supabase
+  Realtime Broadcast en un canal por `codigo`: auto-subida de cambios locales
+  (con debounce) y auto-bajada al recibir avisos, sin pulsar nada. Degradación
+  elegante si no hay tiempo real. Abstracción `CrearCanal`/`CanalTiempoReal` con
+  doble para tests. Verificado en dispositivos reales.
 
 > Configuración: la URL y la clave publishable/anon de Supabase se inyectan por
 > variables de entorno de Vite (`VITE_SUPABASE_URL`, `VITE_SUPABASE_ANON_KEY`) y
@@ -146,6 +147,31 @@ HU-09. Se desarrolla en sub-fases, cada una TDD (test primero) y sin regresiones
 > rama de feature se borró tras fusionar la Fase 7). Un push a `master` dispara
 > el despliegue en GitHub Pages. URL: `https://banpeta.github.io/SileNole/` (el
 > `base` de Vite se deriva del nombre del repo).
+
+### Fase 9 · Multi-colección (en desarrollo)
+
+Gestionar varias colecciones (ADR-011). Cubre HU-10, HU-11 y HU-12. Sub-fases
+TDD, cada una con todos los tests en verde y sin regresiones.
+
+- **9.1 · Datos por colección + registro.** Repositorio local namespaced por
+  `coleccionId` en IndexedDB; `RegistroColecciones` (lista + activa) y `codigo`
+  por colección. Batería de contrato reutilizada por colección. Tests: aislamiento
+  entre colecciones, registro (alta/activa/baja).
+- **9.2 · Migración de la colección única.** Al arrancar, convertir la colección
+  existente en la primera del registro (id `laliga-este-26-27`) conservando
+  catálogo, estados y `codigo`. Idempotente. Tests primero.
+- **9.3 · Construir colección (dominio, sin UI).** Función pura que crea una
+  `Coleccion` desde nombre + estructura (total `N` o secciones con cantidad),
+  generando categorías, `numero` únicos y etiquetas `1..N`. Tests: simple, por
+  secciones, validaciones (nombre vacío, sin cromos).
+- **9.4 · Pantalla "Mis colecciones" + cableado.** Listar con progreso, abrir
+  (activa), recordar la activa al arrancar. Tests de componente e integración.
+- **9.5 · Crear y borrar desde la app.** Formulario de creación (simple / por
+  secciones) y borrado con confirmación. La sincronización sigue siendo por
+  colección (código propio). Tests de componente e integración.
+
+> Renombrar y editar la estructura de una colección ya creada: fase posterior
+> (fuera del alcance de la v1 de multi-colección).
 
 ## Estructura de carpetas prevista
 

@@ -203,3 +203,44 @@ sigue sincronizando al arrancar, al reconectar (`online`) y con el botón manual
 **Abstracción y pruebas:** la app depende de una interfaz `CrearCanal` /
 `CanalTiempoReal` (como `ClienteRpc` en ADR-008), con implementación Supabase
 (cargada de forma diferida) y un doble para los tests.
+
+---
+
+## ADR-011 · Multi-colección: almacenamiento por colección y registro
+
+**Decisión:** la app gestiona **varias colecciones** independientes. Cada
+colección tiene su propio catálogo (`Coleccion`), su propio progreso
+(`EstadoCromo[]`) y su propio `codigo` de sincronización. En el dispositivo se
+guardan **aisladas por `coleccionId`**, más un pequeño **registro** con la lista
+de colecciones y cuál está activa.
+
+**Contexto:** hasta ahora la app guardaba una sola colección (un catálogo y un
+conjunto de estados). El modelo ya trataba el álbum como una `Coleccion` con
+categorías, así que el salto es guardar **varias** y navegar entre ellas, no
+rehacer el modelo.
+
+**Consecuencias:**
+- La capa de datos pasa de "un repositorio" a "un repositorio **por colección**":
+  el mismo `ColeccionRepository` (ADR-003), pero con los datos namespaced por
+  `coleccionId` en IndexedDB. La lógica de dominio y la UI de una colección no
+  cambian: siguen hablando con un `ColeccionRepository`.
+- Un **registro de colecciones** (local) guarda `{ id, nombre }` de cada una y
+  la **activa**. La app abre la activa al arrancar.
+- **Sincronización por colección**: el `codigo` deja de ser único; se guarda uno
+  **por `coleccionId`**. El backend NO cambia (todo va ya por `codigo`: cada
+  colección son sus filas bajo su código).
+- **Colecciones creadas por el usuario**: se construyen con un nombre y una
+  estructura (número total de cromos o secciones con su cantidad). Nacen solo
+  locales; su sincronización es opcional (código por colección).
+- **La colección LaLiga** sigue siendo la única con **semilla** (`coleccion.json`)
+  y autoactualización por versión (ADR-005 + HU-07); las creadas por el usuario
+  las mantiene el usuario.
+
+**Migración (sin perder datos):** al actualizar, la colección única existente se
+convierte en la **primera** del registro (id `laliga-este-26-27`), conservando
+catálogo, progreso, escudos y su `codigo` actual. La conversión es automática y
+única (idempotente).
+
+**Borrado:** borrar una colección elimina sus datos **locales**; sus datos en la
+nube (si tenía `codigo`) no se tocan (se podrían recuperar reintroduciendo el
+código).
