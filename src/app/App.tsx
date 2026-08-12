@@ -9,9 +9,16 @@ import {
   leerCodigo,
   normalizarCodigo,
 } from '../data/codigoColeccion';
+import * as registro from '../data/registroColecciones';
 import { activaId as leerActivaId } from '../data/registroColecciones';
-import { cargarSemillaDesdePublic, type CargarSemilla } from './servicio';
-import { bootstrapColecciones, crearRepositorioLocal, ID_LALIGA } from './colecciones';
+import { progresoTotal } from '../domain/progreso';
+import { cargarSemillaDesdePublic, estadosAMapa, type CargarSemilla } from './servicio';
+import {
+  bootstrapColecciones,
+  crearRepositorioLocal,
+  borrarColeccionExistente,
+  ID_LALIGA,
+} from './colecciones';
 import { useSileNole } from './useSileNole';
 import { PantallaInicio } from '../ui/PantallaInicio';
 import { ListaCategorias } from '../ui/ListaCategorias';
@@ -20,6 +27,8 @@ import { PantallaFaltan } from '../ui/PantallaFaltan';
 import { PantallaParaCambiar } from '../ui/PantallaParaCambiar';
 import { PantallaEditarCatalogo } from '../ui/PantallaEditarCatalogo';
 import { PantallaSincronizar } from '../ui/PantallaSincronizar';
+import { PantallaColecciones, type ColeccionResumen } from '../ui/PantallaColecciones';
+import { construirColeccion, type Estructura } from '../domain/construirColeccion';
 
 type Vista =
   | { nombre: 'inicio' }
@@ -28,7 +37,8 @@ type Vista =
   | { nombre: 'faltan' }
   | { nombre: 'cambiar' }
   | { nombre: 'editar' }
-  | { nombre: 'sincronizar' };
+  | { nombre: 'sincronizar' }
+  | { nombre: 'colecciones' };
 
 /**
  * Construye el repositorio remoto para un código (inyectable para tests).
@@ -64,7 +74,7 @@ export function App({
 }: Props = {}) {
   // Colección activa (multi-colección, ADR-011). Al arrancar se asegura el
   // registro y se migra la colección única previa.
-  const [coleccionId] = useState<string>(() => {
+  const [coleccionId, setColeccionId] = useState<string>(() => {
     bootstrapColecciones();
     return leerActivaId() ?? ID_LALIGA;
   });
@@ -204,6 +214,70 @@ export function App({
     [coleccionId],
   );
 
+  // --- Multi-colección: lista, abrir, crear, borrar (HU-10/11/12) ---
+  const [listaColecciones, setListaColecciones] = useState<ColeccionResumen[]>([]);
+
+  const refrescarLista = useCallback(async () => {
+    const resumenes = await Promise.all(
+      registro.listar().map(async (info) => {
+        try {
+          const r = crearRepoLocal(info.id);
+          const col = await r.cargarColeccion();
+          const mapa = estadosAMapa(await r.cargarEstados());
+          const p = col ? progresoTotal(col, mapa) : null;
+          return { id: info.id, nombre: info.nombre, conseguidos: p?.conseguidos ?? 0, total: p?.total ?? 0 };
+        } catch {
+          return { id: info.id, nombre: info.nombre, conseguidos: 0, total: 0 };
+        }
+      }),
+    );
+    setListaColecciones(resumenes);
+  }, [crearRepoLocal]);
+
+  const verColecciones = useCallback(() => {
+    void refrescarLista();
+    setVista({ nombre: 'colecciones' });
+  }, [refrescarLista]);
+
+  const abrirColeccion = useCallback((id: string) => {
+    registro.setActiva(id);
+    setColeccionId(id);
+    setVista({ nombre: 'inicio' });
+  }, []);
+
+  const crearColeccion = useCallback(
+    async (entrada: { nombre: string; estructura: Estructura }) => {
+      const id = crypto.randomUUID();
+      // construirColeccion valida y lanza si los datos no son correctos.
+      const coleccion = construirColeccion({ id, nombre: entrada.nombre, estructura: entrada.estructura });
+      await crearRepoLocal(id).guardarColeccion(coleccion);
+      registro.anadir({ id, nombre: coleccion.nombre });
+      registro.setActiva(id);
+      setColeccionId(id);
+      setVista({ nombre: 'inicio' });
+    },
+    [crearRepoLocal],
+  );
+
+  const borrarColeccion = useCallback(
+    async (id: string) => {
+      await borrarColeccionExistente(id);
+      if (id === coleccionId) {
+        let siguiente = registro.activaId();
+        if (!siguiente) {
+          bootstrapColecciones();
+          siguiente = registro.activaId() ?? ID_LALIGA;
+        }
+        registro.setActiva(siguiente);
+        setColeccionId(siguiente);
+        setVista({ nombre: 'inicio' });
+      } else {
+        await refrescarLista();
+      }
+    },
+    [coleccionId, refrescarLista],
+  );
+
   return (
     <div className="app">
       <header className="cabecera">
@@ -225,6 +299,7 @@ export function App({
                 onVerCambiar={() => setVista({ nombre: 'cambiar' })}
                 onVerEditar={() => setVista({ nombre: 'editar' })}
                 onVerSincronizar={() => setVista({ nombre: 'sincronizar' })}
+                onVerColecciones={verColecciones}
               />
             )}
             {vista.nombre === 'categorias' && (
@@ -278,6 +353,16 @@ export function App({
                 onActivar={activarSync}
                 onEmparejar={emparejar}
                 onSincronizar={() => void sincronizar({ emitir: true })}
+                onVolver={() => setVista({ nombre: 'inicio' })}
+              />
+            )}
+            {vista.nombre === 'colecciones' && (
+              <PantallaColecciones
+                colecciones={listaColecciones}
+                activaId={coleccionId}
+                onAbrir={abrirColeccion}
+                onCrear={crearColeccion}
+                onBorrar={(id) => void borrarColeccion(id)}
                 onVolver={() => setVista({ nombre: 'inicio' })}
               />
             )}

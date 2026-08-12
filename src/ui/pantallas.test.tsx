@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { coleccionEjemplo, mapaDe, tengo } from '../test/fixtures';
 import { PantallaInicio } from './PantallaInicio';
 import { ListaCategorias } from './ListaCategorias';
@@ -8,6 +8,7 @@ import { PantallaFaltan } from './PantallaFaltan';
 import { PantallaParaCambiar } from './PantallaParaCambiar';
 import { PantallaEditarCatalogo } from './PantallaEditarCatalogo';
 import { PantallaSincronizar } from './PantallaSincronizar';
+import { PantallaColecciones } from './PantallaColecciones';
 import { esCodigoValido } from '../data/codigoColeccion';
 
 /**
@@ -29,6 +30,7 @@ describe('PantallaInicio — HU-04', () => {
         onVerCambiar={noop}
         onVerEditar={noop}
         onVerSincronizar={noop}
+        onVerColecciones={noop}
       />,
     );
     expect(screen.getByText(/1/)).toBeInTheDocument();
@@ -43,6 +45,7 @@ describe('PantallaInicio — HU-04', () => {
     const onVerCambiar = vi.fn();
     const onVerEditar = vi.fn();
     const onVerSincronizar = vi.fn();
+    const onVerColecciones = vi.fn();
     render(
       <PantallaInicio
         coleccion={coleccionEjemplo()}
@@ -52,6 +55,7 @@ describe('PantallaInicio — HU-04', () => {
         onVerCambiar={onVerCambiar}
         onVerEditar={onVerEditar}
         onVerSincronizar={onVerSincronizar}
+        onVerColecciones={onVerColecciones}
       />,
     );
     fireEvent.click(screen.getByRole('button', { name: /equipos/i }));
@@ -59,11 +63,13 @@ describe('PantallaInicio — HU-04', () => {
     fireEvent.click(screen.getByRole('button', { name: /cambiar/i }));
     fireEvent.click(screen.getByRole('button', { name: /editar cat/i }));
     fireEvent.click(screen.getByRole('button', { name: /sincronizar/i }));
+    fireEvent.click(screen.getByRole('button', { name: /mis colecciones/i }));
     expect(onVerCategorias).toHaveBeenCalledOnce();
     expect(onVerFaltan).toHaveBeenCalledOnce();
     expect(onVerCambiar).toHaveBeenCalledOnce();
     expect(onVerEditar).toHaveBeenCalledOnce();
     expect(onVerSincronizar).toHaveBeenCalledOnce();
+    expect(onVerColecciones).toHaveBeenCalledOnce();
   });
 });
 
@@ -426,5 +432,55 @@ describe('PantallaSincronizar — HU-09', () => {
     fireEvent.click(screen.getByRole('button', { name: /emparejar/i }));
     expect(onEmparejar).toHaveBeenCalledWith(codigo);
     expect(esCodigoValido(codigo)).toBe(true);
+  });
+});
+
+describe('PantallaColecciones — HU-10/11/12', () => {
+  const lista = [
+    { id: 'laliga-este-26-27', nombre: 'LaLiga 26/27', conseguidos: 3, total: 10 },
+    { id: 'otra', nombre: 'Otra', conseguidos: 0, total: 5 },
+  ];
+  const props = {
+    colecciones: lista,
+    activaId: 'laliga-este-26-27',
+    onAbrir: noop,
+    onCrear: () => Promise.resolve(),
+    onBorrar: noop,
+    onVolver: noop,
+  };
+
+  it('lista las colecciones con su progreso', () => {
+    render(<PantallaColecciones {...props} />);
+    expect(screen.getByRole('button', { name: /abrir LaLiga/i })).toBeInTheDocument();
+    expect(screen.getByText('3/10')).toBeInTheDocument();
+    expect(screen.getByText('0/5')).toBeInTheDocument();
+  });
+
+  it('al pulsar una colección llama a onAbrir con su id', () => {
+    const onAbrir = vi.fn();
+    render(<PantallaColecciones {...props} onAbrir={onAbrir} />);
+    fireEvent.click(screen.getByRole('button', { name: /abrir Otra/i }));
+    expect(onAbrir).toHaveBeenCalledWith('otra');
+  });
+
+  it('crea una colección simple con nombre y número total', async () => {
+    const onCrear = vi.fn().mockResolvedValue(undefined);
+    render(<PantallaColecciones {...props} onCrear={onCrear} />);
+    fireEvent.click(screen.getByRole('button', { name: /nueva colección/i }));
+    fireEvent.change(screen.getByLabelText(/nombre de la colección/i), { target: { value: 'Mundial' } });
+    fireEvent.change(screen.getByLabelText(/cuántos cromos en total/i), { target: { value: '8' } });
+    fireEvent.click(screen.getByRole('button', { name: /^crear$/i }));
+    await waitFor(() =>
+      expect(onCrear).toHaveBeenCalledWith({ nombre: 'Mundial', estructura: { tipo: 'simple', total: 8 } }),
+    );
+  });
+
+  it('borra una colección pidiendo confirmación', () => {
+    const onBorrar = vi.fn();
+    render(<PantallaColecciones {...props} onBorrar={onBorrar} />);
+    fireEvent.click(screen.getByRole('button', { name: /borrar Otra/i }));
+    expect(onBorrar).not.toHaveBeenCalled(); // aún no, pide confirmar
+    fireEvent.click(screen.getByRole('button', { name: /confirmar borrar Otra/i }));
+    expect(onBorrar).toHaveBeenCalledWith('otra');
   });
 });

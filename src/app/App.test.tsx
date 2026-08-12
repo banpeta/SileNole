@@ -231,3 +231,50 @@ describe('App — sincronización en tiempo real (HU-09, ADR-010)', () => {
     );
   });
 });
+
+describe('App — multi-colección (Fase 9)', () => {
+  // Fábrica de repos por colección (una memoria por id).
+  function fabricaRepos() {
+    const repos = new Map<string, RepositorioEnMemoria>();
+    return (id: string) => {
+      if (!repos.has(id)) repos.set(id, new RepositorioEnMemoria());
+      return repos.get(id)!;
+    };
+  }
+
+  it('muestra "Mis colecciones" con la colección de LaLiga y su progreso', async () => {
+    render(
+      <App
+        cargarSemilla={semilla}
+        crearRepoLocal={fabricaRepos()}
+        crearRemoto={() => null}
+        crearCanal={() => null}
+      />,
+    );
+    await screen.findByRole('progressbar');
+    fireEvent.click(screen.getByRole('button', { name: /mis colecciones/i }));
+    expect(await screen.findByRole('button', { name: /abrir LaLiga/i })).toBeInTheDocument();
+    expect(screen.getByText('0/3')).toBeInTheDocument(); // coleccionEjemplo tiene 3 cromos
+  });
+
+  it('crea una colección nueva y la abre (HU-11/HU-10)', async () => {
+    render(
+      <App
+        cargarSemilla={semilla}
+        crearRepoLocal={fabricaRepos()}
+        crearRemoto={() => null}
+        crearCanal={() => null}
+      />,
+    );
+    await waitFor(() => expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuemax', '3'));
+
+    fireEvent.click(screen.getByRole('button', { name: /mis colecciones/i }));
+    fireEvent.click(await screen.findByRole('button', { name: /nueva colección/i }));
+    fireEvent.change(screen.getByLabelText(/nombre de la colección/i), { target: { value: 'Mundial' } });
+    fireEvent.change(screen.getByLabelText(/cuántos cromos en total/i), { target: { value: '8' } });
+    fireEvent.click(screen.getByRole('button', { name: /^crear$/i }));
+
+    // Se abre la nueva colección (8 cromos), no la de LaLiga (3).
+    await waitFor(() => expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuemax', '8'));
+  });
+});
